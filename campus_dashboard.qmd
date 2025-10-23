@@ -136,13 +136,47 @@ center <- c(lat = 43.028842, lng = 131.893193)
 func_zones <- func_zones %>%
   filter(!is.na(FZ) & FZ != "null" & FZ != "")
 
-# Получаем список уникальных функциональных зон
-fz_types <- unique(func_zones$FZ)
+# Создаем словарь для замены названий
+fz_names <- c(
+  "academ" = "Научно-образовательная",
+  "cultural" = "Культурно-образовательная", 
+  "dormit" = "Жилая",
+  "green" = "Ландшафтно-рекреационная",
+  "indust" = "Зона строительства",
+  "parking" = "Парковочная",
+  "sport" = "Спортивная",
+  "tech" = "Коммунального хозяйства"
+)
+
+# Создаем палитру цветов
+fz_colors <- c(
+  "academ" = "#f23761",
+  "cultural" = "#f952e2",
+  "dormit" = "#ff807a", 
+  "green" = "#abeca3",
+  "indust" = "#6863db",
+  "parking" = "#a82072",
+  "sport" = "#ffa860",
+  "tech" = "#8daf93"
+)
+
+# Добавляем новые названия и цвета в данные
+func_zones <- func_zones %>%
+  mutate(
+    FZ_name = fz_names[FZ],
+    FZ_color = fz_colors[FZ]
+  )
+
+# Получаем список уникальных функциональных зон (уже с новыми названиями)
+fz_types <- unique(func_zones$FZ_name)
 n <- length(fz_types)
 
-# Палитра цветов для функциональных зон
-colors <- brewer.pal(min(max(n, 3), 8), "Set2")  # до 8 уникальных цветов
-palette <- colorFactor(colors, domain = fz_types)
+# Создаем палитру для leaflet
+palette <- colorFactor(
+  palette = fz_colors,
+  domain = func_zones$FZ,
+  na.color = "transparent"
+)
 
 # Создаём базовую карту
 map <- leaflet() %>%
@@ -161,32 +195,38 @@ map <- leaflet() %>%
   ))
 
 # Добавляем слой для каждой функциональной зоны
-for (fz in fz_types) {
+for (fz in unique(func_zones$FZ)) {
+  fz_data <- func_zones %>% filter(FZ == fz)
+  fz_display_name <- fz_names[fz]
+  
   map <- map %>%
     addPolygons(
-      data = func_zones %>% filter(FZ == fz),
+      data = fz_data,
       color = "black",
       weight = 1,
       fillColor = ~palette(FZ),
       fillOpacity = 0.7,
-      popup = ~paste("<b>Функциональная зона:</b>", FZ),
-      group = fz
+      popup = ~paste("<b>Функциональная зона:</b>", FZ_name),
+      group = fz_display_name
     )
 }
+
+# Создаем легенду с новыми названиями и цветами
+legend_colors <- fz_colors
+legend_labels <- fz_names
 
 # Добавляем легенду и контролы
 map <- map %>%
   addLegend(
     "topright",
-    pal = palette,
-    values = func_zones$FZ,
+    colors = legend_colors,
+    labels = legend_labels,
     title = "Функциональные зоны",
     opacity = 0.7
   ) %>%
   
   addLayersControl(
     baseGroups = c("Стандартная основа", "Спутниковая основа"),
-    overlayGroups = fz_types,
     options = layersControlOptions(collapsed = FALSE, position = "bottomleft")
   )
 
