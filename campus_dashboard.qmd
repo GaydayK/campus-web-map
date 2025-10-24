@@ -113,7 +113,7 @@ map <- map %>%
 map
 ```
 
-```{r}
+```{r, out.width = '100%'}
 #| echo: false
 #| message: false
 #| warning: false
@@ -124,64 +124,54 @@ library(leaflet)
 library(sf)
 library(dplyr)
 library(htmltools)
+library(colorRamps)
 library(RColorBrewer)
 
 # Загружаем данные функциональных зон
 func_zones <- st_read("func_zones.geojson", quiet = TRUE)
+roads <- st_read("transs.geojson", quiet = TRUE)
 
 # Центр карты
 center <- c(lat = 43.028842, lng = 131.893193)
 
-# Убираем пустые или некорректные значения FZ
+# Переводим типы зон на русский язык
 func_zones <- func_zones %>%
-  filter(!is.na(FZ) & FZ != "null" & FZ != "")
-
-# Создаем словарь для замены названий
-fz_names <- c(
-  "academ" = "Научно-образовательная",
-  "cultural" = "Культурно-образовательная", 
-  "dormit" = "Жилая",
-  "green" = "Ландшафтно-рекреационная",
-  "indust" = "Зона строительства",
-  "parking" = "Парковочная",
-  "sport" = "Спортивная",
-  "tech" = "Коммунального хозяйства"
-)
-
-# Создаем палитру цветов
-fz_colors <- c(
-  "academ" = "#f23761",
-  "cultural" = "#f952e2",
-  "dormit" = "#ff807a", 
-  "green" = "#abeca3",
-  "indust" = "#6863db",
-  "parking" = "#a82072",
-  "sport" = "#ffa860",
-  "tech" = "#8daf93"
-)
-
-# Добавляем новые названия и цвета в данные
-func_zones <- func_zones %>%
+  filter(!is.na(FZ) & FZ != "null" & FZ != "") %>%
   mutate(
-    FZ_name = fz_names[FZ],
-    FZ_color = fz_colors[FZ]
+    FZ_rus = recode(
+      FZ,
+      "academ"   = "Научно-образовательная",
+      "cultural" = "Культурно-образовательная",
+      "dormit"   = "Жилая",
+      "green"    = "Ландшафтно-рекреационная",
+      "indust"   = "Зона строительства",
+      "parking"  = "Парковочная",
+      "sport"    = "Спортивная",
+      "tech"     = "Коммунального хозяйства",
+      "uslugi"   = "Зона услуг"
+    )
   )
 
-# Получаем список уникальных функциональных зон (уже с новыми названиями)
-fz_types <- unique(func_zones$FZ_name)
-n <- length(fz_types)
-
-# Создаем палитру для leaflet
-palette <- colorFactor(
-  palette = fz_colors,
-  domain = func_zones$FZ,
-  na.color = "transparent"
+# Жёстко заданные цвета по типам FZ
+color_map <- c(
+  "academ"   = "#f23761",
+  "cultural" = "#f952e2",
+  "dormit"   = "#ff807a",
+  "green"    = "#abeca3",
+  "indust"   = "#6863db",
+  "parking"  = "#a82072",
+  "sport"    = "#ffa860",
+  "tech"     = "#8daf93",
+  "uslugi"   = "#fff3a3"
 )
+
+# Палитра по исходным кодам FZ
+palette <- colorFactor(color_map, domain = names(color_map))
 
 # Создаём базовую карту
 map <- leaflet() %>%
   addProviderTiles("CartoDB.Positron", group = "Стандартная основа") %>%
-  addProviderTiles("Esri.WorldImagery", group = "Спутниковая основа", 
+  addProviderTiles("Esri.WorldImagery", group = "Спутниковая основа",
                    options = providerTileOptions(opacity = 0.5)) %>%
   setView(lng = center["lng"], lat = center["lat"], zoom = 15) %>%
   
@@ -194,43 +184,47 @@ map <- leaflet() %>%
     )
   ))
 
-# Добавляем слой для каждой функциональной зоны
-for (fz in unique(func_zones$FZ)) {
-  fz_data <- func_zones %>% filter(FZ == fz)
-  fz_display_name <- fz_names[fz]
-  
-  map <- map %>%
-    addPolygons(
-      data = fz_data,
-      color = "black",
-      weight = 1,
-      fillColor = ~palette(FZ),
-      fillOpacity = 0.7,
-      popup = ~paste("<b>Функциональная зона:</b>", FZ_name),
-      group = fz_display_name
-    )
-}
-
-# Создаем легенду с новыми названиями и цветами
-legend_colors <- fz_colors
-legend_labels <- fz_names
+# Добавляем полигоны одним вызовом, с динамической раскраской по палитре
+map <- map %>%
+  addPolygons(
+    data = func_zones,
+    color = "black",
+    weight = 1,
+    fillColor = ~palette(FZ),
+    fillOpacity = 0.7,
+    popup = ~paste("<b>Функциональная зона:</b>", FZ_rus),
+    group = ~FZ_rus
+  )
 
 # Добавляем легенду и контролы
 map <- map %>%
   addLegend(
     "topright",
-    colors = legend_colors,
-    labels = legend_labels,
+    colors = unname(color_map),
+    labels = c(
+      "Научно-образовательная",
+      "Культурно-образовательная",
+      "Жилая",
+      "Ландшафтно-рекреационная",
+      "Зона строительства",
+      "Парковочная",
+      "Спортивная",
+      "Коммунального хозяйства",
+      "Зона услуг"
+    ),
     title = "Функциональные зоны",
-    opacity = 0.7
+    opacity = 0.9
   ) %>%
-  
   addLayersControl(
     baseGroups = c("Стандартная основа", "Спутниковая основа"),
+    overlayGroups = unique(func_zones$FZ_rus),
     options = layersControlOptions(collapsed = FALSE, position = "bottomleft")
   )
-
 map
 ```
 
 # МГУ
+Информация про МГУ
+
+# ПГНИУ
+Информация про ПГНИУ
