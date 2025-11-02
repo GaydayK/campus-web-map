@@ -290,30 +290,49 @@ hc_data <- data %>%
     color = Color
   )
 
-# Интерактивная круговая диаграмма
+# Общая площадь в км²
+total_km2 <- sum(data$area_m2) / 1e6
+total_label <- sprintf("%.2f км²", total_km2)
+
+# Интерактивная DONUT диаграмма с площадью в центре
 highchart() %>%
   hc_chart(type = "pie") %>%
-  hc_title(text = "Доли функциональных зон (%)") %>%
+  hc_title(
+    text = "Доли функциональных зон (%)",
+    style = list(fontWeight = "bold", fontSize = "16px")
+  ) %>%
   hc_plotOptions(
     pie = list(
+      innerSize = "60%",       # делает donut
       allowPointSelect = TRUE,
       cursor = "pointer",
-      dataLabels = list(
-        enabled = TRUE,
-        format = "<b>{point.name}</b>: {point.y:.1f}%"
-      ),
-      showInLegend = TRUE
+      dataLabels = list(enabled = FALSE),  # без выносок
+      showInLegend = FALSE
     )
+  ) %>%
+  hc_tooltip(
+    useHTML = TRUE,
+    headerFormat = "",
+    pointFormat = "<b>{point.name}</b> ({point.y:.3f}%)",  # при наведении название + процент
+    backgroundColor = "rgba(255,255,255,0.95)",
+    borderColor = "#ccc",
+    style = list(fontSize = "13px")
   ) %>%
   hc_add_series(
     name = "Доля",
     data = list_parse(hc_data)
   ) %>%
-  hc_legend(
-    align = "right",
-    verticalAlign = "middle",
-    layout = "vertical",
-    title = list(text = "Функциональные зоны")
+  hc_annotations(
+    list(
+      labels = list(
+        list(
+          point = list(x = 0, y = 0, xAxis = 0, yAxis = 0),
+          text = paste0("<span style='font-size:16px;font-weight:bold;'>", total_label, "</span>"),
+          useHTML = TRUE,
+          x = 0, y = 0
+        )
+      )
+    )
   )
 ```
 
