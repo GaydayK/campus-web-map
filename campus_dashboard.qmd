@@ -1,6 +1,6 @@
 ---
 title: "Кампусы России"
-author: "[ Исследование Ксении Гайдай ]"
+author: "Исследование Ксении Гайдай"
 format: dashboard
 html:
   theme: cosmo
