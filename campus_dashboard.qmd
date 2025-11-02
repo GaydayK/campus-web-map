@@ -11,7 +11,8 @@ html:
 # ДВФУ
 
 ## Row
-### Column {.tabset}
+### Column {width=60%}
+#### {.tabset}
 ```{r, out.width = '100%'}
 #| echo: false
 #| message: false
@@ -225,7 +226,8 @@ map <- map %>%
 map
 ```
 
-### Column {.tabset}
+### Column{width=40%} 
+#### {.tabset}
 ```{r}
 #| echo: false
 #| message: false
