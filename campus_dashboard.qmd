@@ -234,19 +234,20 @@ map
 #| warning: false
 #| title: "Функциональные зоны (%)"
 #| padding: 0px
-#| fig-width: 3
-#| fig-height: 2
-#| fig-align: "center"
-library(plotly)
-library(DT)
+# Установка и загрузка пакетов
+library(highcharter)
+library(dplyr)
 
 # Данные
 data <- data.frame(
-  FZ = c("academ", "cultural", "dormit", "green", "indust", "parking", "sport", "tech", "uslugi"),
-  area_m2 = c(203508.68181152834, 8331.793807610007, 330292.1046458139, 941716.2676317488, 
-              50035.695592863165, 66272.0177607645, 42671.39543965236, 35433.51434325774, 4966.567884174666),
-  share = c(12.09038092915902, 0.4949890101027957, 19.62254055952186, 55.94704020243293, 
-            2.972603499704304, 3.937197826349665, 2.5350929555033397, 2.1050929240726757, 0.2950620931534011)
+  FZ = c("academ", "cultural", "dormit", "green", "indust", 
+         "parking", "sport", "tech", "uslugi"),
+  area_m2 = c(203508.68181152834, 8331.793807610007, 330292.1046458139, 
+              941716.2676317488, 50035.695592863165, 66272.0177607645, 
+              42671.39543965236, 35433.51434325774, 4966.567884174666),
+  share = c(12.09038092915902, 0.4949890101027957, 19.62254055952186, 
+            55.94704020243293, 2.972603499704304, 3.937197826349665, 
+            2.5350929555033397, 2.1050929240726757, 0.2950620931534011)
 )
 
 # Цвета и подписи
@@ -274,32 +275,46 @@ labels <- c(
   "Зона услуг"
 )
 
-# Добавим подписи и цвета
-data$Label <- labels[match(data$FZ, names(color_map))]
-data$Color <- color_map[data$FZ]
-
-# Построение интерактивной круговой диаграммы
-fig <- plot_ly(
-  data,
-  labels = ~Label,
-  values = ~share,
-  type = "pie",
-  textposition = "outside",
-  textinfo = "label+percent",
-  marker = list(colors = data$Color,
-                line = list(color = "#FFFFFF", width = 1)),
-  showlegend = TRUE
-)
-
-fig <- fig %>%
-  layout(
-    title = list(text = "Доли функциональных зон (%)", x = 0.5),
-    legend = list(title = list(text = "Функциональные зоны"), orientation = "v", x = 1.05),
-    margin = list(l = 50, r = 150, b = 50, t = 80)
+# Добавляем подписи и цвета
+data <- data %>%
+  mutate(
+    Label = labels[match(FZ, names(color_map))],
+    Color = color_map[FZ]
   )
 
-# Отображаем диаграмму
-fig
+# Подготовка данных для highcharter
+hc_data <- data %>%
+  transmute(
+    name = Label,
+    y = share,
+    color = Color
+  )
+
+# Интерактивная круговая диаграмма
+highchart() %>%
+  hc_chart(type = "pie") %>%
+  hc_title(text = "Доли функциональных зон (%)") %>%
+  hc_plotOptions(
+    pie = list(
+      allowPointSelect = TRUE,
+      cursor = "pointer",
+      dataLabels = list(
+        enabled = TRUE,
+        format = "<b>{point.name}</b>: {point.y:.1f}%"
+      ),
+      showInLegend = TRUE
+    )
+  ) %>%
+  hc_add_series(
+    name = "Доля",
+    data = list_parse(hc_data)
+  ) %>%
+  hc_legend(
+    align = "right",
+    verticalAlign = "middle",
+    layout = "vertical",
+    title = list(text = "Функциональные зоны")
+  )
 ```
 
 ```{r}
@@ -365,6 +380,10 @@ datatable(
 
 # МГУ
 Информация про МГУ
+
+::: {.card}
+This text will be displayed within a card
+:::
 
 # ПГНИУ
 Информация про ПГНИУ
