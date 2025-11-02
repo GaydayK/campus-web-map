@@ -9,7 +9,9 @@ html:
 ---
 
 # ДВФУ
-## Column {.tabset}
+
+## Row
+### Column {.tabset}
 ```{r, out.width = '100%'}
 #| echo: false
 #| message: false
@@ -75,7 +77,7 @@ map <- leaflet() %>%
     icon = "fa-globe",
     title = "Сбросить масштаб",
     onClick = JS(
-      paste0("function(btn, map){ map.setView([", center["lat"], ", ", center["lng"], "], 16); }")
+      paste0("function(btn, map){ map.setView([", center["lat"], ", ", center["lng"], "], 15); }")
     )
   ))
 
@@ -180,7 +182,7 @@ map <- leaflet() %>%
     icon = "fa-globe",
     title = "Сбросить масштаб",
     onClick = JS(
-      paste0("function(btn, map){ map.setView([", center["lat"], ", ", center["lng"], "], 16); }")
+      paste0("function(btn, map){ map.setView([", center["lat"], ", ", center["lng"], "], 15); }")
     )
   ))
 
@@ -221,6 +223,142 @@ map <- map %>%
     options = layersControlOptions(collapsed = FALSE, position = "bottomleft")
   )
 map
+```
+
+### Column {.tabset}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Функциональные зоны (%)"
+#| padding: 0px
+#| fig-width: 3
+#| fig-height: 2
+#| fig-align: "center"
+library(plotly)
+library(DT)
+
+# Данные
+data <- data.frame(
+  FZ = c("academ", "cultural", "dormit", "green", "indust", "parking", "sport", "tech", "uslugi"),
+  area_m2 = c(203508.68181152834, 8331.793807610007, 330292.1046458139, 941716.2676317488, 
+              50035.695592863165, 66272.0177607645, 42671.39543965236, 35433.51434325774, 4966.567884174666),
+  share = c(12.09038092915902, 0.4949890101027957, 19.62254055952186, 55.94704020243293, 
+            2.972603499704304, 3.937197826349665, 2.5350929555033397, 2.1050929240726757, 0.2950620931534011)
+)
+
+# Цвета и подписи
+color_map <- c(
+  "academ"   = "#f23761",
+  "cultural" = "#f952e2",
+  "dormit"   = "#ff807a",
+  "green"    = "#abeca3",
+  "indust"   = "#6863db",
+  "parking"  = "#a82072",
+  "sport"    = "#ffa860",
+  "tech"     = "#8daf93",
+  "uslugi"   = "#fff3a3"
+)
+
+labels <- c(
+  "Научно-образовательная",
+  "Культурно-образовательная",
+  "Жилая",
+  "Ландшафтно-рекреационная",
+  "Зона строительства",
+  "Парковочная",
+  "Спортивная",
+  "Коммунального хозяйства",
+  "Зона услуг"
+)
+
+# Добавим подписи и цвета
+data$Label <- labels[match(data$FZ, names(color_map))]
+data$Color <- color_map[data$FZ]
+
+# Построение интерактивной круговой диаграммы
+fig <- plot_ly(
+  data,
+  labels = ~Label,
+  values = ~share,
+  type = "pie",
+  textposition = "outside",
+  textinfo = "label+percent",
+  marker = list(colors = data$Color,
+                line = list(color = "#FFFFFF", width = 1)),
+  showlegend = TRUE
+)
+
+fig <- fig %>%
+  layout(
+    title = list(text = "Доли функциональных зон (%)", x = 0.5),
+    legend = list(title = list(text = "Функциональные зоны"), orientation = "v", x = 1.05),
+    margin = list(l = 50, r = 150, b = 50, t = 80)
+  )
+
+# Отображаем диаграмму
+fig
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Исходные данные"
+#| padding: 0px
+library(DT)
+
+# Данные
+data <- data.frame(
+  FZ = c("academ", "cultural", "dormit", "green", "indust", "parking", "sport", "tech", "uslugi"),
+  area_m2 = c(203508.68181152834, 8331.793807610007, 330292.1046458139, 941716.2676317488, 
+              50035.695592863165, 66272.0177607645, 42671.39543965236, 35433.51434325774, 4966.567884174666),
+  share = c(12.09038092915902, 0.4949890101027957, 19.62254055952186, 55.94704020243293, 
+            2.972603499704304, 3.937197826349665, 2.5350929555033397, 2.1050929240726757, 0.2950620931534011)
+)
+
+# Цвета и подписи
+color_map <- c(
+  "academ"   = "#f23761",
+  "cultural" = "#f952e2",
+  "dormit"   = "#ff807a",
+  "green"    = "#abeca3",
+  "indust"   = "#6863db",
+  "parking"  = "#a82072",
+  "sport"    = "#ffa860",
+  "tech"     = "#8daf93",
+  "uslugi"   = "#fff3a3"
+)
+
+labels <- c(
+  "Научно-образовательная",
+  "Культурно-образовательная",
+  "Жилая",
+  "Ландшафтно-рекреационная",
+  "Зона строительства",
+  "Парковочная",
+  "Спортивная",
+  "Коммунального хозяйства",
+  "Зона услуг"
+)
+
+# Добавим подписи и цвета
+data$Label <- labels[match(data$FZ, names(color_map))]
+data$Color <- color_map[data$FZ]
+
+# Таблица с данными
+datatable(
+  data[, c("Label", "area_m2", "share")],
+  colnames = c("Функциональная зона", "Площадь (м²)", "Доля (%)"),
+  options = list(
+    pageLength = 9,
+    dom = 't',
+    ordering = FALSE,
+    scrollX = TRUE
+  ),
+  rownames = FALSE
+) %>%
+  formatRound(columns = c("area_m2", "share"), digits = 2)
 ```
 
 # МГУ
