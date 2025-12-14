@@ -226,6 +226,117 @@ map <- map %>%
 map
 ```
 
+```{r, out.width = '100%'}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Пешая доступность (изохроны)"
+#| padding: 0px
+
+# Библиотеки
+library(leaflet)
+library(sf)
+library(dplyr)
+library(RColorBrewer)
+library(htmltools)
+
+# Загружаем данные
+isochrones <- st_read("isochrones_walk.geojson", quiet = TRUE)
+campus <- st_read("education_poly.geojson", quiet = TRUE)
+
+# Приводим CRS при необходимости
+isochrones <- st_transform(isochrones, 4326)
+campus <- st_transform(campus, 4326)
+
+# Подписи времени
+isochrones <- isochrones %>%
+  mutate(
+    time_label = paste0(.data$AA_MINS, " минут")
+  )
+
+# Центр карты (ДВФУ)
+center <- c(lat = 43.028842, lng = 131.893193)
+
+# Палитра изохрон
+times <- sort(unique(isochrones$AA_MINS))
+pal <- colorFactor(
+  brewer.pal(max(length(times), 3), "YlOrRd"),
+  domain = times
+)
+
+# Базовая карта
+map <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron", group = "Стандартная основа") %>%
+  addProviderTiles(
+    "Esri.WorldImagery",
+    group = "Спутниковая основа",
+    options = providerTileOptions(opacity = 0.5)
+  ) %>%
+  setView(lng = center["lng"], lat = center["lat"], zoom = 15) %>%
+
+  # Граница кампуса
+  addPolygons(
+    data = campus,
+    color = "blue",
+    weight = 2,
+    fill = FALSE,
+    group = "Граница кампуса"
+  ) %>%
+
+  # Кнопка сброса масштаба
+  addEasyButton(easyButton(
+    icon = "fa-globe",
+    title = "Сбросить масштаб",
+    onClick = JS(
+      paste0(
+        "function(btn, map){ map.setView([",
+        center["lat"], ", ", center["lng"], "], 15); }"
+      )
+    )
+  ))
+# Сортируем times по убыванию
+times <- sort(unique(isochrones$AA_MINS), decreasing = TRUE)
+
+# Добавляем изохроны как отдельные слои
+for (t in times) {
+  map <- map %>%
+    addPolygons(
+      data = isochrones %>% filter(AA_MINS == t),
+      fillColor = ~pal(AA_MINS),
+      fillOpacity = 0.45,
+      color = "#444444",
+      weight = 1,
+      popup = ~paste("<b>Пешая доступность:</b>", AA_MINS, "минут"),
+      group = paste0(t, " минут")
+    )
+}
+
+times <- sort(unique(isochrones$AA_MINS))
+
+# Легенда и контролы
+map <- map %>%
+  addLegend(
+    position = "topright",
+    pal = pal,
+    values = times,
+    title = "Пешая доступность",
+    opacity = 0.7
+  ) %>%
+  addLayersControl(
+    baseGroups = c("Стандартная основа", "Спутниковая основа"),
+    overlayGroups = c(
+      paste0(times, " минут"),
+      "Граница кампуса"
+    ),
+    options = layersControlOptions(
+      collapsed = FALSE,
+      position = "bottomleft"
+    )
+  )
+
+map
+```
+
 ### Column{width=40%} 
 #### Row{height=30%}
 :::{.card}
