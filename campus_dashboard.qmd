@@ -88,7 +88,7 @@ for(type in b_types){
     addPolygons(
       data = buildings %>% filter(b_type_rus == type),
       color = "black",
-      weight = 1,
+      weight = 0,
       fillColor = ~palette(b_type_rus),
       fillOpacity = 0.7,
       popup = ~paste("<b>Тип здания:</b>", b_type_rus),
@@ -191,8 +191,8 @@ map <- leaflet() %>%
 map <- map %>%
   addPolygons(
     data = func_zones,
-    color = "black",
-    weight = 1,
+    #color = "black",
+    weight = 0,
     fillColor = ~palette(FZ),
     fillOpacity = 0.7,
     popup = ~paste("<b>Функциональная зона:</b>", FZ_rus),
@@ -279,7 +279,7 @@ map <- leaflet() %>%
   addPolygons(
     data = campus,
     color = "blue",
-    weight = 2,
+    weight = 1,
     fill = FALSE,
     group = "Граница кампуса"
   ) %>%
