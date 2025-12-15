@@ -230,7 +230,7 @@ map
 #| echo: false
 #| message: false
 #| warning: false
-#| title: "Пешая доступность (изохроны)"
+#| title: "Пешая доступность"
 #| padding: 0px
 
 # Библиотеки
@@ -243,6 +243,7 @@ library(htmltools)
 # Загружаем данные
 isochrones <- st_read("isochrones_walk.geojson", quiet = TRUE)
 campus <- st_read("education_poly.geojson", quiet = TRUE)
+start <- st_read("start.geojson", quiet = TRUE)
 
 # Приводим CRS при необходимости
 isochrones <- st_transform(isochrones, 4326)
@@ -319,13 +320,13 @@ map <- map %>%
     position = "topright",
     pal = pal,
     values = times,
-    title = "Пешая доступность",
+    title = "Пешая доступность (мин)",
     opacity = 0.7
   ) %>%
   addLayersControl(
     baseGroups = c("Стандартная основа", "Спутниковая основа"),
     overlayGroups = c(
-      paste0(times, " минут"),
+    #  paste0(times, " минут"),
       "Граница кампуса"
     ),
     options = layersControlOptions(
