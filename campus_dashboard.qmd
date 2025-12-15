@@ -521,7 +521,7 @@ datatable(
   ),
   rownames = FALSE
 ) %>%
-  formatRound(columns = c("area_m2", "share"), digits = 2)
+  formatRound(columns = c("area_m2", "share"), digits = 3)
 ```
 
 
