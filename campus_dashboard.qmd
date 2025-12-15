@@ -358,7 +358,7 @@ map
 #| echo: false
 #| message: false
 #| warning: false
-#| title: "Функциональные зоны (%)"
+#| title: "Функциональные зоны"
 #| padding: 0px
 # Установка и загрузка пакетов
 library(highcharter)
