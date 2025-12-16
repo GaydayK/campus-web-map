@@ -259,7 +259,7 @@ isochrones <- isochrones %>%
 center <- c(lat = 43.028842, lng = 131.893193)
 
 # Палитра изохрон
-times <- sort(unique(isochrones$AA_MINS))
+ times <- unique(isochrones$AA_MINS)
 pal <- colorFactor(
   brewer.pal(max(length(times), 3), "YlOrRd"),
   domain = times
@@ -296,7 +296,7 @@ map <- leaflet() %>%
     )
   ))
 # Сортируем times по убыванию
-times <- sort(unique(isochrones$AA_MINS), decreasing = TRUE)
+# times <- sort(unique(isochrones$AA_MINS), decreasing = TRUE)
 
 # Добавляем изохроны как отдельные слои
 for (t in times) {
@@ -306,13 +306,11 @@ for (t in times) {
       fillColor = ~pal(AA_MINS),
       fillOpacity = 0.45,
       color = "#444444",
-      weight = 1,
+      weight = 0,
       popup = ~paste("<b>Пешая доступность:</b>", AA_MINS, "минут"),
       group = paste0(t, " минут")
     )
 }
-
-times <- sort(unique(isochrones$AA_MINS))
 
 map <- map %>%
   addCircleMarkers(
@@ -326,12 +324,14 @@ map <- map %>%
     group = "КПП"
   )
 
+legend_order <- c(35, 30, 25, 20, 15, 10, 5)
+
 # Легенда и контролы
 map <- map %>%
   addLegend(
     position = "topright",
     pal = pal,
-    values = times,
+    values = legend_order,
     title = "Пешая доступность (мин)",
     opacity = 0.7
   ) %>%
