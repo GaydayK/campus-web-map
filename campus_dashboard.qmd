@@ -241,7 +241,7 @@ library(RColorBrewer)
 library(htmltools)
 
 # Загружаем данные
-isochrones <- st_read("isochrones_walk.geojson", quiet = TRUE)
+isochrones <- st_read("isochrones_walk_edit.geojson", quiet = TRUE)
 campus <- st_read("education_poly.geojson", quiet = TRUE)
 start <- st_read("start.geojson", quiet = TRUE)
 
@@ -314,6 +314,18 @@ for (t in times) {
 
 times <- sort(unique(isochrones$AA_MINS))
 
+map <- map %>%
+  addCircleMarkers(
+    data = start,
+    radius = 6,
+    color = "black",
+    weight = 2,
+    fillColor = "blue",
+    fillOpacity = 1,
+    popup = ~paste("<b>Контрольно-пропускной пункт</b> ДВФУ"),
+    group = "КПП"
+  )
+
 # Легенда и контролы
 map <- map %>%
   addLegend(
@@ -326,13 +338,15 @@ map <- map %>%
   addLayersControl(
     baseGroups = c("Стандартная основа", "Спутниковая основа"),
     overlayGroups = c(
-    #  paste0(times, " минут"),
-      "Граница кампуса"
+      "Граница кампуса",
+      "КПП"
+      # paste0(times, " минут")  # если захотите включать изохроны
     ),
     options = layersControlOptions(
       collapsed = FALSE,
       position = "bottomleft"
     )
+
   )
 
 map
