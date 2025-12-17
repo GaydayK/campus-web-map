@@ -69,7 +69,7 @@ map <- leaflet() %>%
   addPolygons(
     data = campus,
     color = "blue",
-    weight = 2,
+    weight = 1,
     group = "Граница кампуса"
   ) %>%
   
@@ -122,22 +122,23 @@ map
 #| warning: false
 #| title: "Функциональные зоны"
 #| padding: 0px
-# Загружаем библиотеки
+
+# Библиотеки
 library(leaflet)
 library(sf)
 library(dplyr)
 library(htmltools)
-library(colorRamps)
 library(RColorBrewer)
 
-# Загружаем данные функциональных зон
+# Загрузка данных
 func_zones <- st_read("func_zones.geojson", quiet = TRUE)
-roads <- st_read("transs.geojson", quiet = TRUE)
+roads      <- st_read("transs.geojson", quiet = TRUE)
+campus     <- st_read("education_poly.geojson", quiet = TRUE)
 
 # Центр карты
 center <- c(lat = 43.028842, lng = 131.893193)
 
-# Переводим типы зон на русский язык
+# Перевод типов зон на русский
 func_zones <- func_zones %>%
   filter(!is.na(FZ) & FZ != "null" & FZ != "") %>%
   mutate(
@@ -155,7 +156,7 @@ func_zones <- func_zones %>%
     )
   )
 
-# Жёстко заданные цвета по типам FZ
+# Цвета функциональных зон
 color_map <- c(
   "academ"   = "#f23761",
   "cultural" = "#f952e2",
@@ -168,41 +169,54 @@ color_map <- c(
   "uslugi"   = "#fff3a3"
 )
 
-# Палитра по исходным кодам FZ
 palette <- colorFactor(color_map, domain = names(color_map))
 
-# Создаём базовую карту
+# Создание карты
 map <- leaflet() %>%
   addProviderTiles("CartoDB.Positron", group = "Стандартная основа") %>%
-  addProviderTiles("Esri.WorldImagery", group = "Спутниковая основа",
-                   options = providerTileOptions(opacity = 0.5)) %>%
+  addProviderTiles(
+    "Esri.WorldImagery",
+    group = "Спутниковая основа",
+    options = providerTileOptions(opacity = 0.5)
+  ) %>%
   setView(lng = center["lng"], lat = center["lat"], zoom = 15) %>%
-  
-  # Кнопка сброса масштаба
-  addEasyButton(easyButton(
-    icon = "fa-globe",
-    title = "Сбросить масштаб",
-    onClick = JS(
-      paste0("function(btn, map){ map.setView([", center["lat"], ", ", center["lng"], "], 15); }")
-    )
-  ))
 
-# Добавляем полигоны одним вызовом, с динамической раскраской по палитре
-map <- map %>%
+  # Кнопка сброса масштаба
+  addEasyButton(
+    easyButton(
+      icon = "fa-globe",
+      title = "Сбросить масштаб",
+      onClick = JS(
+        paste0(
+          "function(btn, map){ map.setView([",
+          center["lat"], ", ", center["lng"], "], 15); }"
+        )
+      )
+    )
+  ) %>%
+
+  # Функциональные зоны
   addPolygons(
     data = func_zones,
-    #color = "black",
     weight = 0,
     fillColor = ~palette(FZ),
     fillOpacity = 0.7,
     popup = ~paste("<b>Функциональная зона:</b>", FZ_rus),
     group = ~FZ_rus
-  )
+  ) %>%
 
-# Добавляем легенду и контролы
-map <- map %>%
+  # Граница кампуса
+  addPolygons(
+    data = campus,
+    color = "blue",
+    weight = 1,
+    fill = FALSE,
+    group = "Граница кампуса"
+  ) %>%
+
+  # Легенда
   addLegend(
-    "topright",
+    position = "topright",
     colors = unname(color_map),
     labels = c(
       "Научно-образовательная",
@@ -218,11 +232,18 @@ map <- map %>%
     title = "Функциональные зоны",
     opacity = 0.9
   ) %>%
+
+  # Переключение слоёв
   addLayersControl(
     baseGroups = c("Стандартная основа", "Спутниковая основа"),
-    overlayGroups = unique(func_zones$FZ_rus),
-    options = layersControlOptions(collapsed = FALSE, position = "bottomleft")
+    overlayGroups = c(unique(func_zones$FZ_rus), "Граница кампуса"),
+    options = layersControlOptions(
+      collapsed = FALSE,
+      position = "bottomleft"
+    )
   )
+
+# Вывод карты
 map
 ```
 
@@ -316,7 +337,7 @@ map <- map %>%
   addCircleMarkers(
     data = start,
     radius = 6,
-    color = "black",
+    color = "white",
     weight = 2,
     fillColor = "blue",
     fillOpacity = 1,
@@ -337,9 +358,8 @@ map <- map %>%
   ) %>%
   addLayersControl(
     baseGroups = c("Стандартная основа", "Спутниковая основа"),
-    overlayGroups = c(
-      "Граница кампуса",
-      "КПП"
+    overlayGroups = c("КПП",
+      "Граница кампуса"
       # paste0(times, " минут")  # если захотите включать изохроны
     ),
     options = layersControlOptions(
