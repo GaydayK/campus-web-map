@@ -686,8 +686,30 @@ format:
 ##### План кампуса
 
 ```{=html}
-<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;">
+<style>
+  #btn-zoom-all-dorm {
+    position: absolute; 
+    bottom: 30px; 
+    left: 10px; 
+    z-index: 10; 
+    padding: 6px 12px; 
+    background: white; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); 
+    cursor: pointer; 
+    font-family: 'Noto Sans', sans-serif; 
+    font-size: 11px;
+    font-weight: bold;
+    color: #444;
+  }
+  #btn-zoom-all-dorm:hover { background-color: #f9f9f9; }
+</style>
+
+<div style="position: relative; width: 320%; height: 80vh; min-height: 600px;">
   <div id="map-dvfu-buildings" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;"></div>
+  
+  <button id="btn-zoom-all-dorm">Показать все общежития</button>
   
   <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;">
     <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Основа карты</div>
@@ -698,9 +720,29 @@ format:
     </div>
   </div>
 
-  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 250px;">
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 250px; overflow-y: auto; max-height: 90%;">
     <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Типы зданий</div>
     <div id="legend-buildings-list"></div>
+    
+<div style="margin-top: 12px; border-top: 1px solid #cbd5e1; padding-top: 8px;">
+        <div style="font-weight: bold; margin-bottom: 6px;">Мест в общежитиях</div>
+        <div style="position: relative; height: 40px; width: 100%; margin-top: 5px;">
+            
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);"></div>
+            
+            <svg width="60" height="40" style="position: absolute; bottom: 0; left: 16px; overflow: visible; pointer-events: none;">
+              <path d="M 0 34 L 10 33 L 22 33" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+              <path d="M 0 30 L 10 20 L 22 20" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+              <path d="M 0 24 L 10 7 L 22 7" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+            </svg>
+            
+            <div style="position: absolute; bottom: 28px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;">Крупные (> 800)</div>
+            <div style="position: absolute; bottom: 15px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;">300 – 800</div>
+            <div style="position: absolute; bottom: 2px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;">Малые (< 300)</div>
+        </div>
+    </div>
   </div>
 </div>
 
@@ -717,6 +759,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "sport": { name: "Спортивные сооружения", color: "#b3b3b3" },
     "tech": { name: "Инженерно-технические сооружения", color: "#1f78b4" }
   };
+  
   const legList = document.getElementById("legend-buildings-list");
   for (let key in bTypes) legList.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${bTypes[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333; flex-shrink: 0;"></div><span style="line-height: 1.1;">${bTypes[key].name}</span></div>`;
 
@@ -728,25 +771,66 @@ document.addEventListener("DOMContentLoaded", () => {
         "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
         "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
         "campus": { type: "geojson", data: "education_poly.geojson" },
-        "buildings": { type: "geojson", data: "Buildings_poly.geojson" }
+        "buildings": { type: "geojson", data: "Buildings_poly.geojson" },
+        "dormit_points": { type: "geojson", data: "dormit_dvfu.geojson" }
       },
       layers: [
         { id: "base-light", type: "raster", source: "carto-light" },
         { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
-        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } },
         { id: "build-fill", type: "fill", source: "buildings", paint: { "fill-color": [ "match", ["get", "b_type"], "academ", bTypes["academ"].color, "cultural", bTypes["cultural"].color, "dormit", bTypes["dormit"].color, "indust", bTypes["indust"].color, "lab", bTypes["lab"].color, "parking", bTypes["parking"].color, "pit", bTypes["pit"].color, "sport", bTypes["sport"].color, "tech", bTypes["tech"].color, "#ccc" ], "fill-opacity": 0.7 } },
-        { id: "build-line", type: "line", source: "buildings", paint: { "line-color": "#333", "line-width": 0.5 } }
+        { id: "build-line", type: "line", source: "buildings", paint: { "line-color": "#333", "line-width": 0.5 } },
+        
+        { 
+            id: "dormit-beds-points", 
+            type: "circle", 
+            source: "dormit_points", 
+            paint: {
+                "circle-radius": [
+                    "step",
+                    ["get", "num_ne"],
+                    3,        // Малые (< 300)
+                    300, 5,   // Средние (300 - 800)
+                    801, 8    // Крупные (> 800)
+                ],
+                "circle-color": "#FFB575",
+                "circle-stroke-color": "#FFFFFF",
+                "circle-stroke-width": 1.5,
+                "circle-opacity": 0.95
+            }
+        }
       ]
-    }, center: [131.893193, 43.028842], zoom: 14
+    }, center: [131.893193, 43.028842], zoom: 14 
   });
   map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
   
-  // Надежный обсервер для Quarto Tabsets
+  // Добавляем масштабную линейку (в метрической системе, слева внизу)
+  map.addControl(new maplibregl.ScaleControl({ maxWidth: 150, unit: 'metric' }), 'bottom-left');
+  
   new ResizeObserver(() => { map.resize(); }).observe(map.getContainer());
 
   const popup = new maplibregl.Popup({ closeButton: false });
   map.on('mousemove', 'build-fill', (e) => { map.getCanvas().style.cursor = 'pointer'; const type = e.features[0].properties.b_type; popup.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Тип здания:</b><br>${bTypes[type] ? bTypes[type].name : type}</div>`).addTo(map); });
   map.on('mouseleave', 'build-fill', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+  
+  document.getElementById('btn-zoom-all-dorm').addEventListener('click', () => {
+    map.flyTo({ center: [131.90, 43.05], zoom: 10.9 });
+  });
+
+  map.on('mousemove', 'dormit-beds-points', (e) => {
+    map.getCanvas().style.cursor = 'pointer';
+    const beds = e.features[0].properties.num_ne;
+    const name = e.features[0].properties.name || "Общежитие"; 
+
+    popup.setLngLat(e.lngLat)
+         .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px; padding: 3px 5px;">
+                     <b>${name}</b><br>
+                     Количество койко-мест: <b style="font-size:13px">${beds}</b>
+                   </div>`)
+         .addTo(map);
+  });
+  map.on('mouseleave', 'dormit-beds-points', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+
   document.querySelectorAll('input[name="base-dvfu-1"]').forEach(r => r.addEventListener('change', (e) => { map.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); map.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); }));
   document.getElementById('toggle-campus-1').addEventListener('change', (e) => map.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none'));
 });
