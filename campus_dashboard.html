@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="">
+
+<title>campus_dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="campus_dashboard_files/libs/clipboard/clipboard.min.js"></script>
+<script src="campus_dashboard_files/libs/quarto-html/quarto.js"></script>
+<script src="campus_dashboard_files/libs/quarto-html/popper.min.js"></script>
+<script src="campus_dashboard_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="campus_dashboard_files/libs/quarto-html/anchor.min.js"></script>
+<link href="campus_dashboard_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="campus_dashboard_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="campus_dashboard_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="campus_dashboard_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="campus_dashboard_files/libs/bootstrap/bootstrap-b8c87d3d7e5b7677b3c3675827754c74.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="campus_dashboard_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="campus_dashboard_files/libs/quarto-dashboard/stickythead.js"></script>
+<script src="campus_dashboard_files/libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="campus_dashboard_files/libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="campus_dashboard_files/libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="campus_dashboard_files/libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="campus_dashboard_files/libs/quarto-dashboard/components.js"></script>
+<link href="campus_dashboard_files/libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+<link href="campus_dashboard_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="campus_dashboard_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="campus_dashboard_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<script src="campus_dashboard_files/libs/proj4js-2.3.15/proj4.js"></script>
+
+<link href="campus_dashboard_files/libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/highcharts.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/highcharts-3d.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/highcharts-more.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/stock.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/map.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/data.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/exporting.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/drilldown.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/item-series.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/annotations.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/export-data.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/funnel.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/heatmap.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/treemap.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/sankey.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/organization.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/streamgraph.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/sunburst.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/vector.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/wordcloud.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/xrange.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/tilemap.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/venn.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/gantt.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/timeline.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/bullet.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/coloraxis.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/dumbbell.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/lollipop.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/series-label.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/plugins/motion.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/custom/reset.js"></script>
+
+<script src="campus_dashboard_files/libs/highcharts-9.3.1/modules/boost.js"></script>
+
+<script src="campus_dashboard_files/libs/highchart-binding-0.9.4/highchart.js"></script>
+
+<link href="campus_dashboard_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+<script src="campus_dashboard_files/libs/datatables-binding-0.34.0/datatables.js"></script>
+
+<link href="campus_dashboard_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="campus_dashboard_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="campus_dashboard_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="campus_dashboard_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="campus_dashboard_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<link href="https://unpkg.com/maplibre-gl@5.21.0/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@5.21.0/dist/maplibre-gl.js"></script>
+<style>
+  .maplibregl-popup-content {
+    font-family: 'Noto Sans', sans-serif;
+    padding: 10px 14px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border: 1px solid #e2e8f0;
+  }
+  .maplibregl-ctrl-scale {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid #1e293b !important;
+    border-top: none !important;
+    color: #1e293b !important;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    padding: 0 6px !important;
+  }
+  .popup-stat { margin: 4px 0; font-size: 11.5px; line-height: 1.3; }
+
+  /* Жесткий запрет на анимацию движения маркеров */
+  .maplibregl-marker {
+    transition: none !important;
+    animation: none !important;
+  }
+</style>
+
+
+</head>
+
+<body class="quarto-dashboard dashboard-fill fullcontent">
+
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-кампусы-россии" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#кампусы-россии" data-scrolling="false" href="#кампусы-россии" aria-controls="кампусы-россии" aria-selected="true"><span class="nav-link-text">Кампусы России</span></a></li><li class="nav-item" role="presentation"><a id="tab-двфу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#двфу" data-scrolling="false" href="#двфу" aria-controls="двфу" aria-selected="false"><span class="nav-link-text">ДВФУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-мгу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#мгу" data-scrolling="false" href="#мгу" aria-controls="мгу" aria-selected="false"><span class="nav-link-text">МГУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-пгниу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#пгниу" data-scrolling="false" href="#пгниу" aria-controls="пгниу" aria-selected="false"><span class="nav-link-text">ПГНИУ</span></a></li></ul></div></div></nav>
+</header>
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
+
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="кампусы-россии" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-кампусы-россии">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div style="position: relative; width: 100%; height: 85vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  
+  <div id="landing-map" style="width: 100%; height: 100%; background-color: #cbd5e1;" class="html-fill-item html-fill-container"></div>
+
+  <div id="theme-switcher" style="position: absolute; top: 10px; left: 10px; background-color: rgba(255, 255, 255, 0.95); padding: 12px 16px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 13px; color: #1e293b; display: none; width: 250px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; font-size: 13px; margin-bottom: 10px; border-bottom: 1px solid #cbd5e1; padding-bottom: 6px;" class="html-fill-item html-fill-container">
+      Тематика карты
+    </div>
+    <label style="display: flex; align-items: center; margin-bottom: 8px; cursor: pointer;">
+      <input type="radio" name="map-theme" value="theme1" checked="" style="accent-color: #F553A0; margin-right: 8px; cursor: pointer;">
+      Пространственная структура
+    </label>
+    <label style="display: flex; align-items: center; margin-bottom: 8px; cursor: pointer;">
+      <input type="radio" name="map-theme" value="theme2" style="accent-color: #F553A0; margin-right: 8px; cursor: pointer;">
+      Функциональные типы
+    </label>
+    <label style="display: flex; align-items: center; cursor: pointer;">
+      <input type="radio" name="map-theme" value="theme3" style="accent-color: #F553A0; margin-right: 8px; cursor: pointer;">
+      Инфраструктура
+    </label>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 50px; background-color: rgba(255, 255, 255, 0.95); padding: 14px 18px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 13px; color: #1e293b; width: 330px; max-height: 80vh; overflow-y: auto;" class="html-fill-item html-fill-container">
+    
+    <div id="legend-regions" class="html-fill-item html-fill-container">
+      
+<table class="caption-top table" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 10px 0; border: none; vertical-align: middle;"><div style="width: 22px; height: 22px; border-radius: 50%; background-color: #F553A0; border: 2px solid #ffffff; box-shadow: 0 0 3px rgba(0,0,0,0.3); text-align: center; line-height: 18px; color: #ffffff; font-weight: bold; font-size: 11px; margin: 0 auto;" class="html-fill-item html-fill-container">
+6
+</div></td>
+<td style="padding: 0 0 10px 0; border: none; vertical-align: middle; line-height: 1.3">Количество университетских кампусов<br>
+(по субъектам)</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 10px 0; border: none; vertical-align: middle;"><div style="width: 20px; height: 14px; background-color: #ffebed; border: 1px solid #f4c2c9; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 10px 0; border: none; vertical-align: middle; line-height: 1.3">Субъекты РФ</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 0 0; border: none; vertical-align: middle;"><div style="width: 20px; height: 14px; background-color: #e2e8f0; border: 1px solid #cbd5e1; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0; border: none; vertical-align: middle; line-height: 1.3; color: #64748b; font-size: 12px">Актуальные данные отсутствуют</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+    <div id="legend-campuses" style="display: none;" class="html-fill-item html-fill-container">
+      
+      <div id="theme1-legend" class="html-fill-item html-fill-container">
+        
+<table class="caption-top table" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 0 0 8px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b">Пространственный тип кампуса</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 4px 0; border: none; vertical-align: middle;"><div style="width: 14px; height: 14px; border-radius: 50%; background-color: #ff99ff; border: 1.5px solid #ffffff; box-shadow: 0 0 2px rgba(0,0,0,0.3); margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 4px 0; border: none; vertical-align: middle; font-size: 12px">Городской локальный</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 4px 0; border: none; vertical-align: middle;"><div style="width: 14px; height: 14px; border-radius: 50%; background-color: #99bbff; border: 1.5px solid #ffffff; box-shadow: 0 0 2px rgba(0,0,0,0.3); margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 4px 0; border: none; vertical-align: middle; font-size: 12px">Городской распределенный</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 4px 0; border: none; vertical-align: middle;"><div style="width: 14px; height: 14px; border-radius: 50%; background-color: #adebad; border: 1.5px solid #ffffff; box-shadow: 0 0 2px rgba(0,0,0,0.3); margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 4px 0; border: none; vertical-align: middle; font-size: 12px">Загородный</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 4px 0; border: none; vertical-align: middle;"><div style="width: 14px; height: 14px; border-radius: 50%; background-color: #99ffff; border: 1.5px solid #ffffff; box-shadow: 0 0 2px rgba(0,0,0,0.3); margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 4px 0; border: none; vertical-align: middle; font-size: 12px">Кампус инновационного центра</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 10px 12px 16px 0; border: none; vertical-align: middle;"><div style="position: relative; width: 14px; height: 14px; border-radius: 50%; background-color: #ff99ff; background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(100,116,139,0.3) 2px, rgba(100,116,139,0.3) 4px); border: 1.5px solid #ffffff; box-shadow: 0 0 2px rgba(0,0,0,0.3); margin: 0 auto;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; border-radius: 50%; background-color: #64748b;" class="html-fill-item html-fill-container">
+
+</div>
+</div></td>
+<td style="padding: 10px 0 16px 0; border: none; vertical-align: middle; line-height: 1.2"><span style="font-size: 12px; color: #475569;">Строящийся кампус</span><br>
+<span style="font-size: 10px; color: #94a3b8;">(На примере локального)</span></td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 10px 0 6px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; line-height: 1.2">Пространственные паттерны ведомственных кампусов<br>
+<span style="font-size: 10px; font-weight: normal; color: #64748b;"></span></td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; width: 35px; padding: 0 12px 4px 0; border: none; vertical-align: middle;"><div style="position: relative; width: 22px; height: 22px; border-radius: 50%; border: 2.0px solid #45150A; margin: 0 auto; display: block;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 13px; height: 13px; border-radius: 50%; background-color: #cbd5e1; border: 1.5px solid #ffffff;" class="html-fill-item html-fill-container">
+
+</div>
+</div></td>
+<td style="padding: 0 0 4px 0; border: none; vertical-align: middle; line-height: 1.1"><span style="font-size: 12px;">Военные ВУЗы (Минобороны, МВД, ФСБ)</span><br>
+<span style="font-size: 10px; color: #64748b;">Режимные территории</span></td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; width: 35px; padding: 0 12px 4px 0; border: none; vertical-align: middle;"><div style="position: relative; width: 22px; height: 22px; border-radius: 50%; border: 2.0px solid #22C55E; margin: 0 auto; display: block;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 13px; height: 13px; border-radius: 50%; background-color: #cbd5e1; border: 1.5px solid #ffffff;" class="html-fill-item html-fill-container">
+
+</div>
+</div></td>
+<td style="padding: 0 0 4px 0; border: none; vertical-align: middle; line-height: 1.1"><span style="font-size: 12px;">Аграрные ВУЗы (Минсельхоз)</span><br>
+<span style="font-size: 10px; color: #64748b;">Наличие обширных земельных угодий</span></td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; width: 35px; padding: 0 12px 6px 0; border: none; vertical-align: middle;"><div style="position: relative; width: 22px; height: 22px; border-radius: 50%; border: 2.0px solid #DC11ED; margin: 0 auto; display: block;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 13px; height: 13px; border-radius: 50%; background-color: #cbd5e1; border: 1.5px solid #ffffff;" class="html-fill-item html-fill-container">
+
+</div>
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; vertical-align: middle; line-height: 1.1"><span style="font-size: 12px;">Медицинские ВУЗы (Минздрав)</span><br>
+<span style="font-size: 10px; color: #64748b;">Наличие производственно-практической инфраструктуры (клиник и больниц)</span></td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; width: 35px; padding: 0 12px 10px 0; border: none; vertical-align: middle;"><div style="position: relative; width: 22px; height: 22px; border-radius: 50%; border: 2.0px solid transparent; margin: 0 auto; display: block;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 13px; height: 13px; border-radius: 50%; background-color: #cbd5e1; border: 1.5px solid #ffffff;" class="html-fill-item html-fill-container">
+
+</div>
+</div></td>
+<td style="padding: 0 0 10px 0; border: none; vertical-align: middle; line-height: 1.1"><span style="font-size: 12px;">Прочие ВУЗы (Минобрнауки и др.)</span><br>
+<span style="font-size: 10px; color: #64748b;">Стандартная городская инфраструктура</span></td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td colspan="2" style="padding: 8px 0 4px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; line-height: 1.2">Площадь кампуса</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 0 0 10px 10px; border: none"><div style="position: relative; height: 42px; width: 100%; margin-top: 2px;" class="html-fill-item html-fill-container">
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 27px; height: 27px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 19px; height: 19px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 13px; height: 13px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<svg width="40" height="42" style="position: absolute; bottom: 5px; left: 20px; overflow: visible;">
+<line x1="0" y1="26" x2="28" y2="26" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line> <line x1="0" y1="18" x2="28" y2="18" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line> <line x1="0" y1="10" x2="28" y2="10" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line>
+</svg>
+<div style="position: absolute; bottom: 32px; left: 52px; font-size: 11px; color: #1e293b; line-height: 1;" class="html-fill-item html-fill-container">
+более 50 га
+</div>
+<div style="position: absolute; bottom: 15px; left: 52px; font-size: 11px; color: #1e293b; line-height: 1;" class="html-fill-item html-fill-container">
+15–50 га
+</div>
+<div style="position: absolute; bottom: -2px; left: 52px; font-size: 11px; color: #1e293b; line-height: 1;" class="html-fill-item html-fill-container">
+менее 15 га
+</div>
+</div></td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 0 0; border: none; vertical-align: middle;"><div style="width: 14px; height: 14px; background-color: #cbd5e1; border: 1px solid #94a3b8; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0; border: none; vertical-align: middle; font-size: 12px">Территория кампуса</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+
+      <div id="theme2-legend" style="display: none;" class="html-fill-item html-fill-container">
+        
+<table class="caption-top table" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 0 0 10px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b">Функции кампуса</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-uch" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Учебная</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-zilaya" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Жилая</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-nauch_labb" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Научно-исследовательская</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-sportt" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Спортивная</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-greeen" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Рекреационная</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-meed" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Медицинская</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 6px 0; border: none;"><div id="leg-col-proizvod" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 6px 0; border: none; font-size: 12px">Производственно-практическая</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td style="text-align: center; padding: 0 12px 10px 0; border: none;"><div id="leg-col-cultur" style="width: 14px; height: 14px; border-radius: 2px; margin: 0 auto;" class="html-fill-item html-fill-container">
+
+</div></td>
+<td style="padding: 0 0 10px 0; border: none; font-size: 12px">Общественно-культурная</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td colspan="2" style="padding: 10px 0 8px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; border-top: 1px solid #cbd5e1">Уровень развития инфраструктуры</td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 0 0 10px 10px; border: none"><div style="position: relative; height: 35px; width: 100%; margin-top: 2px;" class="html-fill-item html-fill-container">
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 26px; height: 26px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 20px; height: 20px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 14px; height: 14px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<svg width="40" height="42" style="position: absolute; bottom: 5px; left: 20px; overflow: visible;">
+<line x1="0" y1="27" x2="28" y2="27" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line> <line x1="0" y1="20" x2="28" y2="20" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line> <line x1="0" y1="14" x2="28" y2="14" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line>
+</svg>
+<div style="position: absolute; bottom: 25px; left: 52px; font-size: 11px; color: #1e293b; line-height: 1;" class="html-fill-item html-fill-container">
+Комплексная (7–8)
+</div>
+<div style="position: absolute; bottom: 13px; left: 52px; font-size: 11px; color: #1e293b; line-height: 1;" class="html-fill-item html-fill-container">
+Развитая (4–6)
+</div>
+<div style="position: absolute; bottom: 0px; left: 52px; font-size: 11px; color: #1e293b; line-height: 1;" class="html-fill-item html-fill-container">
+Базовая (2–3)
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+
+      <div id="theme3-legend" style="display: none;" class="html-fill-item html-fill-container">
+        
+<table class="caption-top table" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 0 0 10px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b">Общее число студентов, обучающихся очно</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td colspan="2" style="padding: 0 0 15px 10px; border: none"><div style="position: relative; height: 45px; width: 100%; margin-top: 2px;" class="html-fill-item html-fill-container">
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 36px; height: 36px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 26px; height: 26px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<div style="position: absolute; bottom: 5px; left: 20px; transform: translateX(-50%); width: 18px; height: 18px; border-radius: 50%; border: 1px solid #64748b; background-color: rgba(203, 213, 225, 0.4);" class="html-fill-item html-fill-container">
+
+</div>
+<svg width="40" height="50" style="position: absolute; bottom: 5px; left: 20px; overflow: visible;">
+<line x1="0" y1="36" x2="30" y2="36" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line> <line x1="0" y1="23" x2="30" y2="23" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line> <line x1="0" y1="14" x2="30" y2="14" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line>
+</svg>
+<div style="position: absolute; bottom: 35px; left: 54px; font-size: 11px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">
+&gt; 15 000
+</div>
+<div style="position: absolute; bottom: 18px; left: 54px; font-size: 11px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">
+5 000–15 000
+</div>
+<div style="position: absolute; bottom: 1px; left: 54px; font-size: 11px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">
+&lt; 5 000
+</div>
+</div></td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 10px 0 8px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; border-top: 1px solid #cbd5e1">Состав обучающихся</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td colspan="2" style="padding: 0; border: none"><div style="position: relative; height: 90px; width: 100%;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 33px; left: 10px; width: 24px; height: 24px; border-radius: 50%; background: #cbd5e1; box-shadow: 0 0 3px rgba(0,0,0,0.4);" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; border-radius: 50%; background: conic-gradient(#82EDDC 0% 30%, #FF7AF3 30% 100%); border: 1.5px solid #fff;" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+<svg width="300" height="90" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+<defs> <marker id="arr-stud" markerwidth="5" markerheight="4" refx="4" refy="2" orient="auto"> <polygon points="0 0, 5 2, 0 4" fill="#94a3b8"></polygon> </marker> </defs> <polyline points="45,15 26,15 26,38" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arr-stud)"></polyline> <polyline points="45,75 18,75 18,52" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arr-stud)"></polyline>
+</svg>
+<div style="position: absolute; top: 10px; left: 50px; font-size: 11px; line-height: 1.2; width: 240px; color: #1e293b;" class="html-fill-item html-fill-container">
+Доля иностранных студентов
+</div>
+<div style="position: absolute; top: 70px; left: 50px; font-size: 11px; line-height: 1.2; width: 240px; color: #1e293b;" class="html-fill-item html-fill-container">
+Доля студентов РФ
+</div>
+</div></td>
+</tr>
+<tr class="odd" style="background: transparent;">
+<td colspan="2" style="padding: 10px 0 8px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; border-top: 1px solid #cbd5e1">Жилой фонд</td>
+</tr>
+<tr class="even" style="background: transparent;">
+<td colspan="2" style="padding: 0; border: none"><div style="position: relative; height: 90px; width: 100%;" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 33px; left: 10px; width: 24px; height: 24px; border-radius: 50%; background: conic-gradient(#6FCF61 0% 50%, #FF6154 50% 100%); box-shadow: 0 0 3px rgba(0,0,0,0.4);" class="html-fill-item html-fill-container">
+<div style="position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; border-radius: 50%; background: #e2e8f0; border: 1.5px solid #fff;" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+<svg width="300" height="90" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+<defs> <marker id="arr-dorm" markerwidth="5" markerheight="4" refx="4" refy="2" orient="auto"> <polygon points="0 0, 5 2, 0 4" fill="#94a3b8"></polygon> </marker> </defs> <polyline points="45,15 31,15 31,41" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arr-dorm)"></polyline> <polyline points="45,75 13,75 13,49" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arr-dorm)"></polyline>
+</svg>
+<div style="position: absolute; top: 9px; left: 50px; font-size: 11px; line-height: 1.2; width: 240px; color: #1e293b;" class="html-fill-item html-fill-container">
+Доля койко-мест<br>
+на территории кампуса
+</div>
+<div style="position: absolute; top: 69px; left: 50px; font-size: 11px; line-height: 1.2; width: 240px; color: #1e293b;" class="html-fill-item html-fill-container">
+Доля койко-мест<br>
+за территорией кампуса
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+
+      <div id="timeline-container" style="margin-top: 15px; padding-top: 12px; border-top: 1px solid #cbd5e1;" class="html-fill-item html-fill-container">
+        <div style="font-weight: bold; font-size: 12px; color: #1e293b; line-height: 1.2; margin-bottom: 8px;" class="html-fill-item html-fill-container">
+          Время ввода в эксплуатацию<br>зданий кампуса
+        </div>
+        <div style="text-align: center; margin-bottom: 4px;" class="html-fill-item html-fill-container">
+          <span id="year-display" style="font-weight: 800; color: #F553A0; font-size: 22px;">2026 г.</span>
+        </div>
+        <input type="range" id="year-slider" min="1797" max="2026" value="2026" step="1" style="width: 100%; cursor: pointer; accent-color: #F553A0;">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  const functionColors = { uch: '#F2295B', zilaya: '#FFAB59', nauch_labb: '#83E6E6', sportt: '#B81818', greeen: '#74D67B', meed: '#9B64E8', proizvod: '#7EAFED', cultur: '#DC43E8' };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let key in functionColors) {
+      let el = document.getElementById('leg-col-' + key);
+      if(el) el.style.backgroundColor = functionColors[key];
+    }
+  });
+
+  function startSafeMap() {
+    
+    const theme1ColorMap = ["match", ["get", "tipolog"], "loc", "#ff99ff", "rasp", "#99bbff", "zagor", "#adebad", "nauk", "#99ffff", "#94a3b8"];
+
+    const inlineStyle = {
+      "version": 8, "projection": { "type": "globe" }, "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+      "sources": {
+        "carto-positron": { "type": "raster", "tiles": ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], "tileSize": 256 },
+        "russia-shape": { "type": "geojson", "data": "russia_updated.geojson", "generateId": true },
+        "russia-centroids": { "type": "geojson", "data": "centroids.geojson" },
+        "rf-total-source": { "type": "geojson", "data": { "type": "FeatureCollection", "features": [{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [95, 62] }, "properties": { "total_num": "158", "total_desc": "Всего университетских\nкампусов в РФ" } }] } },
+        "campuses-source": { "type": "geojson", "data": "campuses_updated.geojson" },
+        "pol-camp-source": { "type": "geojson", "data": "pol_camp.geojson" },
+        "campus-buildings-source": { "type": "geojson", "data": "campus_buildings.geojson" }
+      },
+      "layers": [
+        { "id": "base-layer", "type": "raster", "source": "carto-positron" },
+        { "id": "r-fill", "type": "fill", "source": "russia-shape", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
+        { "id": "r-line", "type": "line", "source": "russia-shape", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
+        { "id": "rf-total-circle", "type": "circle", "source": "rf-total-source", "maxzoom": 2.5, "paint": { "circle-radius": 20, "circle-color": "#F553A0", "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } },
+        { "id": "rf-total-num", "type": "symbol", "source": "rf-total-source", "maxzoom": 2.5, "layout": { "text-field": ["get", "total_num"], "text-font": ["Noto Sans Bold"], "text-size": 16, "text-anchor": "center" }, "paint": { "text-color": "#ffffff" } },
+        { "id": "rf-total-desc", "type": "symbol", "source": "rf-total-source", "maxzoom": 2.5, "layout": { "text-field": ["get", "total_desc"], "text-font": ["Noto Sans Bold"], "text-size": 16, "text-offset": [0, 3.2], "text-anchor": "top", "text-justify": "center" }, "paint": { "text-color": "#1e293b", "text-halo-color": "#ffffff", "text-halo-width": 2 } },
+        { "id": "subject-badge-circles", "type": "circle", "source": "russia-centroids", "filter": [">", ["get", "NUMPOINTS"], 0], "minzoom": 2.3, "maxzoom": 4.0, "paint": { "circle-radius": 10, "circle-color": "#F553A0", "circle-stroke-color": "#ffffff", "circle-stroke-width": 2 } },
+        { "id": "subject-badge-labels", "type": "symbol", "source": "russia-centroids", "filter": [">", ["get", "NUMPOINTS"], 0], "minzoom": 2.3, "maxzoom": 4.0, "layout": { "text-field": "{NUMPOINTS}", "text-font": ["Noto Sans Bold"], "text-size": 8.5, "text-anchor": "center" }, "paint": { "text-color": "#ffffff" } },
+        { "id": "campuses-polygons-fill", "type": "fill", "source": "pol-camp-source", "minzoom": 8.0, "paint": { "fill-color": "#b3b3cc", "fill-opacity": 0.5 } },
+        { "id": "campuses-polygons-highlight", "type": "fill", "source": "pol-camp-source", "minzoom": 8.0, "filter": ["==", "name", ""], "paint": { "fill-color": "#FBBF24", "fill-opacity": 0.7 } },
+        { "id": "campuses-polygons-line", "type": "line", "source": "pol-camp-source", "minzoom": 8.0, "paint": { "line-color": "#111827", "line-width": 0.7 } },
+        { "id": "campus-buildings-3d", "type": "fill-extrusion", "source": "campus-buildings-source", "minzoom": 11.3, "paint": { "fill-extrusion-color": "#4A3A35", "fill-extrusion-height": 15, "fill-extrusion-opacity": 0.85 } },
+        { "id": "campuses-rings", "type": "circle", "source": "campuses-source", "minzoom": 4.0, "layout": { "circle-sort-key": ["*", -1, ["to-number", ["get", "ar"]]] }, "paint": { "circle-radius": ["step", ["to-number", ["get", "ar"]], 8, 150000, 11, 500000, 16], "circle-color": "transparent", "circle-stroke-width": 1.5, "circle-stroke-color": ["match", ["get", "vedomst"], "v", "#45150A", "a", "#22C55E", "m", "#DC11ED", "transparent"] } },
+        { "id": "campuses-points", "type": "circle", "source": "campuses-source", "minzoom": 4.0, "layout": { "circle-sort-key": ["*", -1, ["to-number", ["get", "ar"]]] }, "paint": { "circle-radius": ["step", ["to-number", ["get", "ar"]], 5, 150000, 8, 500000, 12], "circle-color": theme1ColorMap, "circle-stroke-color": "#ffffff", "circle-stroke-width": 1.5 } },
+        { "id": "campuses-points-construction", "type": "circle", "source": "campuses-source", "minzoom": 4.0, "filter": ["any", ["==", ["get", "type_campu"], "строится"], ["==", ["get", "type_campu"], "Строится"]], "paint": { "circle-radius": ["step", ["to-number", ["get", "ar"]], 2, 150000, 3.5, 500000, 5], "circle-color": "#475569" } }
+      ]
+    };
+
+    const map = new maplibregl.Map({ container: 'landing-map', style: inlineStyle, center: [95, 62], zoom: 2.6, hash: false });
+    const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 10 });
+
+    let pieMarkers = [];
+    let peopleMarkers = [];
+    
+    function fmt(num) { return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") : "0"; }
+    function displayVal(val) { return val < 0 ? "Нет данных" : fmt(val); }
+
+    function safeParse(val) {
+      if (val === null || val === undefined) return 0;
+      const str = String(val).replace(/[\s,]/g, '');
+      const parsed = parseInt(str, 10);
+      return isNaN(parsed) ? 0 : parsed;
+    }
+    
+    fetch('campuses_updated.geojson').then(res => res.json()).then(data => {
+        
+        //ДАННЫЕ ДЛЯ ТЕМЫ 2
+        let featuresTheme2 = [...data.features].sort((a, b) => safeParse(b.properties.fun_type) - safeParse(a.properties.fun_type));
+        featuresTheme2.forEach(feature => {
+          const props = feature.properties;
+          const activeFuncs = Object.keys(functionColors).filter(key => { const val = props[key]; return val !== null && val !== undefined && val !== "" && String(val).toUpperCase() !== "NULL"; });
+          if(activeFuncs.length === 0) return;
+
+          let size = 14; const ft = safeParse(props.fun_type);
+          if(ft === 2) size = 20; else if(ft === 3) size = 26; 
+
+          const step = 100 / activeFuncs.length;
+          const gradientParts = activeFuncs.map((f, i) => `${functionColors[f]} ${i * step}% ${(i + 1) * step}%`);
+          
+          const el = document.createElement('div');
+          el.style.width = size + 'px'; el.style.height = size + 'px';
+          el.style.borderRadius = '50%'; el.style.background = `conic-gradient(${gradientParts.join(', ')})`;
+          el.style.border = '1.5px solid #ffffff'; el.style.boxShadow = '0 0 3px rgba(0,0,0,0.5)';
+          el.style.cursor = 'pointer'; el.style.display = 'none';
+
+          el.addEventListener('mouseenter', () => {
+            popup.setLngLat(feature.geometry.coordinates).setHTML(`<div style="font-size: 11px; color: #64748b; margin-bottom: 2px;">Университет</div><strong>${props.name || "Кампус"}</strong><br><span style="font-size: 10px; color: #F553A0; font-weight: bold;">Функций: ${activeFuncs.length}</span>`).addTo(map);
+          });
+          el.addEventListener('mouseleave', () => popup.remove());
+          pieMarkers.push(new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat(feature.geometry.coordinates).addTo(map));
+        });
+
+        //ДАННЫЕ ДЛЯ ТЕМЫ 3
+        let featuresTheme3 = [...data.features].sort((a, b) => safeParse(b.properties.numb_stud) - safeParse(a.properties.numb_stud));
+        featuresTheme3.forEach(feature => {
+          const props = feature.properties;
+          const stud = safeParse(props.numb_stud);
+          if (stud === 0) return;
+
+          const inost = safeParse(props.numb_inost);
+          const prepo = safeParse(props.numb_prepo);
+          const dorm_in = safeParse(props.obshag_v);
+          const dorm_out = safeParse(props.obshag_not);
+
+          const isMilitary = stud < 0;
+
+          let size = 18; 
+          let ringGradient = '#cbd5e1';
+          let coreGradient = '#94a3b8';
+          let popupHtml = '';
+
+          if (isMilitary) {
+              size = 18;
+              ringGradient = '#cbd5e1';
+              coreGradient = '#94a3b8';
+
+              popupHtml = `
+                <div style="font-size: 13px; color: #1e293b; margin-bottom: 5px;"><strong>${props.name || "Кампус"}</strong></div>
+                <div style="border-top: 1px solid #cbd5e1; margin-bottom: 5px;"></div>
+                <div class="popup-stat" style="color: #475569; font-weight: bold;">нет данных (высшее военное учебное заведение)</div>
+              `;
+          } else {
+              const draw_stud = Math.max(0, stud);
+              const draw_inost = Math.max(0, inost);
+              const draw_dorm_in = Math.max(0, dorm_in);
+              const draw_dorm_out = Math.max(0, dorm_out);
+              const draw_total_dorm = draw_dorm_in + draw_dorm_out;
+
+              if(draw_stud > 15000) size = 36; 
+              else if(draw_stud > 5000) size = 26; 
+
+              const p_dorm_in = draw_total_dorm > 0 ? (draw_dorm_in / draw_total_dorm) * 100 : 0;
+              // Кольцо: Зеленый - на кампусе, Новый красный (#FF6154) - вне кампуса
+              ringGradient = draw_total_dorm > 0 ? `conic-gradient(#6FCF61 0% ${p_dorm_in}%, #FF6154 ${p_dorm_in}% 100%)` : '#cbd5e1';
+
+              const p_inost = draw_stud > 0 ? (draw_inost / draw_stud) * 100 : 0;
+              // Ядро: Мятный - иностранцы, Розовый - РФ
+              coreGradient = draw_stud > 0 ? `conic-gradient(#82EDDC 0% ${p_inost}%, #FF7AF3 ${p_inost}% 100%)` : '#94a3b8';
+
+              popupHtml = `
+                <div style="font-size: 13px; color: #1e293b; margin-bottom: 5px;"><strong>${props.name || "Кампус"}</strong></div>
+                <div style="border-top: 1px solid #cbd5e1; margin-bottom: 5px;"></div>
+                <div class="popup-stat">👨‍🎓 <b>Студенты:</b> ${displayVal(stud)} <span style="color:#64748b;">(Иностранных студентов: ${displayVal(inost)})</span></div>
+                <div class="popup-stat">👨‍🏫 <b>Преподаватели:</b> ${displayVal(prepo)}</div>
+                <div class="popup-stat" style="margin-top:6px;">🛏️ <b>Койко-места:</b> ${(dorm_in < 0 && dorm_out < 0) ? "Нет данных" : fmt(draw_total_dorm)}</div>
+                <div class="popup-stat" style="color:#64748b;">• На территории кампуса: ${displayVal(dorm_in)}<br>• Вне кампуса: ${displayVal(dorm_out)}</div>
+              `;
+          }
+
+          const wrapper = document.createElement('div');
+          wrapper.style.width = size + 'px'; 
+          wrapper.style.height = size + 'px';
+          wrapper.style.cursor = 'pointer'; 
+          wrapper.style.display = 'none';
+
+          const elOuter = document.createElement('div');
+          elOuter.style.position = 'relative';
+          elOuter.style.width = '100%'; 
+          elOuter.style.height = '100%';
+          elOuter.style.borderRadius = '50%'; 
+          elOuter.style.background = ringGradient;
+          elOuter.style.border = '1px solid #ffffff'; 
+          elOuter.style.boxShadow = '0 0 4px rgba(0,0,0,0.4)';
+
+          const elInner = document.createElement('div');
+          elInner.style.position = 'absolute';
+          elInner.style.top = '15%'; elInner.style.left = '15%';
+          elInner.style.width = '70%'; elInner.style.height = '70%';
+          elInner.style.borderRadius = '50%'; elInner.style.background = coreGradient;
+          elInner.style.border = '1.5px solid #ffffff'; elInner.style.boxSizing = 'border-box';
+          
+          elOuter.appendChild(elInner);
+          wrapper.appendChild(elOuter); 
+
+          wrapper.addEventListener('mouseenter', () => {
+            popup.setLngLat(feature.geometry.coordinates).setHTML(popupHtml).addTo(map);
+          });
+          wrapper.addEventListener('mouseleave', () => popup.remove());
+
+          peopleMarkers.push(new maplibregl.Marker({ element: wrapper, anchor: 'center' }).setLngLat(feature.geometry.coordinates).addTo(map));
+        });
+
+        updateMarkersVisibility();
+      }).catch(err => console.error("Ошибка загрузки GeoJSON:", err));
+
+    function updateMarkersVisibility() {
+        const currentZoom = map.getZoom();
+        const selectedTheme = document.querySelector('input[name="map-theme"]:checked').value;
+        
+        pieMarkers.forEach(m => m.getElement().style.display = (selectedTheme === 'theme2' && currentZoom >= 4.0) ? 'block' : 'none');
+        peopleMarkers.forEach(m => m.getElement().style.display = (selectedTheme === 'theme3' && currentZoom >= 4.0) ? 'block' : 'none');
+    }
+
+    function updateMapTheme() {
+      const selectedTheme = document.querySelector('input[name="map-theme"]:checked').value;
+      const timelineContainer = document.getElementById('timeline-container');
+      
+      document.getElementById('theme1-legend').style.display = 'none';
+      document.getElementById('theme2-legend').style.display = 'none';
+      document.getElementById('theme3-legend').style.display = 'none';
+
+      if (selectedTheme === 'theme1') {
+        document.getElementById('theme1-legend').style.display = 'block';
+        timelineContainer.style.display = 'block'; 
+        map.setLayoutProperty('campuses-points', 'visibility', 'visible');
+        map.setLayoutProperty('campuses-rings', 'visibility', 'visible');
+        map.setLayoutProperty('campuses-points-construction', 'visibility', 'visible');
+        map.setPaintProperty('campuses-points', 'circle-color', theme1ColorMap);
+        updateYearFilter();
+      } 
+      else if (selectedTheme === 'theme2') {
+        document.getElementById('theme2-legend').style.display = 'block';
+        timelineContainer.style.display = 'none'; 
+        map.setLayoutProperty('campuses-points', 'visibility', 'none');
+        map.setLayoutProperty('campuses-rings', 'visibility', 'none');
+        map.setLayoutProperty('campuses-points-construction', 'visibility', 'none');
+      } 
+      else if (selectedTheme === 'theme3') {
+        document.getElementById('theme3-legend').style.display = 'block';
+        timelineContainer.style.display = 'none'; 
+        map.setLayoutProperty('campuses-points', 'visibility', 'none');
+        map.setLayoutProperty('campuses-rings', 'visibility', 'none');
+        map.setLayoutProperty('campuses-points-construction', 'visibility', 'none');
+      }
+      updateMarkersVisibility();
+    }
+
+    document.querySelectorAll('input[name="map-theme"]').forEach(radio => radio.addEventListener('change', updateMapTheme));
+    
+    function updateYearFilter() {
+      const slider = document.getElementById('year-slider');
+      if (!slider) return;
+      const selectedYear = parseInt(slider.value);
+      document.getElementById('year-display').innerText = selectedYear + " г.";
+
+      if (selectedYear >= 2026) {
+        if (map.getLayer('campuses-points')) map.setFilter('campuses-points', null);
+        if (map.getLayer('campuses-rings')) map.setFilter('campuses-rings', null);
+        if (map.getLayer('campuses-points-construction')) map.setFilter('campuses-points-construction', ["any", ["==", ["get", "type_campu"], "строится"], ["==", ["get", "type_campu"], "Строится"]]);
+      } else {
+        const filterCondition = ["any", ["!", ["has", "year"]], ["<=", ["to-number", ["get", "year"]], selectedYear]];
+        if (map.getLayer('campuses-points')) map.setFilter('campuses-points', filterCondition);
+        if (map.getLayer('campuses-rings')) map.setFilter('campuses-rings', filterCondition);
+        if (map.getLayer('campuses-points-construction')) map.setFilter('campuses-points-construction', ["all", filterCondition, ["any", ["==", ["get", "type_campu"], "строится"], ["==", ["get", "type_campu"], "Строится"]]]);
+      }
+    }
+
+    document.getElementById('year-slider').addEventListener('input', updateYearFilter);
+
+    map.on('load', () => { updateYearFilter(); updateLegend(); });
+    
+    function updateLegend() {
+      const currentZoom = map.getZoom();
+      if (currentZoom < 4.0) {
+        document.getElementById('legend-regions').style.display = 'block';
+        document.getElementById('legend-campuses').style.display = 'none';
+        document.getElementById('theme-switcher').style.display = 'none';
+      } else {
+        document.getElementById('legend-regions').style.display = 'none';
+        document.getElementById('legend-campuses').style.display = 'block';
+        document.getElementById('theme-switcher').style.display = 'block';
+      }
+      updateMarkersVisibility(); 
+    }
+
+    map.on('zoom', updateLegend);
+    
+    let hoveredStateId = null;
+    map.on('mousemove', 'r-fill', (e) => {
+      if (e.features.length > 0 && map.getZoom() < 4.0) {
+        map.getCanvas().style.cursor = 'pointer';
+        popup.setLngLat(e.lngLat).setHTML(`<strong>${e.features[0].properties.region}</strong>`).addTo(map);
+        if (hoveredStateId !== null) { map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: false }); }
+        hoveredStateId = e.features[0].id;
+        map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: true });
+      }
+    });
+
+    map.on('mouseleave', 'r-fill', () => {
+      if (map.getZoom() < 4.0) {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+        if (hoveredStateId !== null) { map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: false }); }
+        hoveredStateId = null;
+      }
+    });
+
+    const showCampusPopup = (e) => {
+      map.getCanvas().style.cursor = 'pointer';
+      if (e.features.length > 0) {
+        const campusName = e.features[0].properties.name || "Неизвестный кампус";
+        map.setFilter('campuses-polygons-highlight', ['==', 'name', campusName]);
+        popup.setLngLat(e.features[0].geometry.coordinates).setHTML(`<div style="font-size: 11px; color: #64748b; margin-bottom: 2px;">Университет</div><strong>${campusName}</strong>`).addTo(map);
+      }
+    };
+
+    const hideCampusPopup = () => { map.getCanvas().style.cursor = ''; popup.remove(); map.setFilter('campuses-polygons-highlight', ['==', 'name', '']); };
+
+    map.on('mousemove', 'campuses-points', showCampusPopup); map.on('mouseleave', 'campuses-points', hideCampusPopup);
+    map.on('mousemove', 'campuses-points-construction', showCampusPopup); map.on('mouseleave', 'campuses-points-construction', hideCampusPopup);
+    map.on('mousemove', 'campuses-polygons-fill', (e) => { if (e.features.length > 0 && map.getZoom() >= 8.0) { map.getCanvas().style.cursor = 'pointer'; map.setFilter('campuses-polygons-highlight', ['==', 'name', e.features[0].properties.name || ""]); } });
+    map.on('mouseleave', 'campuses-polygons-fill', () => { map.getCanvas().style.cursor = ''; map.setFilter('campuses-polygons-highlight', ['==', 'name', '']); });
+
+    map.addControl(new maplibregl.NavigationControl(), 'top-right'); map.addControl(new maplibregl.ScaleControl({ maxWidth: 150, unit: 'metric' }), 'bottom-left');
+  }
+
+  setTimeout(startSafeMap, 1000);
+</script>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div id="двфу" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-двфу">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+
+</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-2"><li class="nav-item" role="presentation"><a href="#card-tabset-2-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешая доступность" aria-selected="false" class="nav-link">Пешая доступность</a></li></ul></div>
+
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-2"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-1"><div class="card-body html-fill-item html-fill-container" data-title="План кампуса">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-dvfu-buildings" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-dvfu-1" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-dvfu-1" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-1" checked=""> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 250px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Типы зданий</div>
+    <div id="legend-buildings-list" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bTypes = {
+    "academ": { name: "Учебно-административные корпуса", color: "#66c2a5" },
+    "cultural": { name: "Сооружения культурного назначения", color: "#fc8d62" },
+    "dormit": { name: "Жилые корпуса", color: "#8da0cb" },
+    "indust": { name: "Объекты коммунального хозяйства", color: "#e78ac3" },
+    "lab": { name: "Научно-исследовательские корпуса", color: "#a6d854" },
+    "parking": { name: "Парковки", color: "#ffd92f" },
+    "pit": { name: "Объекты торговли и общепита", color: "#e5c494" },
+    "sport": { name: "Спортивные сооружения", color: "#b3b3b3" },
+    "tech": { name: "Инженерно-технические сооружения", color: "#1f78b4" }
+  };
+  const legList = document.getElementById("legend-buildings-list");
+  for (let key in bTypes) legList.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${bTypes[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333; flex-shrink: 0;"></div><span style="line-height: 1.1;">${bTypes[key].name}</span></div>`;
+
+  const map = new maplibregl.Map({
+    container: 'map-dvfu-buildings',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "education_poly.geojson" },
+        "buildings": { type: "geojson", data: "Buildings_poly.geojson" }
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } },
+        { id: "build-fill", type: "fill", source: "buildings", paint: { "fill-color": [ "match", ["get", "b_type"], "academ", bTypes["academ"].color, "cultural", bTypes["cultural"].color, "dormit", bTypes["dormit"].color, "indust", bTypes["indust"].color, "lab", bTypes["lab"].color, "parking", bTypes["parking"].color, "pit", bTypes["pit"].color, "sport", bTypes["sport"].color, "tech", bTypes["tech"].color, "#ccc" ], "fill-opacity": 0.7 } },
+        { id: "build-line", type: "line", source: "buildings", paint: { "line-color": "#333", "line-width": 0.5 } }
+      ]
+    }, center: [131.893193, 43.028842], zoom: 14
+  });
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  
+  // Надежный обсервер для Quarto Tabsets
+  new ResizeObserver(() => { map.resize(); }).observe(map.getContainer());
+
+  const popup = new maplibregl.Popup({ closeButton: false });
+  map.on('mousemove', 'build-fill', (e) => { map.getCanvas().style.cursor = 'pointer'; const type = e.features[0].properties.b_type; popup.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Тип здания:</b><br>${bTypes[type] ? bTypes[type].name : type}</div>`).addTo(map); });
+  map.on('mouseleave', 'build-fill', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+  document.querySelectorAll('input[name="base-dvfu-1"]').forEach(r => r.addEventListener('change', (e) => { map.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); map.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); }));
+  document.getElementById('toggle-campus-1').addEventListener('change', (e) => map.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+});
+</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-2"><div class="card-body html-fill-item html-fill-container" data-title="Функциональные зоны">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-dvfu-zones" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-dvfu-2" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-dvfu-2" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-2" checked=""> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 220px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Функциональные зоны</div>
+    <div id="legend-zones-list" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const zTypes = { "academ": { name: "Научно-образовательная", color: "#f23761" }, "cultural": { name: "Культурно-образовательная", color: "#f952e2" }, "dormit": { name: "Жилая", color: "#ff807a" }, "green": { name: "Ландшафтно-рекреационная", color: "#abeca3" }, "indust": { name: "Зона строительства", color: "#6863db" }, "parking": { name: "Парковочная", color: "#a82072" }, "sport": { name: "Спортивная", color: "#ffa860" }, "tech": { name: "Коммунального хозяйства", color: "#8daf93" }, "uslugi": { name: "Зона услуг", color: "#fff3a3" } };
+  const legList = document.getElementById("legend-zones-list");
+  for (let key in zTypes) legList.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${zTypes[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333;"></div><span>${zTypes[key].name}</span></div>`;
+
+  const map = new maplibregl.Map({
+    container: 'map-dvfu-zones',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "education_poly.geojson" },
+        "zones": { type: "geojson", data: "func_zones.geojson" }
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "zone-fill", type: "fill", source: "zones", paint: { "fill-color": [ "match", ["get", "FZ"], "academ", zTypes["academ"].color, "cultural", zTypes["cultural"].color, "dormit", zTypes["dormit"].color, "green", zTypes["green"].color, "indust", zTypes["indust"].color, "parking", zTypes["parking"].color, "sport", zTypes["sport"].color, "tech", zTypes["tech"].color, "uslugi", zTypes["uslugi"].color, "transparent" ], "fill-opacity": 0.7 } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } }
+      ]
+    }, center: [131.893193, 43.028842], zoom: 14
+  });
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  // Надежный обсервер для Quarto Tabsets
+  new ResizeObserver(() => { map.resize(); }).observe(map.getContainer());
+
+  const popup = new maplibregl.Popup({ closeButton: false });
+  map.on('mousemove', 'zone-fill', (e) => { map.getCanvas().style.cursor = 'pointer'; const type = e.features[0].properties.FZ; const name = zTypes[type] ? zTypes[type].name : type; if(name && type !== "null" && type !== "") popup.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Функциональная зона:</b><br>${name}</div>`).addTo(map); });
+  map.on('mouseleave', 'zone-fill', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+  document.querySelectorAll('input[name="base-dvfu-2"]').forEach(r => r.addEventListener('change', (e) => { map.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); map.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); }));
+  document.getElementById('toggle-campus-2').addEventListener('change', (e) => map.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+});
+</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешая доступность">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-dvfu-walk" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-dvfu-3" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-dvfu-3" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-campus-3" checked=""> Граница кампуса</label>
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads" checked=""> Дорожки</label>
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-kpp" checked=""> КПП</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 160px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Доступность (мин)</div>
+    <div id="legend-walk-list" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const walkColors = { 5: "#ffffb2", 10: "#fed976", 15: "#feb24c", 20: "#fd8d3c", 25: "#fc4e2a", 30: "#e31a1c", 35: "#b10026" };
+  const legList = document.getElementById("legend-walk-list");
+  
+  const mins = [35, 30, 25, 20, 15, 10, 5];
+  mins.forEach((min, index) => {
+    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
+    legList.innerHTML += `
+      <div style="display: flex; align-items: center;">
+        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
+        <span>${min}</span>
+      </div>`;
+  });
+
+  const map = new maplibregl.Map({
+    container: 'map-dvfu-walk',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "education_poly.geojson" },
+        "start": { type: "geojson", data: "start.geojson" },
+        "roads": { type: "geojson", data: "rr_dvfu.geojson" },
+        "walk": { type: "geojson", data: "isochrones_walk_edit.geojson" }
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        
+        /* Слой дорожек добавлен ПЕРЕД изохронами (walk-fill), чтобы быть под ними */
+        { id: "roads-line", type: "line", source: "roads", paint: { "line-color": "#888888", "line-width": 1.2, "line-opacity": 0.8 } },
+        
+        { id: "walk-fill", type: "fill", source: "walk", paint: { "fill-color": [ "match", ["get", "AA_MINS"], 5, walkColors[5], 10, walkColors[10], 15, walkColors[15], 20, walkColors[20], 25, walkColors[25], 30, walkColors[30], 35, walkColors[35], "transparent" ], "fill-opacity": 0.45 } },
+        { id: "walk-line", type: "line", source: "walk", paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } },
+        { id: "start-point", type: "circle", source: "start", paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } }
+      ]
+    }, center: [131.893193, 43.028842], zoom: 14
+  });
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  new ResizeObserver(() => { map.resize(); }).observe(map.getContainer());
+
+  const popup = new maplibregl.Popup({ closeButton: false });
+  map.on('mousemove', (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: ['start-point', 'walk-fill'] 
+    });
+
+    if (features.length > 0) {
+      map.getCanvas().style.cursor = 'pointer';
+      
+      const feature = features[0];
+
+      if (feature.layer.id === 'start-point') {
+        popup.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Контрольно-пропускной пункт</b> ДВФУ</div>`)
+             .addTo(map);
+      } else if (feature.layer.id === 'walk-fill') {
+        popup.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешая доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
+             .addTo(map);
+      }
+    } else {
+      map.getCanvas().style.cursor = '';
+      popup.remove();
+    }
+  });
+  
+  document.querySelectorAll('input[name="base-dvfu-3"]').forEach(r => r.addEventListener('change', (e) => { map.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); map.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); }));
+  document.getElementById('toggle-campus-3').addEventListener('change', (e) => map.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-roads').addEventListener('change', (e) => map.setLayoutProperty('roads-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-kpp').addEventListener('change', (e) => map.setLayoutProperty('start-point', 'visibility', e.target.checked ? 'visible' : 'none'));
+});
+</script>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 30fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="h4">
+<strong>ДВФУ:</strong>
+
+<em>Научный хаб на берегу Тихого океана</em>
+</div>
+<p>Расположенный на <em>острове Русский</em> во <em>Владивостоке</em>, кампус университета представляет собой уникальную экосистему, где образование тесно переплетается с передовыми исследованиями. Уникальное географическое положение предопределяет научные приоритеты ДВФУ. Здесь активно развиваются направления, критически важные для будущего Дальнего Востока и всей планеты: <strong>биомедицина, изучение Мирового океана, искусственный интеллект и ресурсы глубокого передела</strong>.</p>
+<p>Ученые университета работают над созданием <em>новых лекарств</em> на основе морских организмов, разрабатывают <em>подводные роботы</em> и моделируют <em>климатические изменения</em>. Являясь площадкой для международного диалога, в частности, <em>Восточного экономического форума</em>, ДВФУ трансформирует знание в реальные технологии и компетенции. Это <em>динамично развивающийся центр</em>, который готовит кадры для науки и экономики не только региона, но и страны в условиях смещения глобальных фокусов на Восток.</p>
+</div>
+<div class="card-footer">
+<p><em>Дальневосточный университет – это форпост российского образования, это «вывеска в хорошем смысле этого слова»</em> (В. Путин)</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+
+</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-4"><li class="nav-item" role="presentation"><a href="#card-tabset-4-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Данные" aria-selected="false" class="nav-link">Данные</a></li></ul></div>
+
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-4"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-4-1"><div class="card-body html-fill-item html-fill-container" data-title="Функциональные зоны">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Функциональные зоны" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Функциональные зоны
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-b29d1693ad795133bd56" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-b29d1693ad795133bd56">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":12.09038092915902,"color":"#f23761"},{"name":"Культурно-образовательная","y":0.4949890101027957,"color":"#f952e2"},{"name":"Жилая","y":19.62254055952186,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":55.94704020243293,"color":"#abeca3"},{"name":"Зона строительства","y":2.972603499704304,"color":"#6863db"},{"name":"Парковочная","y":3.937197826349665,"color":"#a82072"},{"name":"Спортивная","y":2.53509295550334,"color":"#ffa860"},{"name":"Коммунального хозяйства","y":2.105092924072676,"color":"#8daf93"},{"name":"Зона услуг","y":0.2950620931534011,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>1.68 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-4-2"><div class="card-body html-fill-item html-fill-container" data-title="Направления путей">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div style="display: flex; flex-direction: column; align-items: center; padding: 15px; font-family: 'Noto Sans', sans-serif;" class="html-fill-item html-fill-container">
+<div style="font-weight: bold; font-size: 16px; margin-bottom: 15px; text-align: center;" class="html-fill-item html-fill-container">
+<pre><code>Диаграмма распределения направления путей в кампусе, км</code></pre>
+</div>
+<img src="rose_2.png" alt="Диаграмма путей" style="max-width: 80%; height: auto;">
+<div style="font-style: italic; font-size: 14px; color: #475569; margin-top: 15px; text-align: center;" class="html-fill-item html-fill-container">
+<pre><code>Концентрическая планировочная структура</code></pre>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-4-3"><div class="card-body html-fill-item html-fill-container" data-title="Данные">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Исходные данные" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Исходные данные
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-54983d34b2e3079d21ab" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-54983d34b2e3079d21ab">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Зона строительства","Парковочная","Спортивная","Коммунального хозяйства","Зона услуг"],[0.203424,0.008328,0.330156,0.941325,0.050015,0.066245,0.042654,0.035419,0.004964],[12.090357,0.494986,19.622573,55.947019,2.972607,3.937208,2.535097,2.105091,0.295061]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="мгу" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-мгу">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<p>Информация про МГУ</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<p>This text will be displayed within a card</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div id="пгниу" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-пгниу">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<p>Информация про ПГНИУ</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /container fluid -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

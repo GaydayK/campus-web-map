@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 174.22 140.69">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 7.14px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+      }
+
+      .cls-4 {
+        fill: #e84147;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11 {
+        stroke-width: 0px;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-9, .cls-10, .cls-11 {
+        fill-rule: evenodd;
+        opacity: .7;
+      }
+
+      .cls-5 {
+        fill: #ae98c8;
+      }
+
+      .cls-6 {
+        fill: #a1dbe6;
+      }
+
+      .cls-7, .cls-12, .cls-13, .cls-14 {
+        fill: none;
+      }
+
+      .cls-12 {
+        stroke: #2f2134;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-12, .cls-13 {
+        stroke-width: .3px;
+      }
+
+      .cls-8 {
+        fill: #fff;
+      }
+
+      .cls-9 {
+        fill: #fbaf55;
+      }
+
+      .cls-15 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2 {
+        font-size: 5px;
+      }
+
+      .cls-13, .cls-14 {
+        stroke: #878fc6;
+        stroke-linecap: square;
+        stroke-linejoin: bevel;
+      }
+
+      .cls-3 {
+        font-size: 7.61px;
+      }
+
+      .cls-14 {
+        stroke-width: 1.21px;
+      }
+
+      .cls-10 {
+        fill: #cf9bc6;
+      }
+
+      .cls-11 {
+        fill: #f5844e;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect id="SVGID" class="cls-7" x="15.91" y="13.27" width="113.33" height="113.33"/>
+    </clipPath>
+  </defs>
+  <circle class="cls-8" cx="70.34" cy="70.34" r="70.34"/>
+  <g class="cls-15">
+    <circle class="cls-14" cx="72.57" cy="69.93" r="5.64"/>
+    <circle class="cls-14" cx="72.57" cy="69.93" r="11.28"/>
+    <circle class="cls-14" cx="72.57" cy="69.93" r="16.93"/>
+    <circle class="cls-14" cx="72.57" cy="69.93" r="22.57"/>
+    <circle class="cls-14" cx="72.57" cy="69.93" r="28.21"/>
+    <circle class="cls-14" cx="72.57" cy="69.93" r="33.85"/>
+    <circle class="cls-13" cx="72.57" cy="69.93" r="39.5"/>
+    <circle class="cls-13" cx="72.57" cy="69.93" r="45.14"/>
+    <circle class="cls-13" cx="72.57" cy="69.93" r="50.78"/>
+    <circle class="cls-13" cx="72.57" cy="69.93" r="56.42"/>
+    <path class="cls-5" d="m72.57,69.93v-37.4c6.82,0,13.21,1.82,18.71,5.01l-18.71,32.4Z"/>
+    <path class="cls-5" d="m72.57,69.93v37.4c-6.82,0-13.21-1.82-18.71-5.01l18.71-32.4Z"/>
+    <path class="cls-10" d="m72.57,69.93l18.81-32.58c5.71,3.3,10.47,8.06,13.77,13.77l-32.58,18.81Z"/>
+    <path class="cls-10" d="m72.57,69.93l-18.81,32.58c-5.71-3.3-10.47-8.06-13.77-13.77l32.58-18.81Z"/>
+    <path class="cls-11" d="m72.57,69.93l39.19-22.63c4.22,7.29,5.95,13.61,5.95,22.63h-45.14Z"/>
+    <path class="cls-11" d="m72.57,69.93l-39.09,22.58c-4.22-7.29-6.05-13.55-6.05-22.58h45.14Z"/>
+    <path class="cls-4" d="m72.57,69.93h47.95c0,10.27-1.44,15.78-6.24,24.08l-41.71-24.08Z"/>
+    <path class="cls-4" d="m72.57,69.93H24.45c0-10.28,1.63-15.77,6.44-24.07l41.69,24.07Z"/>
+    <path class="cls-6" d="m72.57,69.93l30.2,17.44c-3.06,5.29-7.47,9.7-12.76,12.76l-17.44-30.2Z"/>
+    <path class="cls-6" d="m72.57,69.93l-30.2-17.44c3.06-5.29,7.47-9.7,12.76-12.76l17.44,30.2Z"/>
+    <path class="cls-9" d="m72.57,69.93l17.58,30.44c-5.17,2.99-11.18,4.71-17.58,4.71v-35.15Z"/>
+    <path class="cls-9" d="m72.57,69.93l-17.58-30.44c5.17-2.99,11.18-4.71,17.58-4.71v35.15Z"/>
+  </g>
+  <text class="cls-3" transform="translate(69.72 10.42) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">0°</tspan></text>
+  <text class="cls-3" transform="translate(102.33 19.37) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">30°</tspan></text>
+  <text class="cls-3" transform="translate(125.29 42.38) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">60°</tspan></text>
+  <text class="cls-3" transform="translate(132.53 73.67) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">90°</tspan></text>
+  <text class="cls-3" transform="translate(123.41 104.54) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">120°</tspan></text>
+  <text class="cls-3" transform="translate(100.57 126.73) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">150°</tspan></text>
+  <text class="cls-3" transform="translate(31.4 126.37) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">210°</tspan></text>
+  <text class="cls-3" transform="translate(7.54 102.18) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">240°</tspan></text>
+  <text class="cls-3" transform="translate(.76 70.34) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">270°</tspan></text>
+  <text class="cls-3" transform="translate(10.98 39.97) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">300°</tspan></text>
+  <text class="cls-3" transform="translate(35.1 16.64) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">330°</tspan></text>
+  <text class="cls-1" transform="translate(67.79 134.3) rotate(.29) scale(1.01 1)"><tspan x="0" y="0">180°</tspan></text>
+  <line class="cls-12" x1="100.77" y1="21.05" x2="44.33" y2="118.79"/>
+  <line class="cls-12" x1="23.75" y1="98.23" x2="72.57" y2="69.93"/>
+  <line class="cls-12" x1="72.57" y1="13.51" x2="72.57" y2="69.93"/>
+  <line class="cls-12" x1="72.57" y1="69.93" x2="16.15" y2="69.93"/>
+  <line class="cls-12" x1="121.44" y1="98.15" x2="23.7" y2="41.72"/>
+  <polyline class="cls-12" points="121.44 41.72 72.57 69.93 129 69.93"/>
+  <polyline class="cls-12" points="100.82 118.79 72.57 69.93 72.57 126.36"/>
+  <line class="cls-12" x1="72.57" y1="69.93" x2="44.33" y2="21.08"/>
+  <text class="cls-2" transform="translate(80.97 69.19) scale(1.01 1)"><tspan x="0" y="0">0,5</tspan></text>
+  <text class="cls-2" transform="translate(92.2 68.79) scale(1.01 1)"><tspan x="0" y="0">4,5</tspan></text>
+  <text class="cls-2" transform="translate(105.12 69.19) scale(1.01 1)"><tspan x="0" y="0">8</tspan></text>
+  <text class="cls-2" transform="translate(115.67 69.19) scale(1.01 1)"><tspan x="0" y="0">12</tspan></text>
+  <text class="cls-2" transform="translate(126.68 69.19) scale(1.01 1)"><tspan x="0" y="0">16</tspan></text>
+</svg>

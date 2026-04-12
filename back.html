@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Untitled-2.png</title>
+  <style>
+    /* Убираем отступы и делаем фон нейтральным */
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #000; /* можно убрать или поменять */
+    }
+
+    /* Показываем только изображение, центрированное и масштабируемое */
+    img {
+      display: block;
+      margin: 0 auto;
+      /* Занимать весь видимый экран, сохраняя пропорции */
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* contain — изображение полностью видно, cover — обрежет по краям */
+      /* Если хотите, чтобы изображение было ровно в нативном размере, заменить на:
+         width: 8000px; height: 4503px; max-width:100%; max-height:100%;
+      */
+    }
+  </style>
+</head>
+<body>
+  <img src="Untitled-2.png" alt="Untitled-2" width="8000" height="4503" loading="eager">
+</body>
+</html>

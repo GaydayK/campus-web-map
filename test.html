@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Инструменты — в ряд</title>
+  <style>
+    /* Контейнер — горизонтальный ряд, центрирование и отступы */
+    .row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;              /* расстояние между картинками */
+      padding: 12px;
+      flex-wrap: nowrap;      /* если нужно, ставьте wrap чтобы переносились на следующую строку */
+      overflow-x: auto;       /* добавит горизонтальную прокрутку на узких экранах */
+    }
+
+    /* Оформление превью картинки */
+    .row img {
+      display: block;
+      height: 96px;           /* высота превью — поменяйте по вкусу */
+      width: auto;
+      max-width: 160px;       /* ограничение по ширине */
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .row img:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+
+    /* Небольшие подписи под картинками (по желанию) */
+    figure {
+      margin: 0;
+      text-align: center;
+      font-size: 12px;
+      color: #333;
+    }
+
+    figure figcaption {
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="row" aria-label="Музыкальные инструменты">
+    <figure>
+      <img src="muzi/gavad.png" alt="gavad" loading="lazy" />
+      <figcaption>gavad</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/shankobyz.png" alt="shankobyz" loading="lazy" />
+      <figcaption>shankobyz</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/cherher.png" alt="cherher" loading="lazy" />
+      <figcaption>cherher</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/zurna.png" alt="zurna" loading="lazy" />
+      <figcaption>zurna</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/tar.png" alt="tar" loading="lazy" />
+      <figcaption>tar</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/chongur.png" alt="chongur" loading="lazy" />
+      <figcaption>chongur</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/agach_kumuz.png" alt="agach kumuz" loading="lazy" />
+      <figcaption>agach_kumuz</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/pandur.png" alt="pandur" loading="lazy" />
+      <figcaption>pandur</figcaption>
+    </figure>
+
+    <figure>
+      <img src="muzi/kemancha.png" alt="kemancha" loading="lazy" />
+      <figcaption>kemancha</figcaption>
+    </figure>
+  </div>
+</body>
+</html>
