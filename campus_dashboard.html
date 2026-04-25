@@ -587,7 +587,8 @@ ul.task-list li input[type="checkbox"] {
       "version": 8, "projection": { "type": "globe" }, "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
       "sources": {
         "carto-positron": { "type": "raster", "tiles": ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], "tileSize": 256 },
-        "russia-shape": { "type": "geojson", "data": "russia_updated.geojson", "generateId": true },
+        "russia-filtered": { "type": "geojson", "data": "russia_filtered.geojson", "generateId": true },
+        "russia-target": { "type": "geojson", "data": "sakha_and_krasnoyarsk.geojson", "generateId": true },
         "russia-centroids": { "type": "geojson", "data": "centroids.geojson" },
         "rf-total-source": { "type": "geojson", "data": { "type": "FeatureCollection", "features": [{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [95, 62] }, "properties": { "total_num": "158", "total_desc": "Всего университетских\nкампусов в РФ" } }] } },
         "campuses-source": { "type": "geojson", "data": "campuses_updated.geojson" },
@@ -596,8 +597,10 @@ ul.task-list li input[type="checkbox"] {
       },
       "layers": [
         { "id": "base-layer", "type": "raster", "source": "carto-positron" },
-        { "id": "r-fill", "type": "fill", "source": "russia-shape", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
-        { "id": "r-line", "type": "line", "source": "russia-shape", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
+        { "id": "r-fill-filtered", "type": "fill", "source": "russia-filtered", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
+        { "id": "r-line-filtered", "type": "line", "source": "russia-filtered", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
+        { "id": "r-fill-target", "type": "fill", "source": "russia-target", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
+        { "id": "r-line-target", "type": "line", "source": "russia-target", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
         { "id": "rf-total-circle", "type": "circle", "source": "rf-total-source", "maxzoom": 2.5, "paint": { "circle-radius": 20, "circle-color": "#F553A0", "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } },
         { "id": "rf-total-num", "type": "symbol", "source": "rf-total-source", "maxzoom": 2.5, "layout": { "text-field": ["get", "total_num"], "text-font": ["Noto Sans Bold"], "text-size": 16, "text-anchor": "center" }, "paint": { "text-color": "#ffffff" } },
         { "id": "rf-total-desc", "type": "symbol", "source": "rf-total-source", "maxzoom": 2.5, "layout": { "text-field": ["get", "total_desc"], "text-font": ["Noto Sans Bold"], "text-size": 16, "text-offset": [0, 3.2], "text-anchor": "top", "text-justify": "center" }, "paint": { "text-color": "#1e293b", "text-halo-color": "#ffffff", "text-halo-width": 2 } },
@@ -833,22 +836,36 @@ ul.task-list li input[type="checkbox"] {
     map.on('zoom', updateLegend);
     
     let hoveredStateId = null;
-    map.on('mousemove', 'r-fill', (e) => {
+    let hoveredSource = null; // Дополнительная переменная для хранения текущего источника
+    const regionLayers = ['r-fill-filtered', 'r-fill-target']; // Массив новых слоёв субъектов
+
+    map.on('mousemove', regionLayers, (e) => {
       if (e.features.length > 0 && map.getZoom() < 4.0) {
         map.getCanvas().style.cursor = 'pointer';
         popup.setLngLat(e.lngLat).setHTML(`<strong>${e.features[0].properties.region}</strong>`).addTo(map);
-        if (hoveredStateId !== null) { map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: false }); }
+        
+        const currentSource = e.features[0].source; // Динамически получаем имя источника ('russia-filtered' или 'russia-target')
+        
+        if (hoveredStateId !== null && hoveredSource !== null) { 
+          map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: false }); 
+        }
+        
         hoveredStateId = e.features[0].id;
-        map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: true });
+        hoveredSource = currentSource;
+        
+        map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: true });
       }
     });
 
-    map.on('mouseleave', 'r-fill', () => {
+    map.on('mouseleave', regionLayers, () => {
       if (map.getZoom() < 4.0) {
         map.getCanvas().style.cursor = '';
         popup.remove();
-        if (hoveredStateId !== null) { map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: false }); }
+        if (hoveredStateId !== null && hoveredSource !== null) { 
+          map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: false }); 
+        }
         hoveredStateId = null;
+        hoveredSource = null;
       }
     });
 
@@ -1252,8 +1269,8 @@ grid-auto-rows: minmax(0, 1fr);">
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-209d661b8acaa37306ab" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-209d661b8acaa37306ab">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":12.09038092915902,"color":"#f23761"},{"name":"Культурно-образовательная","y":0.4949890101027957,"color":"#f952e2"},{"name":"Жилая","y":19.62254055952186,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":55.94704020243293,"color":"#abeca3"},{"name":"Зона строительства","y":2.972603499704304,"color":"#6863db"},{"name":"Парковочная","y":3.937197826349665,"color":"#a82072"},{"name":"Спортивная","y":2.53509295550334,"color":"#ffa860"},{"name":"Коммунального хозяйства","y":2.105092924072676,"color":"#8daf93"},{"name":"Зона услуг","y":0.2950620931534011,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>1.68 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-e8383f22cb35097f2d4a" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-e8383f22cb35097f2d4a">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":12.09038092915902,"color":"#f23761"},{"name":"Культурно-образовательная","y":0.4949890101027957,"color":"#f952e2"},{"name":"Жилая","y":19.62254055952186,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":55.94704020243293,"color":"#abeca3"},{"name":"Зона строительства","y":2.972603499704304,"color":"#6863db"},{"name":"Парковочная","y":3.937197826349665,"color":"#a82072"},{"name":"Спортивная","y":2.53509295550334,"color":"#ffa860"},{"name":"Коммунального хозяйства","y":2.105092924072676,"color":"#8daf93"},{"name":"Зона услуг","y":0.2950620931534011,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>1.68 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1292,8 +1309,8 @@ grid-auto-rows: minmax(0, 1fr);">
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-e632ef8c24a2ec0bd3f4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-e632ef8c24a2ec0bd3f4">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Зона строительства","Парковочная","Спортивная","Коммунального хозяйства","Зона услуг"],[0.203424,0.008328,0.330156,0.941325,0.050015,0.066245,0.042654,0.035419,0.004964],[12.090357,0.494986,19.622573,55.947019,2.972607,3.937208,2.535097,2.105091,0.295061]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-b1a353d7150975a9996d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b1a353d7150975a9996d">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Зона строительства","Парковочная","Спортивная","Коммунального хозяйства","Зона услуг"],[0.203424,0.008328,0.330156,0.941325,0.050015,0.066245,0.042654,0.035419,0.004964],[12.090357,0.494986,19.622573,55.947019,2.972607,3.937208,2.535097,2.105091,0.295061]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">

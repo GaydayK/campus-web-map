@@ -390,7 +390,8 @@ format:
       "version": 8, "projection": { "type": "globe" }, "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
       "sources": {
         "carto-positron": { "type": "raster", "tiles": ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], "tileSize": 256 },
-        "russia-shape": { "type": "geojson", "data": "russia_updated.geojson", "generateId": true },
+        "russia-filtered": { "type": "geojson", "data": "russia_filtered.geojson", "generateId": true },
+        "russia-target": { "type": "geojson", "data": "sakha_and_krasnoyarsk.geojson", "generateId": true },
         "russia-centroids": { "type": "geojson", "data": "centroids.geojson" },
         "rf-total-source": { "type": "geojson", "data": { "type": "FeatureCollection", "features": [{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [95, 62] }, "properties": { "total_num": "158", "total_desc": "Всего университетских\nкампусов в РФ" } }] } },
         "campuses-source": { "type": "geojson", "data": "campuses_updated.geojson" },
@@ -399,8 +400,10 @@ format:
       },
       "layers": [
         { "id": "base-layer", "type": "raster", "source": "carto-positron" },
-        { "id": "r-fill", "type": "fill", "source": "russia-shape", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
-        { "id": "r-line", "type": "line", "source": "russia-shape", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
+        { "id": "r-fill-filtered", "type": "fill", "source": "russia-filtered", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
+        { "id": "r-line-filtered", "type": "line", "source": "russia-filtered", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
+        { "id": "r-fill-target", "type": "fill", "source": "russia-target", "paint": { "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#cbd5e1", "#f4c2c9"], ["match", ["get", "region"], ["Запорожская область", "Херсонская область", "Донецкая народная республика", "Луганская народная республика"], "#e2e8f0", "#ffebed"] ], "fill-opacity": 0.8 } },
+        { "id": "r-line-target", "type": "line", "source": "russia-target", "paint": { "line-color": "#000000", "line-width": 0.6, "line-opacity": 0.8 } },
         { "id": "rf-total-circle", "type": "circle", "source": "rf-total-source", "maxzoom": 2.5, "paint": { "circle-radius": 20, "circle-color": "#F553A0", "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } },
         { "id": "rf-total-num", "type": "symbol", "source": "rf-total-source", "maxzoom": 2.5, "layout": { "text-field": ["get", "total_num"], "text-font": ["Noto Sans Bold"], "text-size": 16, "text-anchor": "center" }, "paint": { "text-color": "#ffffff" } },
         { "id": "rf-total-desc", "type": "symbol", "source": "rf-total-source", "maxzoom": 2.5, "layout": { "text-field": ["get", "total_desc"], "text-font": ["Noto Sans Bold"], "text-size": 16, "text-offset": [0, 3.2], "text-anchor": "top", "text-justify": "center" }, "paint": { "text-color": "#1e293b", "text-halo-color": "#ffffff", "text-halo-width": 2 } },
@@ -636,22 +639,36 @@ format:
     map.on('zoom', updateLegend);
     
     let hoveredStateId = null;
-    map.on('mousemove', 'r-fill', (e) => {
+    let hoveredSource = null; // Дополнительная переменная для хранения текущего источника
+    const regionLayers = ['r-fill-filtered', 'r-fill-target']; // Массив новых слоёв субъектов
+
+    map.on('mousemove', regionLayers, (e) => {
       if (e.features.length > 0 && map.getZoom() < 4.0) {
         map.getCanvas().style.cursor = 'pointer';
         popup.setLngLat(e.lngLat).setHTML(`<strong>${e.features[0].properties.region}</strong>`).addTo(map);
-        if (hoveredStateId !== null) { map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: false }); }
+        
+        const currentSource = e.features[0].source; // Динамически получаем имя источника ('russia-filtered' или 'russia-target')
+        
+        if (hoveredStateId !== null && hoveredSource !== null) { 
+          map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: false }); 
+        }
+        
         hoveredStateId = e.features[0].id;
-        map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: true });
+        hoveredSource = currentSource;
+        
+        map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: true });
       }
     });
 
-    map.on('mouseleave', 'r-fill', () => {
+    map.on('mouseleave', regionLayers, () => {
       if (map.getZoom() < 4.0) {
         map.getCanvas().style.cursor = '';
         popup.remove();
-        if (hoveredStateId !== null) { map.setFeatureState({ source: 'russia-shape', id: hoveredStateId }, { hover: false }); }
+        if (hoveredStateId !== null && hoveredSource !== null) { 
+          map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: false }); 
+        }
         hoveredStateId = null;
+        hoveredSource = null;
       }
     });
 
