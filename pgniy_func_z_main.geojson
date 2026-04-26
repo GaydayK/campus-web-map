@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "pgniy_func_z_main",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::21317" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+
+]
+}

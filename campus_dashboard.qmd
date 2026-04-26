@@ -723,7 +723,7 @@ format:
   #btn-zoom-all-dorm:hover { background-color: #f9f9f9; }
 </style>
 
-<div style="position: relative; width: 320%; height: 80vh; min-height: 600px;">
+<div style="position: relative; width: 315%; height: 80vh; min-height: 600px;">
   <div id="map-dvfu-buildings" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;"></div>
   
   <button id="btn-zoom-all-dorm">Показать все общежития</button>
@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
         "campus": { type: "geojson", data: "education_poly.geojson" },
         "buildings": { type: "geojson", data: "Buildings_poly.geojson" },
-        "dormit_points": { type: "geojson", data: "dormit_dvfu.geojson" }
+        "dormit_points": { type: "geojson", data: "dormit_dvfu.geojson", tolerance: 0}
       },
       layers: [
         { id: "base-light", type: "raster", source: "carto-light" },
@@ -805,7 +805,7 @@ document.addEventListener("DOMContentLoaded", () => {
             paint: {
                 "circle-radius": [
                     "step",
-                    ["get", "num_ne"],
+                    ["to-number", ["get", "staff_coun"]],
                     3,        // Малые (< 300)
                     300, 5,   // Средние (300 - 800)
                     801, 8    // Крупные (> 800)
@@ -1114,14 +1114,473 @@ datatable(
 ```
 
 
+# ПГНИУ
 
+## Row
+### Column{width=60%}
+#### {.tabset}
+##### План кампуса
+
+```{=html}
+<style>
+  #btn-zoom-all-dorm-pniy {
+    position: absolute; 
+    bottom: 30px; 
+    left: 10px; 
+    z-index: 10; 
+    padding: 6px 12px; 
+    background: white; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); 
+    cursor: pointer; 
+    font-family: 'Noto Sans', sans-serif; 
+    font-size: 11px;
+    font-weight: bold;
+    color: #444;
+  }
+  #btn-zoom-all-dorm-pniy:hover { background-color: #f9f9f9; }
+</style>
+
+<div style="position: relative; width: 315%; height: 80vh; min-height: 600px;">
+  <div id="map-pniy-buildings" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;"></div>
+  
+  <button id="btn-zoom-all-dorm-pniy">Показать все общежития</button>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-pniy-1" value="light" checked> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-pniy-1" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-pniy" checked> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 250px; overflow-y: auto; max-height: 90%;">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Типы зданий</div>
+    <div id="legend-buildings-list-pniy"></div>
+    
+    <div style="margin-top: 12px; border-top: 1px solid #cbd5e1; padding-top: 8px;">
+        <div style="font-weight: bold; margin-bottom: 6px;">Мест в общежитиях</div>
+        <div style="position: relative; height: 40px; width: 100%; margin-top: 5px;">
+            
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);"></div>
+            
+            <svg width="60" height="40" style="position: absolute; bottom: 0; left: 16px; overflow: visible; pointer-events: none;">
+              <path d="M 0 34 L 10 33 L 22 33" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+              <path d="M 0 30 L 10 20 L 22 20" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+              <path d="M 0 24 L 10 7 L 22 7" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+            </svg>
+            
+            <div style="position: absolute; bottom: 28px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;">Крупные (> 800)</div>
+            <div style="position: absolute; bottom: 15px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;">300 – 800</div>
+            <div style="position: absolute; bottom: 2px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;">Малые (< 300)</div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bTypes = {
+    "academ": { name: "Учебно-административные корпуса", color: "#66c2a5" },
+    "cultural": { name: "Сооружения культурного назначения", color: "#fc8d62" },
+    "dormit": { name: "Жилые корпуса", color: "#8da0cb" },
+    "indust": { name: "Объекты коммунального хозяйства", color: "#e78ac3" },
+    "lab": { name: "Научно-исследовательские корпуса", color: "#a6d854" },
+    "parking": { name: "Парковки", color: "#ffd92f" },
+    "pit": { name: "Объекты торговли и общепита", color: "#e5c494" },
+    "sport": { name: "Спортивные сооружения", color: "#b3b3b3" },
+    "tech": { name: "Инженерно-технические сооружения", color: "#1f78b4" }
+  };
+  
+  const legListPniy = document.getElementById("legend-buildings-list-pniy");
+  for (let key in bTypes) legListPniy.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${bTypes[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333; flex-shrink: 0;"></div><span style="line-height: 1.1;">${bTypes[key].name}</span></div>`;
+
+  const mapPniy = new maplibregl.Map({
+    container: 'map-pniy-buildings',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "pgniy_border.geojson" },
+        "buildings": { type: "geojson", data: "Type_buildings_pgniy.geojson" },
+        "dormit_points": { type: "geojson", data: "pgniy_dormit_main.geojson" }
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } },
+        { id: "build-fill", type: "fill", source: "buildings", paint: { "fill-color": [ "match", ["get", "type_b"], "academ", bTypes["academ"].color, "cultural", bTypes["cultural"].color, "dormit", bTypes["dormit"].color, "indust", bTypes["indust"].color, "lab", bTypes["lab"].color, "parking", bTypes["parking"].color, "pit", bTypes["pit"].color, "sport", bTypes["sport"].color, "tech", bTypes["tech"].color, "#ccc" ], "fill-opacity": 0.7 } },
+        { id: "build-line", type: "line", source: "buildings", paint: { "line-color": "#333", "line-width": 0.5 } },
+        
+        { 
+            id: "dormit-beds-points", 
+            type: "circle", 
+            source: "dormit_points", 
+            paint: {
+                "circle-radius": [
+                    "step",
+                    ["get", "sss"],
+                    3,        // Малые (< 300)
+                    300, 5,   // Средние (300 - 800)
+                    801, 8    // Крупные (> 800)
+                ],
+                "circle-color": "#FFB575",
+                "circle-stroke-color": "#FFFFFF",
+                "circle-stroke-width": 1.5,
+                "circle-opacity": 0.95
+            }
+        }
+      ]
+    }, 
+    // Координаты смещены на Пермь (студгородок ПНИГУ). Если требуется другой корпус, скорректируйте.
+    center: [56.1898, 58.0077], 
+    zoom: 15.3 
+  });
+  
+  mapPniy.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  
+  // Добавляем масштабную линейку (в метрической системе, слева внизу)
+  mapPniy.addControl(new maplibregl.ScaleControl({ maxWidth: 150, unit: 'metric' }), 'bottom-left');
+  
+  new ResizeObserver(() => { mapPniy.resize(); }).observe(mapPniy.getContainer());
+
+  const popupPniy = new maplibregl.Popup({ closeButton: false });
+  
+  mapPniy.on('mousemove', 'build-fill', (e) => { 
+    mapPniy.getCanvas().style.cursor = 'pointer'; 
+    const type = e.features[0].properties.type_b; 
+    popupPniy.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Тип здания:</b><br>${bTypes[type] ? bTypes[type].name : type}</div>`).addTo(mapPniy); 
+  });
+  mapPniy.on('mouseleave', 'build-fill', () => { 
+    mapPniy.getCanvas().style.cursor = ''; 
+    popupPniy.remove(); 
+  });
+  
+  document.getElementById('btn-zoom-all-dorm-pniy').addEventListener('click', () => {
+    // Координаты для показа всех общежитий (возможно, потребуется подгонка zoom/center под масштаб данных)
+    mapPniy.flyTo({ center: [56.2163, 58.0012], zoom: 12.5});
+  });
+
+  mapPniy.on('mousemove', 'dormit-beds-points', (e) => {
+    mapPniy.getCanvas().style.cursor = 'pointer';
+    const beds = e.features[0].properties.sss;
+    const name = e.features[0].properties.name || "Общежитие"; 
+
+    popupPniy.setLngLat(e.lngLat)
+         .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px; padding: 3px 5px;">
+                     <b>${name}</b><br>
+                     Количество койко-мест: <b style="font-size:13px">${beds}</b>
+                   </div>`)
+         .addTo(mapPniy);
+  });
+  mapPniy.on('mouseleave', 'dormit-beds-points', () => { 
+    mapPniy.getCanvas().style.cursor = ''; 
+    popupPniy.remove(); 
+  });
+
+  document.querySelectorAll('input[name="base-pniy-1"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapPniy.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapPniy.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  
+  document.getElementById('toggle-campus-pniy').addEventListener('change', (e) => 
+    mapPniy.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none')
+  );
+});
+</script>
+```
+
+##### Функциональные зоны
+
+```{=html}
+<div style="position: relative; width: 204%; height: 80vh; min-height: 600px;">
+  <div id="map-pniy-zones" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-pniy-2" value="light" checked> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-pniy-2" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-pniy-2" checked> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 220px;">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Функциональные зоны</div>
+    <div id="legend-zones-list-pniy"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const zTypes = { 
+    "academ": { name: "Научно-образовательная", color: "#f23761" }, 
+    "cultural": { name: "Культурно-образовательная", color: "#f952e2" }, 
+    "dormit": { name: "Жилая", color: "#ff807a" }, 
+    "green": { name: "Ландшафтно-рекреационная", color: "#abeca3" },
+    "parking": { name: "Парковочная", color: "#a82072" },
+    "tech": { name: "Коммунального хозяйства", color: "#8daf93" }
+  };
+  
+  const legListPniy = document.getElementById("legend-zones-list-pniy");
+  for (let key in zTypes) {
+    legListPniy.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${zTypes[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333;"></div><span>${zTypes[key].name}</span></div>`;
+  }
+
+  const mapPniyZones = new maplibregl.Map({
+    container: 'map-pniy-zones',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "pgniy_border.geojson" },
+        "zones": { type: "geojson", data: "pgniy_func_z_major.geojson" }
+      },
+      layers: [
+        { id: "base-light-2", type: "raster", source: "carto-light" },
+        { id: "base-sat-2", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "zone-fill", type: "fill", source: "zones", paint: { "fill-color": [ "match", ["get", "FZ"], "academ", zTypes["academ"].color, "cultural", zTypes["cultural"].color, "dormit", zTypes["dormit"].color, "green", zTypes["green"].color, "parking", zTypes["parking"].color, "tech", zTypes["tech"].color, "transparent" ], "fill-opacity": 0.7 } },
+        { id: "campus-line-2", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } }
+      ]
+    }, 
+    center: [56.1898, 58.0077], 
+    zoom: 15.3 
+  });
+  
+  mapPniyZones.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  // Надежный обсервер для Quarto Tabsets
+  new ResizeObserver(() => { mapPniyZones.resize(); }).observe(mapPniyZones.getContainer());
+
+  const popupPniyZones = new maplibregl.Popup({ closeButton: false });
+  
+  mapPniyZones.on('mousemove', 'zone-fill', (e) => { 
+    mapPniyZones.getCanvas().style.cursor = 'pointer'; 
+    const type = e.features[0].properties.FZ; 
+    const name = zTypes[type] ? zTypes[type].name : type; 
+    if(name && type !== "null" && type !== "") {
+      popupPniyZones.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Функциональная зона:</b><br>${name}</div>`).addTo(mapPniyZones); 
+    }
+  });
+  
+  mapPniyZones.on('mouseleave', 'zone-fill', () => { 
+    mapPniyZones.getCanvas().style.cursor = ''; 
+    popupPniyZones.remove(); 
+  });
+  
+  document.querySelectorAll('input[name="base-pniy-2"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapPniyZones.setLayoutProperty('base-light-2', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapPniyZones.setLayoutProperty('base-sat-2', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  
+  document.getElementById('toggle-campus-pniy-2').addEventListener('change', (e) => {
+    mapPniyZones.setLayoutProperty('campus-line-2', 'visibility', e.target.checked ? 'visible' : 'none');
+  });
+});
+</script>
+```
+
+##### Пешая доступность
+
+```{=html}
+<div style="position: relative; width: 204%; height: 80vh; min-height: 600px;">
+  <div id="map-pniy-walk" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-pniy-3"" value="light" checked> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-pniy-3"" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;">
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-campus-pniy-3" checked> Граница кампуса</label>
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads-pniy" checked> Дорожки</label>
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-kpp-pniy" checked> КПП</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 160px;">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Доступность (мин)</div>
+    <div id="legend-walk-list-pniy"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const walkColors = { 2: "#ffffb2", 5: "#fecc5c", 7: "#fd8d3c", 10: "#e31a1c" };
+  const legList = document.getElementById("legend-walk-list-pniy");
+  const mins = [10, 7, 5, 2];
+  mins.forEach((min, index) => {
+    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
+    legList.innerHTML += `
+      <div style="display: flex; align-items: center;">
+        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
+        <span>${min}</span>
+      </div>`;
+  });
+
+  const map = new maplibregl.Map({
+    container: 'map-pniy-walk',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "pgniy_border.geojson" },
+        "start": { type: "geojson", data: "pgniy_kpp.geojson" },
+        "roads": { type: "geojson", data: "pgniy_roads.geojson" },
+        "walk": { type: "geojson", data: "pgniy_isochrones.geojson" }
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "roads-line", type: "line", source: "roads", paint: { "line-color": "#888888", "line-width": 1.2, "line-opacity": 0.8 } },
+        
+        /* Замена логики раскраски на новые минутные интервалы */
+        { id: "walk-fill", type: "fill", source: "walk", paint: { "fill-color": [ "match", ["get", "AA_MINS"], 2, walkColors[2], 5, walkColors[5], 7, walkColors[7], 10, walkColors[10], "transparent" ], "fill-opacity": 0.45 } },
+        
+        { id: "walk-line", type: "line", source: "walk", paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } },
+        { id: "start-point", type: "circle", source: "start", paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } }
+      ]
+    }, center: [56.1898, 58.0077], zoom: 15.3 
+  });
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  new ResizeObserver(() => { map.resize(); }).observe(map.getContainer());
+
+  const popup = new maplibregl.Popup({ closeButton: false });
+  map.on('mousemove', (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: ['start-point', 'walk-fill'] 
+    });
+
+    if (features.length > 0) {
+      map.getCanvas().style.cursor = 'pointer';
+      
+      const feature = features[0];
+
+      if (feature.layer.id === 'start-point') {
+        popup.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Контрольно-пропускной пункт</b> ПГНИУ</div>`)
+             .addTo(map);
+      } else if (feature.layer.id === 'walk-fill') {
+        popup.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешая доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
+             .addTo(map);
+      }
+    } else {
+      map.getCanvas().style.cursor = '';
+      popup.remove();
+    }
+  });
+  
+  document.querySelectorAll('input[name="base-pniy-3"]').forEach(r => r.addEventListener('change', (e) => { map.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); map.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); }));
+  document.getElementById('toggle-campus-pniy-3').addEventListener('change', (e) => map.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-roads-pniy').addEventListener('change', (e) => map.setLayoutProperty('roads-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-kpp-pniy').addEventListener('change', (e) => map.setLayoutProperty('start-point', 'visibility', e.target.checked ? 'visible' : 'none'));
+});
+</script>
+```
+
+
+### Column{width=40%}
+#### Row{height=30%}
+::: {.card}
+# **ПГНИУ**: *Академическая традиция и научный поиск на Урале*
+
+Расположенный в Перми, одном из ключевых индустриальных и культурных центров Урала, университет формирует интеллектуальное пространство, где классическое образование сочетается с актуальными научными исследованиями. Исторически сложившаяся академическая база определяет устойчивое развитие ПГНИУ как многопрофильного научно-образовательного центра.
+
+Здесь активно развиваются направления, отражающие специфику региона и глобальные вызовы: геология и рациональное природопользование, химия и новые материалы, экология, а также информационные технологии и социальные науки. Ученые университета исследуют минеральные ресурсы, разрабатывают экологические решения для промышленности и изучают динамику природных систем Урала.
+
+ПГНИУ выступает площадкой для междисциплинарного взаимодействия и подготовки специалистов, способных работать на стыке науки, технологий и управления. Университет не только сохраняет академические традиции, но и адаптируется к современным требованиям, формируя компетенции, востребованные в научной и экономической среде России.
+:::
+#### Row{height=70%} 
+##### {.tabset}
+###### Функциональные зоны
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Функциональные зоны"
+#| padding: 0px
+
+library(highcharter)
+library(dplyr)
+
+data <- data.frame(
+  FZ = c("academ", "cultural", "dormit", "green", "parking", "tech"),
+  area_m2 = c(82574, 4120, 3564, 45863, 4387, 10796),
+  share = c(54.57489557, 2.722994766, 2.355522656, 30.31182256, 2.899460688, 7.135303759))
+
+color_map <- c("academ"="#f23761", "cultural"="#f952e2", "dormit"="#ff807a", "green"="#abeca3", "parking"="#a82072", "tech"="#8daf93")
+labels <- c("Научно-образовательная", "Культурно-образовательная", "Жилая", "Ландшафтно-рекреационная", "Парковочная", "Коммунального хозяйства")
+
+data <- data %>% mutate(Label = labels[match(FZ, names(color_map))], Color = color_map[FZ])
+hc_data <- data %>% transmute(name = Label, y = share, color = Color)
+total_km2 <- sum(data$area_m2) / 1e6
+total_label <- sprintf("%.2f км²", total_km2)
+
+highchart() %>%
+  hc_chart(type = "pie") %>%
+  hc_title(text = "Доли функциональных зон (%)", style = list(fontWeight = "bold", fontSize = "16px")) %>%
+  hc_plotOptions(pie = list(innerSize = "60%", allowPointSelect = TRUE, cursor = "pointer", dataLabels = list(enabled = FALSE), showInLegend = FALSE)) %>%
+  hc_tooltip(useHTML = TRUE, headerFormat = "", pointFormat = "<b>{point.name}</b> ({point.y:.3f}%)", backgroundColor = "rgba(255,255,255,0.95)", borderColor = "#ccc", style = list(fontSize = "13px")) %>%
+  hc_add_series(name = "Доля", data = list_parse(hc_data)) %>%
+  hc_annotations(list(labels = list(list(point = list(x = 0, y = 0, xAxis = 0, yAxis = 0), text = paste0("<span style='font-size:16px;font-weight:bold;'>", total_label, "</span>"), useHTML = TRUE, x = 0, y = 0))))
+```
+
+
+###### Направления путей
+<div style="display: flex; flex-direction: column; align-items: center; padding: 15px; font-family: 'Noto Sans', sans-serif;">
+  
+  <div style="font-weight: bold; font-size: 16px; margin-bottom: 15px; text-align: center;">
+    Диаграмма распределения направления путей в кампусе, км
+  </div>
+  
+  <img src="rose_pgniy.png" alt="Диаграмма путей" style="max-width: 80%; height: 80%;">
+  
+  <div style="font-style: italic; font-size: 14px; color: #475569; margin-top: 15px; text-align: center;">
+    Смешанная планировочная структура
+  </div>
+
+</div>
+
+
+###### Данные
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Исходные данные"
+#| padding: 0px
+
+library(DT)
+library(formattable)
+
+data <- data.frame(
+  FZ = c("academ", "cultural", "dormit", "green", "parking", "tech"),
+  area_m2 = c(82574, 4120, 3564, 45863, 4387, 10796),
+  share = c(54.57489557, 2.722994766, 2.355522656, 30.31182256, 2.899460688, 7.135303759))
+
+color_map <- c("academ"="#f23761", "cultural"="#f952e2", "dormit"="#ff807a", "green"="#abeca3", "parking"="#a82072", "tech"="#8daf93")
+labels <- c("Научно-образовательная", "Культурно-образовательная", "Жилая", "Ландшафтно-рекреационная", "Парковочная", "Коммунального хозяйства")
+
+data$Label <- labels[match(data$FZ, names(color_map))]
+data$Color <- color_map[data$FZ]
+
+datatable(
+  data[, c("Label", "area_m2", "share")],
+  colnames = c("Функциональная зона", "Площадь (м²)", "Доля (%)"),
+  options = list(pageLength = 9, dom = 't', ordering = FALSE, scrollX = TRUE),
+  rownames = FALSE
+) %>% formatRound(columns = c("area_m2", "share"), digits = 3)
+```
 
 # МГУ
-Информация про МГУ
 
-::: {.card}
-This text will be displayed within a card
-:::
-
-# ПГНИУ
-Информация про ПГНИУ
+# Сколтех

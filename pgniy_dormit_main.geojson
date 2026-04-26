@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "pgniy_dormit_main",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "sss": 800.0 }, "geometry": { "type": "Point", "coordinates": [ 56.254534626402759, 57.995864790345088 ] } },
+{ "type": "Feature", "properties": { "id": null, "sss": 1050.0 }, "geometry": { "type": "Point", "coordinates": [ 56.186717744973627, 58.008597649307184 ] } },
+{ "type": "Feature", "properties": { "id": null, "sss": 1050.0 }, "geometry": { "type": "Point", "coordinates": [ 56.189734479579009, 58.007298679758129 ] } }
+]
+}
