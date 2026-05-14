@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "innopol_kpp_2",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32437" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "Point", "coordinates": [ 1110439.934284933842719, 6221574.858975570648909 ] } }
+]
+}

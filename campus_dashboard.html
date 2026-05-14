@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>campus_dashboard</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -25,23 +28,28 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="campus_dashboard_files/libs/clipboard/clipboard.min.js"></script>
-<script src="campus_dashboard_files/libs/quarto-html/quarto.js"></script>
+<script src="campus_dashboard_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="campus_dashboard_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="campus_dashboard_files/libs/quarto-html/popper.min.js"></script>
 <script src="campus_dashboard_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="campus_dashboard_files/libs/quarto-html/anchor.min.js"></script>
 <link href="campus_dashboard_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="campus_dashboard_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="campus_dashboard_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="campus_dashboard_files/libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="campus_dashboard_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="campus_dashboard_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="campus_dashboard_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="campus_dashboard_files/libs/bootstrap/bootstrap-b8c87d3d7e5b7677b3c3675827754c74.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="campus_dashboard_files/libs/bootstrap/bootstrap-f2f902407e671a240a764838eecf5d94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="campus_dashboard_files/libs/bootstrap/bootstrap-dark-f2f902407e671a240a764838eecf5d94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="campus_dashboard_files/libs/bootstrap/bootstrap-f2f902407e671a240a764838eecf5d94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="campus_dashboard_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
 <script src="campus_dashboard_files/libs/quarto-dashboard/stickythead.js"></script>
-<script src="campus_dashboard_files/libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
-<script src="campus_dashboard_files/libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
-<script src="campus_dashboard_files/libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+
+
+
 <script src="campus_dashboard_files/libs/quarto-dashboard/web-components.js" type="module"></script>
 <script src="campus_dashboard_files/libs/quarto-dashboard/components.js"></script>
-<link href="campus_dashboard_files/libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+
 <link href="campus_dashboard_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 
 <script src="campus_dashboard_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
@@ -176,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="quarto-dashboard dashboard-fill fullcontent">
+<body class="quarto-dashboard dashboard-fill fullcontent quarto-light">
 
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
@@ -186,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
     </button>    
 
 
-<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-кампусы-россии" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#кампусы-россии" data-scrolling="false" href="#кампусы-россии" aria-controls="кампусы-россии" aria-selected="true"><span class="nav-link-text">Кампусы России</span></a></li><li class="nav-item" role="presentation"><a id="tab-двфу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#двфу" data-scrolling="false" href="#двфу" aria-controls="двфу" aria-selected="false"><span class="nav-link-text">ДВФУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-пгниу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#пгниу" data-scrolling="false" href="#пгниу" aria-controls="пгниу" aria-selected="false"><span class="nav-link-text">ПГНИУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-мгу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#мгу" data-scrolling="false" href="#мгу" aria-controls="мгу" aria-selected="false"><span class="nav-link-text">МГУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-сколтех" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#сколтех" data-scrolling="false" href="#сколтех" aria-controls="сколтех" aria-selected="false"><span class="nav-link-text">Сколтех</span></a></li></ul></div></div></nav>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-кампусы-россии" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#кампусы-россии" data-scrolling="false" href="#кампусы-россии" aria-controls="кампусы-россии" aria-selected="true"><span class="nav-link-text">Кампусы России</span></a></li><li class="nav-item" role="presentation"><a id="tab-двфу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#двфу" data-scrolling="false" href="#двфу" aria-controls="двфу" aria-selected="false"><span class="nav-link-text">ДВФУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-пгниу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#пгниу" data-scrolling="false" href="#пгниу" aria-controls="пгниу" aria-selected="false"><span class="nav-link-text">ПГНИУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-мгу" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#мгу" data-scrolling="false" href="#мгу" aria-controls="мгу" aria-selected="false"><span class="nav-link-text">МГУ</span></a></li><li class="nav-item" role="presentation"><a id="tab-иннополис" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#иннополис" data-scrolling="false" href="#иннополис" aria-controls="иннополис" aria-selected="false"><span class="nav-link-text">Иннополис</span></a></li></ul></div></div></nav>
 </header>
 <div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
@@ -221,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
     
     <div id="legend-regions" class="html-fill-item html-fill-container">
       
-<table class="caption-top table" data-quarto-postprocess="true">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -255,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
       
       <div id="theme1-legend" class="html-fill-item html-fill-container">
         
-<table class="caption-top table" data-quarto-postprocess="true">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -298,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
 <span style="font-size: 10px; color: #94a3b8;">(На примере локального)</span></td>
 </tr>
 <tr class="odd" style="background: transparent;">
-<td colspan="2" style="padding: 10px 0 6px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; line-height: 1.2">Пространственные паттерны ведомственных кампусов<br>
+<td colspan="2" style="padding: 10px 0 6px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; line-height: 1.2">Пространственные особенности ведомственных кампусов<br>
 <span style="font-size: 10px; font-weight: normal; color: #64748b;"></span></td>
 </tr>
 <tr class="even" style="background: transparent;">
@@ -378,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 
       <div id="theme2-legend" style="display: none;" class="html-fill-item html-fill-container">
         
-<table class="caption-top table" data-quarto-postprocess="true">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -470,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
 
       <div id="theme3-legend" style="display: none;" class="html-fill-item html-fill-container">
         
-<table class="caption-top table" data-quarto-postprocess="true">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -905,9 +913,9 @@ ul.task-list li input[type="checkbox"] {
 grid-auto-rows: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-2"><li class="nav-item" role="presentation"><a href="#card-tabset-2-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешая доступность" aria-selected="false" class="nav-link">Пешая доступность</a></li></ul></div>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-2"><li class="nav-item" role="presentation"><a href="#card-tabset-2-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешеходная доступность" aria-selected="false" class="nav-link">Пешеходная доступность</a></li></ul></div>
 
 
 
@@ -1016,7 +1024,7 @@ document.addEventListener("DOMContentLoaded", () => {
             paint: {
                 "circle-radius": [
                     "step",
-                    ["to-number", ["get", "staff_coun"]],
+                    ["to-number", ["get", "num_ne"]],
                     3,        // Малые (< 300)
                     300, 5,   // Средние (300 - 800)
                     801, 8    // Крупные (> 800)
@@ -1105,7 +1113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: "base-light", type: "raster", source: "carto-light" },
         { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
         { id: "zone-fill", type: "fill", source: "zones", paint: { "fill-color": [ "match", ["get", "FZ"], "academ", zTypes["academ"].color, "cultural", zTypes["cultural"].color, "dormit", zTypes["dormit"].color, "green", zTypes["green"].color, "indust", zTypes["indust"].color, "parking", zTypes["parking"].color, "sport", zTypes["sport"].color, "tech", zTypes["tech"].color, "uslugi", zTypes["uslugi"].color, "transparent" ], "fill-opacity": 0.7 } },
-        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } }
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } }
       ]
     }, center: [131.893193, 43.028842], zoom: 14
   });
@@ -1122,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </div>
-</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешая доступность">
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешеходная доступность">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
@@ -1181,7 +1189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         { id: "walk-fill", type: "fill", source: "walk", paint: { "fill-color": [ "match", ["get", "AA_MINS"], 5, walkColors[5], 10, walkColors[10], 15, walkColors[15], 20, walkColors[20], 25, walkColors[25], 30, walkColors[30], 35, walkColors[35], "transparent" ], "fill-opacity": 0.45 } },
         { id: "walk-line", type: "line", source: "walk", paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
-        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } },
         { id: "start-point", type: "circle", source: "start", paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } }
       ]
     }, center: [131.893193, 43.028842], zoom: 14
@@ -1207,7 +1215,7 @@ document.addEventListener("DOMContentLoaded", () => {
              .addTo(map);
       } else if (feature.layer.id === 'walk-fill') {
         popup.setLngLat(e.lngLat)
-             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешая доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешеходная доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
              .addTo(map);
       }
     } else {
@@ -1255,9 +1263,9 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-4"><li class="nav-item" role="presentation"><a href="#card-tabset-4-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Данные" aria-selected="false" class="nav-link">Данные</a></li></ul></div>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-4"><li class="nav-item" role="presentation"><a href="#card-tabset-4-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Данные" aria-selected="false" class="nav-link">Данные</a></li></ul></div>
 
 
 
@@ -1269,8 +1277,8 @@ grid-auto-rows: minmax(0, 1fr);">
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-8bd33db36c18880b775d" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-8bd33db36c18880b775d">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":12.09038092915902,"color":"#f23761"},{"name":"Культурно-образовательная","y":0.4949890101027957,"color":"#f952e2"},{"name":"Жилая","y":19.62254055952186,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":55.94704020243293,"color":"#abeca3"},{"name":"Зона строительства","y":2.972603499704304,"color":"#6863db"},{"name":"Парковочная","y":3.937197826349665,"color":"#a82072"},{"name":"Спортивная","y":2.53509295550334,"color":"#ffa860"},{"name":"Коммунального хозяйства","y":2.105092924072676,"color":"#8daf93"},{"name":"Зона услуг","y":0.2950620931534011,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>1.68 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-77d06a3ad1785951c507" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-77d06a3ad1785951c507">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":12.09038092915902,"color":"#f23761"},{"name":"Культурно-образовательная","y":0.4949890101027957,"color":"#f952e2"},{"name":"Жилая","y":19.62254055952186,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":55.94704020243293,"color":"#abeca3"},{"name":"Зона строительства","y":2.972603499704304,"color":"#6863db"},{"name":"Парковочная","y":3.937197826349665,"color":"#a82072"},{"name":"Спортивная","y":2.53509295550334,"color":"#ffa860"},{"name":"Коммунального хозяйства","y":2.105092924072676,"color":"#8daf93"},{"name":"Зона услуг","y":0.2950620931534011,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>1.68 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1309,8 +1317,8 @@ grid-auto-rows: minmax(0, 1fr);">
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-7f74e0e99ef2da01fb0c" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7f74e0e99ef2da01fb0c">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Зона строительства","Парковочная","Спортивная","Коммунального хозяйства","Зона услуг"],[0.203424,0.008328,0.330156,0.941325,0.050015,0.066245,0.042654,0.035419,0.004964],[12.090357,0.494986,19.622573,55.947019,2.972607,3.937208,2.535097,2.105091,0.295061]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-57e653889277c29f8942" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-57e653889277c29f8942">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Зона строительства","Парковочная","Спортивная","Коммунального хозяйства","Зона услуг"],[0.203424,0.008328,0.330156,0.941325,0.050015,0.066245,0.042654,0.035419,0.004964],[12.090357,0.494986,19.622573,55.947019,2.972607,3.937208,2.535097,2.105091,0.295061]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1337,9 +1345,9 @@ grid-auto-rows: minmax(0, 1fr);">
 grid-auto-rows: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-8"><li class="nav-item" role="presentation"><a href="#card-tabset-8-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-8-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-8-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешая доступность" aria-selected="false" class="nav-link">Пешая доступность</a></li></ul></div>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-8"><li class="nav-item" role="presentation"><a href="#card-tabset-8-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-8-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-8-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешеходная доступность" aria-selected="false" class="nav-link">Пешеходная доступность</a></li></ul></div>
 
 
 
@@ -1569,7 +1577,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: "base-light-2", type: "raster", source: "carto-light" },
         { id: "base-sat-2", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
         { id: "zone-fill", type: "fill", source: "zones", paint: { "fill-color": [ "match", ["get", "FZ"], "academ", zTypes["academ"].color, "cultural", zTypes["cultural"].color, "dormit", zTypes["dormit"].color, "green", zTypes["green"].color, "parking", zTypes["parking"].color, "tech", zTypes["tech"].color, "transparent" ], "fill-opacity": 0.7 } },
-        { id: "campus-line-2", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } }
+        { id: "campus-line-2", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } }
       ]
     }, 
     center: [56.1898, 58.0077], 
@@ -1608,7 +1616,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </div>
-</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-8-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешая доступность">
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-8-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешеходная доступность">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div style="position: relative; width: 204%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
@@ -1620,7 +1628,7 @@ grid-auto-rows: minmax(0, 1fr);">
     <label style="display: block; cursor: pointer;"><input type="radio" name="base-pniy-3" "="" value="sat"> Спутник</label>
     <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
       <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-campus-pniy-3" checked=""> Граница кампуса</label>
-      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads-pniy" checked=""> Дорожки</label>
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads-pniy" checked=""> Пешеходные дороги</label>
       <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-kpp-pniy" checked=""> КПП</label>
     </div>
   </div>
@@ -1666,7 +1674,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: "walk-fill", type: "fill", source: "walk", paint: { "fill-color": [ "match", ["get", "AA_MINS"], 2, walkColors[2], 5, walkColors[5], 7, walkColors[7], 10, walkColors[10], "transparent" ], "fill-opacity": 0.45 } },
         
         { id: "walk-line", type: "line", source: "walk", paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
-        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "blue", "line-width": 2 } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } },
         { id: "start-point", type: "circle", source: "start", paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } }
       ]
     }, center: [56.1898, 58.0077], zoom: 15.3 
@@ -1692,7 +1700,7 @@ document.addEventListener("DOMContentLoaded", () => {
              .addTo(map);
       } else if (feature.layer.id === 'walk-fill') {
         popup.setLngLat(e.lngLat)
-             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешая доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешеходная доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
              .addTo(map);
       }
     } else {
@@ -1739,9 +1747,9 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-10"><li class="nav-item" role="presentation"><a href="#card-tabset-10-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-10-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-10-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Данные" aria-selected="false" class="nav-link">Данные</a></li></ul></div>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-10"><li class="nav-item" role="presentation"><a href="#card-tabset-10-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-10-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-10-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Данные" aria-selected="false" class="nav-link">Данные</a></li></ul></div>
 
 
 
@@ -1753,8 +1761,8 @@ grid-auto-rows: minmax(0, 1fr);">
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-2b549b7c2e29d47cc1b2" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-2b549b7c2e29d47cc1b2">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":54.57489557,"color":"#f23761"},{"name":"Культурно-образовательная","y":2.722994766,"color":"#f952e2"},{"name":"Жилая","y":2.355522656,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":30.31182256,"color":"#abeca3"},{"name":"Парковочная","y":2.899460688,"color":"#a82072"},{"name":"Коммунального хозяйства","y":7.135303759,"color":"#8daf93"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>0.15 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-89c73e70693f73f2c323" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-89c73e70693f73f2c323">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.3f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":54.57489557,"color":"#f23761"},{"name":"Культурно-образовательная","y":2.722994766,"color":"#f952e2"},{"name":"Жилая","y":2.355522656,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":30.31182256,"color":"#abeca3"},{"name":"Парковочная","y":2.899460688,"color":"#a82072"},{"name":"Коммунального хозяйства","y":7.135303759,"color":"#8daf93"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>0.15 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1770,7 +1778,7 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card-body html-fill-item html-fill-container">
 <div style="display: flex; flex-direction: column; align-items: center; padding: 15px; font-family: 'Noto Sans', sans-serif;" class="html-fill-item html-fill-container">
 <div style="font-weight: bold; font-size: 16px; margin-bottom: 15px; text-align: center;" class="html-fill-item html-fill-container">
-<pre><code>Диаграмма распределения направления путей в кампусе, км</code></pre>
+<pre><code>Диаграмма распределения направления путей в кампусе, м</code></pre>
 </div>
 <img src="rose_pgniy.png" alt="Диаграмма путей" style="max-width: 80%; height: 80%;">
 <div style="font-style: italic; font-size: 14px; color: #475569; margin-top: 15px; text-align: center;" class="html-fill-item html-fill-container">
@@ -1793,8 +1801,8 @@ grid-auto-rows: minmax(0, 1fr);">
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-4778f670d3816fe2323e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4778f670d3816fe2323e">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Парковочная","Коммунального хозяйства"],[82574,4120,3564,45863,4387,10796],[54.57489557,2.722994766,2.355522656,30.31182256,2.899460688,7.135303759]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-3a4102d64d35bc9a6f1b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3a4102d64d35bc9a6f1b">{"x":{"filter":"none","vertical":false,"data":[["Научно-образовательная","Культурно-образовательная","Жилая","Ландшафтно-рекреационная","Парковочная","Коммунального хозяйства"],[82574,4120,3564,45863,4387,10796],[54.57489557,2.722994766,2.355522656,30.31182256,2.899460688,7.135303759]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Функциональная зона<\/th>\n      <th>Площадь (м²)<\/th>\n      <th>Доля (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"pageLength":9,"ordering":false,"scrollX":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Label","targets":0},{"name":"area_m2","targets":1},{"name":"share","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[9,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1816,12 +1824,1079 @@ grid-auto-rows: minmax(0, 1fr);">
 </div>
 </div>
 <div id="мгу" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-мгу">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-14"><li class="nav-item" role="presentation"><a href="#card-tabset-14-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-14-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-14-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешеходная доступность" aria-selected="false" class="nav-link">Пешеходная доступность</a></li></ul></div>
+
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-14"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-14-1"><div class="card-body html-fill-item html-fill-container" data-title="План кампуса">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<style>
+  #btn-zoom-all-dorm-msu {
+    position: absolute; 
+    bottom: 30px; 
+    left: 10px; 
+    z-index: 10; 
+    padding: 6px 12px; 
+    background: white; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); 
+    cursor: pointer; 
+    font-family: 'Noto Sans', sans-serif; 
+    font-size: 11px;
+    font-weight: bold;
+    color: #444;
+  }
+  #btn-zoom-all-dorm-msu:hover { background-color: #f9f9f9; }
+</style>
+
+<div style="position: relative; width: 315%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-msu-buildings" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <button id="btn-zoom-all-dorm-msu">Показать все общежития</button>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-msu-1" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-msu-1" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-msu" checked=""> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 250px; overflow-y: auto; max-height: 90%;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Типы зданий</div>
+    <div id="legend-buildings-list-msu" class="html-fill-item html-fill-container"></div>
+    
+    <div style="margin-top: 12px; border-top: 1px solid #cbd5e1; padding-top: 8px;" class="html-fill-item html-fill-container">
+        <div style="font-weight: bold; margin-bottom: 6px;" class="html-fill-item html-fill-container">Мест в общежитиях</div>
+        <div style="position: relative; height: 40px; width: 100%; margin-top: 5px;" class="html-fill-item html-fill-container">
+            
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);" class="html-fill-item html-fill-container"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);" class="html-fill-item html-fill-container"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);" class="html-fill-item html-fill-container"></div>
+            
+            <svg width="60" height="40" style="position: absolute; bottom: 0; left: 16px; overflow: visible; pointer-events: none;">
+              <path d="M 0 34 L 10 33 L 22 33" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></path>
+              <path d="M 0 30 L 10 20 L 22 20" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></path>
+              <path d="M 0 24 L 10 7 L 22 7" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></path>
+            </svg>
+            
+            <!-- Обновленные подписи легенды для МГУ -->
+            <div style="position: absolute; bottom: 28px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">Крупные (&gt; 3000)</div>
+            <div style="position: absolute; bottom: 15px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">1500 – 3000</div>
+            <div style="position: absolute; bottom: 2px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">Малые (&lt; 1500)</div>
+        </div>
+    </div>
+  </div>
 </div>
-<div id="сколтех" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-сколтех">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: ; grid-auto-columns: minmax(0, 1fr);">
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+// Цвета строго как в ДВФУ и ПГНИУ
+  const bTypes = {
+    "academ": { name: "Учебно-административные корпуса", color: "#66c2a5" },
+    "cultural": { name: "Сооружения культурного назначения", color: "#fc8d62" },
+    "dormit": { name: "Жилые корпуса", color: "#8da0cb" },
+    "indust": { name: "Хозяйственно-производственные объекты", color: "#e78ac3" },
+    "lab": { name: "Научно-исследовательские корпуса", color: "#a6d854" },
+    "parking": { name: "Парковки", color: "#ffd92f" },
+    "pol": { name: "Медицинские учреждения", color: "#8dd3c7" }, // Добавлен в стиль остальных
+    "sport": { name: "Спортивные сооружения", color: "#b3b3b3" },
+    "tech": { name: "Инженерно-технические сооружения", color: "#1f78b4" },
+    "uslugi": { name: "Объекты торговли и услуг", color: "#e5c494" }
+  };
+  
+  const legListMsu = document.getElementById("legend-buildings-list-msu");
+  for (let key in bTypes) legListMsu.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${bTypes[key].color}; opacity: 0.85; margin-right: 8px; border: 1px solid #333; flex-shrink: 0;"></div><span style="line-height: 1.1;">${bTypes[key].name}</span></div>`;
+
+  const mapMsu = new maplibregl.Map({
+    container: 'map-msu-buildings',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "msu_boundary.geojson" },
+        "buildings": { type: "geojson", data: "buildings_msu.geojson" },
+        "dormit_points": { type: "geojson", data: "dormits_msu.geojson", tolerance: 0 } 
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } },
+        { 
+          id: "build-fill", 
+          type: "fill", 
+          source: "buildings", 
+          paint: { 
+            "fill-color": [ 
+              "match", 
+              ["get", "b_type"], 
+              "academ", bTypes["academ"].color, 
+              "cultural", bTypes["cultural"].color, 
+              "dormit", bTypes["dormit"].color, 
+              "indust", bTypes["indust"].color, 
+              "lab", bTypes["lab"].color, 
+              "parking", bTypes["parking"].color, 
+              "pol", bTypes["pol"].color, 
+              "sport", bTypes["sport"].color, 
+              "tech", bTypes["tech"].color, 
+              "uslugi", bTypes["uslugi"].color, 
+              "#ccc" 
+            ], 
+            "fill-opacity": 0.85 
+          } 
+        },
+        { id: "build-line", type: "line", source: "buildings", paint: { "line-color": "#333", "line-width": 0.5 } },
+        
+        { 
+            id: "dormit-beds-points", 
+            type: "circle", 
+            source: "dormit_points", 
+            paint: {
+                "circle-radius": [
+                    "step",
+                    ["to-number", ["get", "numb_stud"], 0], // 
+                    3,        // Малые (< 1500)
+                    1500, 5,  // Средние (1500 - 3000)
+                    3001, 8   // Крупные (> 3000)
+                ],
+                "circle-color": "#FFB575",
+                "circle-stroke-color": "#FFFFFF",
+                "circle-stroke-width": 1.5,
+                "circle-opacity": 0.95
+            }
+        }
+      ]
+    }, 
+    // Координаты Главного здания МГУ (Воробьевы горы)
+    center: [37.5274, 55.7028], 
+    zoom: 13.5
+  });
+  
+  mapMsu.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  mapMsu.addControl(new maplibregl.ScaleControl({ maxWidth: 150, unit: 'metric' }), 'bottom-left');
+  
+  new ResizeObserver(() => { mapMsu.resize(); }).observe(mapMsu.getContainer());
+
+  const popupMsu = new maplibregl.Popup({ closeButton: false });
+  
+  mapMsu.on('mousemove', 'build-fill', (e) => { 
+    mapMsu.getCanvas().style.cursor = 'pointer'; 
+    const type = e.features[0].properties.b_type; 
+    popupMsu.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Тип здания:</b><br>${bTypes[type] ? bTypes[type].name : type}</div>`).addTo(mapMsu); 
+  });
+  mapMsu.on('mouseleave', 'build-fill', () => { 
+    mapMsu.getCanvas().style.cursor = ''; 
+    popupMsu.remove(); 
+  });
+  
+  document.getElementById('btn-zoom-all-dorm-msu').addEventListener('click', () => {
+    mapMsu.flyTo({ center: [37.5274, 55.7028], zoom: 10.0 });
+  });
+
+  mapMsu.on('mousemove', 'dormit-beds-points', (e) => {
+    mapMsu.getCanvas().style.cursor = 'pointer';
+    const beds = e.features[0].properties.numb_stud; 
+    const name = e.features[0].properties.name_2 || "Общежитие"; 
+
+    popupMsu.setLngLat(e.lngLat)
+         .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px; padding: 3px 5px;">
+                     <b>${name}</b><br>
+                     Количество мест: <b style="font-size:13px">${beds}</b>
+                   </div>`)
+         .addTo(mapMsu);
+  });
+  mapMsu.on('mouseleave', 'dormit-beds-points', () => { 
+    mapMsu.getCanvas().style.cursor = ''; 
+    popupMsu.remove(); 
+  });
+
+  document.querySelectorAll('input[name="base-msu-1"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapMsu.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapMsu.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  
+  document.getElementById('toggle-campus-msu').addEventListener('change', (e) => 
+    mapMsu.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none')
+  );
+});
+</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-14-2"><div class="card-body html-fill-item html-fill-container" data-title="Функциональные зоны">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-msu-zones" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-msu-2" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-msu-2" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-msu-2" checked=""> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 220px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Функциональные зоны</div>
+    <div id="legend-zones-list-msu" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Строго те же цвета, что в ПГНИУ и ДВФУ
+  const zTypes = { 
+    "academ": { name: "Научно-образовательная", color: "#f23761" }, 
+    "cultural": { name: "Культурно-образовательная", color: "#f952e2" }, 
+    "dormit": { name: "Жилая", color: "#ff807a" }, 
+    "green": { name: "Ландшафтно-рекреационная", color: "#abeca3" }, 
+    "indust": { name: "Зона строительства", color: "#6863db" }, 
+    "parking": { name: "Парковочная", color: "#a82072" }, 
+    "sport": { name: "Спортивная", color: "#ffa860" }, 
+    "tech": { name: "Коммунального хозяйства", color: "#8daf93" }, 
+    "uslugi": { name: "Зона услуг", color: "#fff3a3" } 
+  };
+  
+  const legListMsu = document.getElementById("legend-zones-list-msu");
+  for (let key in zTypes) {
+    legListMsu.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${zTypes[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333;"></div><span>${zTypes[key].name}</span></div>`;
+  }
+
+  const mapMsuZones = new maplibregl.Map({
+    container: 'map-msu-zones',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "msu_boundary.geojson" },
+        "zones": { type: "geojson", data: "func_zones_msu_3.geojson" }
+      },
+      layers: [
+        { id: "base-light-2", type: "raster", source: "carto-light" },
+        { id: "base-sat-2", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { 
+          id: "zone-fill", 
+          type: "fill", 
+          source: "zones", 
+          paint: { 
+            "fill-color": [ 
+              "match", 
+              ["get", "FZ"], 
+              "academ", zTypes["academ"].color, 
+              "cultural", zTypes["cultural"].color, 
+              "dormit", zTypes["dormit"].color, 
+              "green", zTypes["green"].color, 
+              "indust", zTypes["indust"].color, 
+              "parking", zTypes["parking"].color, 
+              "sport", zTypes["sport"].color, 
+              "tech", zTypes["tech"].color, 
+              "uslugi", zTypes["uslugi"].color, 
+              "transparent" 
+            ], 
+            "fill-opacity": 0.7 
+          } 
+        },
+        { id: "campus-line-2", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } }
+      ]
+    }, 
+    // Координаты Главного здания МГУ
+    center: [37.5274, 55.7028], 
+    zoom: 13.5
+  });
+  
+  mapMsuZones.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  // Надежный обсервер для Quarto Tabsets
+  new ResizeObserver(() => { mapMsuZones.resize(); }).observe(mapMsuZones.getContainer());
+
+  const popupMsuZones = new maplibregl.Popup({ closeButton: false });
+  
+  mapMsuZones.on('mousemove', 'zone-fill', (e) => { 
+    mapMsuZones.getCanvas().style.cursor = 'pointer'; 
+    const type = e.features[0].properties.FZ; 
+    const name = zTypes[type] ? zTypes[type].name : type; 
+    if(name && type !== "null" && type !== "") {
+      popupMsuZones.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Функциональная зона:</b><br>${name}</div>`).addTo(mapMsuZones); 
+    }
+  });
+  
+  mapMsuZones.on('mouseleave', 'zone-fill', () => { 
+    mapMsuZones.getCanvas().style.cursor = ''; 
+    popupMsuZones.remove(); 
+  });
+  
+  document.querySelectorAll('input[name="base-msu-2"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapMsuZones.setLayoutProperty('base-light-2', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapMsuZones.setLayoutProperty('base-sat-2', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  
+  document.getElementById('toggle-campus-msu-2').addEventListener('change', (e) => {
+    mapMsuZones.setLayoutProperty('campus-line-2', 'visibility', e.target.checked ? 'visible' : 'none');
+  });
+});
+</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-14-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешеходная доступность">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-msu-walk" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 190px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-msu-3" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-msu-3" value="sat"> Спутник</label>
+    
+    <div style="font-weight: bold; margin-top: 10px; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Доступность</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="iso-type-msu" value="external" checked=""> От метро (внешняя)</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="iso-type-msu" value="internal"> От КПП (внутренняя)</label>
+
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-campus-msu-3" checked=""> Граница кампуса</label>
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads-msu" checked=""> Пешеходные дороги</label>
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-kpp-msu" checked=""> КПП </label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 160px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Доступность (мин)</div>
+    <div id="legend-walk-list-msu" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const walkColors = { 5: "#ffffb2", 10: "#fed976", 15: "#feb24c", 20: "#fd8d3c", 25: "#fc4e2a", 30: "#e31a1c", 35: "#b10026" };
+  const legList = document.getElementById("legend-walk-list-msu");
+  
+  const mins = [35, 30, 25, 20, 15, 10, 5];
+  mins.forEach((min, index) => {
+    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
+    legList.innerHTML += `
+      <div style="display: flex; align-items: center;">
+        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
+        <span>${min}</span>
+      </div>`;
+  });
+
+  const mapMsuWalk = new maplibregl.Map({
+    container: 'map-msu-walk',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "msu_boundary.geojson" },
+        "roads": { type: "geojson", data: "roads_msu.geojson" },
+        
+        /* ИСТОЧНИКИ ДЛЯ МЕТРО (ВНЕШНЯЯ) */
+        "start-ext": { type: "geojson", data: "metro_msu_pnt.geojson" },
+        "walk-ext": { type: "geojson", data: "metro_isohrones_msu_rings.geojson" }, 
+        
+        /* ИСТОЧНИКИ ДЛЯ КПП (ВНУТРЕННЯЯ) - Твой новый файл с КПП добавлен сюда */
+        "start-int": { type: "geojson", data: "msu_kpp.geojson" },
+        "walk-int": { type: "geojson", data: "msu_vnutr_isohronez.geojson" }  
+      },
+      layers: [
+        { id: "base-light-3", type: "raster", source: "carto-light" },
+        { id: "base-sat-3", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        
+        { id: "roads-line", type: "line", source: "roads", paint: { "line-color": "#888888", "line-width": 0.6, "line-opacity": 0.8 } },
+        
+        /* СЛОИ ВНЕШНЕЙ ДОСТУПНОСТИ (ПО УМОЛЧАНИЮ ВКЛЮЧЕНЫ) */
+        { id: "walk-fill-ext", type: "fill", source: "walk-ext", layout: { visibility: "visible" }, paint: { "fill-color": [ "match", ["get", "AA_MINS"], 5, walkColors[5], 10, walkColors[10], 15, walkColors[15], 20, walkColors[20], 25, walkColors[25], 30, walkColors[30], 35, walkColors[35], "transparent" ], "fill-opacity": 0.45 } },
+        { id: "walk-line-ext", type: "line", source: "walk-ext", layout: { visibility: "visible" }, paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
+        { id: "start-point-ext", type: "circle", source: "start-ext", layout: { visibility: "visible" }, paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } },
+
+        /* СЛОИ ВНУТРЕННЕЙ ДОСТУПНОСТИ (ПО УМОЛЧАНИЮ ВЫКЛЮЧЕНЫ) */
+        { id: "walk-fill-int", type: "fill", source: "walk-int", layout: { visibility: "none" }, paint: { "fill-color": [ "match", ["get", "AA_MINS"], 5, walkColors[5], 10, walkColors[10], 15, walkColors[15], 20, walkColors[20], 25, walkColors[25], 30, walkColors[30], 35, walkColors[35], "transparent" ], "fill-opacity": 0.45 } },
+        { id: "walk-line-int", type: "line", source: "walk-int", layout: { visibility: "none" }, paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
+        { id: "start-point-int", type: "circle", source: "start-int", layout: { visibility: "none" }, paint: { "circle-radius": 6, "circle-color": "darkorange", "circle-stroke-color": "white", "circle-stroke-width": 2 } },
+
+        { id: "campus-line-3", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } }
+      ]
+    }, 
+    center: [37.5274, 55.7028], 
+    zoom: 13.5,
+    minZoom: 12.5,
+    maxZoom: 18,
+    maxBounds: [
+      [37.4600, 55.6800], 
+      [37.5800, 55.7300]  
+    ]
+  });
+  
+  mapMsuWalk.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  new ResizeObserver(() => { mapMsuWalk.resize(); }).observe(mapMsuWalk.getContainer());
+
+  const popupMsuWalk = new maplibregl.Popup({ closeButton: false });
+  mapMsuWalk.on('mousemove', (e) => {
+    // Всплывающие окна ищутся на всех слоях изохрон и обеих группах точек (Метро и КПП)
+    const features = mapMsuWalk.queryRenderedFeatures(e.point, {
+      layers: ['start-point-ext', 'start-point-int', 'walk-fill-ext', 'walk-fill-int'] 
+    });
+
+    if (features.length > 0) {
+      mapMsuWalk.getCanvas().style.cursor = 'pointer';
+      const feature = features[0];
+
+      // Окно для метро
+      if (feature.layer.id === 'start-point-ext') {
+        const metroName = feature.properties.metro_pnt || "Станция";
+        popupMsuWalk.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Метро:</b><br>${metroName}</div>`)
+             .addTo(mapMsuWalk);
+             
+      // Окно для КПП (берет данные из колонки name)
+      } else if (feature.layer.id === 'start-point-int') {
+        const kppName = feature.properties.name || "КПП";
+        popupMsuWalk.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>КПП:</b><br>${kppName}</div>`)
+             .addTo(mapMsuWalk);
+             
+      // Окно для изохрон (любых)
+      } else if (feature.layer.id === 'walk-fill-ext' || feature.layer.id === 'walk-fill-int') {
+        popupMsuWalk.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешая доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
+             .addTo(mapMsuWalk);
+      }
+    } else {
+      mapMsuWalk.getCanvas().style.cursor = '';
+      popupMsuWalk.remove();
+    }
+  });
+  
+  /* ПЕРЕКЛЮЧАТЕЛИ */
+  // 1. Основа карты
+  document.querySelectorAll('input[name="base-msu-3"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapMsuWalk.setLayoutProperty('base-light-3', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapMsuWalk.setLayoutProperty('base-sat-3', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+
+  // 2. Тип доступности (Внешняя/Внутренняя)
+  document.querySelectorAll('input[name="iso-type-msu"]').forEach(r => r.addEventListener('change', (e) => { 
+    const isExt = e.target.value === 'external';
+    const showPoints = document.getElementById('toggle-kpp-msu').checked; // Проверяем, не скрыл ли юзер точки
+    
+    // Включаем/отключаем изохроны
+    mapMsuWalk.setLayoutProperty('walk-fill-ext', 'visibility', isExt ? 'visible' : 'none');
+    mapMsuWalk.setLayoutProperty('walk-line-ext', 'visibility', isExt ? 'visible' : 'none');
+    mapMsuWalk.setLayoutProperty('walk-fill-int', 'visibility', !isExt ? 'visible' : 'none');
+    mapMsuWalk.setLayoutProperty('walk-line-int', 'visibility', !isExt ? 'visible' : 'none');
+    
+    // Включаем/отключаем точки старта (Метро или КПП)
+    mapMsuWalk.setLayoutProperty('start-point-ext', 'visibility', (isExt && showPoints) ? 'visible' : 'none');
+    mapMsuWalk.setLayoutProperty('start-point-int', 'visibility', (!isExt && showPoints) ? 'visible' : 'none');
+  }));
+
+  // 3. Остальные слои
+  document.getElementById('toggle-campus-msu-3').addEventListener('change', (e) => mapMsuWalk.setLayoutProperty('campus-line-3', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-roads-msu').addEventListener('change', (e) => mapMsuWalk.setLayoutProperty('roads-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+  
+  // 4. Кнопка скрытия точек (прячет те точки, которые сейчас активны)
+  document.getElementById('toggle-kpp-msu').addEventListener('change', (e) => {
+    const isExt = document.querySelector('input[name="iso-type-msu"]:checked').value === 'external';
+    mapMsuWalk.setLayoutProperty('start-point-ext', 'visibility', (isExt && e.target.checked) ? 'visible' : 'none');
+    mapMsuWalk.setLayoutProperty('start-point-int', 'visibility', (!isExt && e.target.checked) ? 'visible' : 'none');
+  });
+});
+</script>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 30fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="h4">
+<strong>МГУ</strong>
+:
+
+<em>Флагман российской науки и образования</em>
+</div>
+<p>Расположенный на Воробьевых горах в Москве, кампус Московского государственного университета — это уникальный архитектурный и научно-образовательный комплекс. Масштабная территория кампуса исторически проектировалась как автономный «город в городе», объединяющий фундаментальную науку, образование и студенческую жизнь.</p>
+<p>Здесь сосредоточены ведущие научные школы страны: от аэрокосмических исследований и квантовых технологий до глобальной экологии и урбанистики. Инфраструктура кампуса включает мощный лабораторный фонд, суперкомпьютерный центр, обсерваторию и ботанический сад, что позволяет проводить междисциплинарные исследования мирового уровня.</p>
+<p>Территориальная структура кампуса отличается высокой долей научно-образовательных и озелененных пространств, создавая оптимальную среду для концентрации интеллектуального капитала и развития инноваций в самом центре мегаполиса.</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
+
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-16"><li class="nav-item" role="presentation"><a href="#card-tabset-16-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-16-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-16"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-16-1"><div class="card-body html-fill-item html-fill-container" data-title="Функциональные зоны">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Функциональные зоны" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Функциональные зоны
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-cb5ea4aa4fa5466a7eae" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-cb5ea4aa4fa5466a7eae">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.2f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":40.01,"color":"#f23761"},{"name":"Культурно-образовательная","y":3.55,"color":"#f952e2"},{"name":"Жилая","y":2.85,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":41.75,"color":"#abeca3"},{"name":"Зона строительства","y":0.86,"color":"#6863db"},{"name":"Парковочная","y":0.5,"color":"#a82072"},{"name":"Спортивная","y":5.69,"color":"#ffa860"},{"name":"Коммунального хозяйства","y":3.98,"color":"#8daf93"},{"name":"Зона услуг","y":0.8100000000000001,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>2.20 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-16-2"><div class="card-body html-fill-item html-fill-container" data-title="Направления путей">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div style="display: flex; flex-direction: column; align-items: center; padding: 15px; font-family: 'Noto Sans', sans-serif;" class="html-fill-item html-fill-container">
+<div style="font-weight: bold; font-size: 16px; text-align: center; margin-bottom: 19px;" class="html-fill-item html-fill-container">
+<pre><code>Диаграмма распределения направления путей в кампусе, км</code></pre>
+</div>
+<div style="font-style: italic; font-size: 14px; color: #475569; text-align: center; margin-bottom: 25px; background-color: #f1f5f9; padding: 6px 12px; border-radius: 4px;" class="html-fill-item html-fill-container">
+<pre><code>Решетчатая планировочная структура</code></pre>
+</div>
+<img src="file-001.png" alt="Диаграмма направлений путей МГУ" style="max-width: 80%; height: auto; border-radius: 4px;">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="иннополис" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-иннополис">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
+
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-19"><li class="nav-item" role="presentation"><a href="#card-tabset-19-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="План кампуса" aria-selected="true" class="nav-link active">План кампуса</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-19-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="false" class="nav-link">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-19-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Пешеходная доступность" aria-selected="false" class="nav-link">Пешеходная доступность</a></li></ul></div>
+
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-19"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-19-1"><div class="card-body html-fill-item html-fill-container" data-title="План кампуса">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-inno-buildings" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-inno-1" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-inno-1" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-inno" checked=""> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 250px; overflow-y: auto; max-height: 90%;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Типы зданий</div>
+    <div id="legend-buildings-list-inno" class="html-fill-item html-fill-container"></div>
+    
+    <div style="margin-top: 12px; border-top: 1px solid #cbd5e1; padding-top: 8px;" class="html-fill-item html-fill-container">
+        <div style="font-weight: bold; margin-bottom: 6px;" class="html-fill-item html-fill-container">Мест в общежитиях</div>
+        <div style="position: relative; height: 40px; width: 100%; margin-top: 5px;" class="html-fill-item html-fill-container">
+            
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);" class="html-fill-item html-fill-container"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);" class="html-fill-item html-fill-container"></div>
+            <div style="position: absolute; bottom: 0; left: 16px; transform: translateX(-50%); width: 8px; height: 8px; border-radius: 50%; background-color: #FFB575; border: 1.5px solid #FFFFFF; box-shadow: 0 0 2px rgba(0,0,0,0.3);" class="html-fill-item html-fill-container"></div>
+            
+            <svg width="60" height="40" style="position: absolute; bottom: 0; left: 16px; overflow: visible; pointer-events: none;">
+              <path d="M 0 34 L 10 33 L 22 33" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></path>
+              <path d="M 0 30 L 10 20 L 22 20" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></path>
+              <path d="M 0 24 L 10 7 L 22 7" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></path>
+            </svg>
+            
+            <div style="position: absolute; bottom: 28px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">Крупные (&gt;300) </div>
+            <div style="position: absolute; bottom: 15px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">200 – 300 мест</div>
+            <div style="position: absolute; bottom: 2px; left: 42px; font-size: 10px; color: #1e293b; line-height: 1; white-space: nowrap;" class="html-fill-item html-fill-container">Малые (&lt;200)</div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bTypesInno = {
+    "academ": { name: "Учебно-административные корпуса", color: "#66c2a5" },
+    "dormit": { name: "Жилые корпуса", color: "#8da0cb" },
+    "sport": { name: "Спортивные сооружения", color: "#b3b3b3" },
+    "tech": { name: "Инженерно-технические сооружения", color: "#1f78b4" },
+    "uslugi": { name: "Объекты торговли и общепита", color: "#e5c494" },
+    "pol": { name: "Медицинские учреждения", color: "#8dd3c7" },
+    "hoz": { name: "Хозяйственно-производственные объекты", color: "#e78ac3" }
+  };
+  
+  const legListInno = document.getElementById("legend-buildings-list-inno");
+  for (let key in bTypesInno) legListInno.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 4px;"><div style="width: 14px; height: 14px; background: ${bTypesInno[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333; flex-shrink: 0;"></div><span style="line-height: 1.1;">${bTypesInno[key].name}</span></div>`;
+
+  const mapInno = new maplibregl.Map({
+    container: 'map-inno-buildings',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "innopol_pol.geojson" },
+        "buildings": { type: "geojson", data: "innopol_buildings.geojson" },
+        "dormit_points": { type: "geojson", data: "innopol_dormits.geojson" }
+      },
+      layers: [
+        { id: "base-light", type: "raster", source: "carto-light" },
+        { id: "base-sat", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { id: "campus-line", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } },
+        { 
+          id: "build-fill", 
+          type: "fill", 
+          source: "buildings", 
+          paint: { 
+            "fill-color": [ 
+              "match", ["get", "b_type"], 
+              "academ", bTypesInno["academ"].color, 
+              "pol", bTypesInno["pol"].color, 
+              "dormit", bTypesInno["dormit"].color, 
+              "hoz", bTypesInno["hoz"].color, 
+              "tech", bTypesInno["tech"].color, 
+              "uslugi", bTypesInno["uslugi"].color, 
+              "sport", bTypesInno["sport"].color, 
+              "#ccc" 
+            ], 
+            "fill-opacity": 0.7 
+          } 
+        },
+        { id: "build-line", type: "line", source: "buildings", paint: { "line-color": "#333", "line-width": 0.5 } },
+        
+        { 
+            id: "dormit-beds-points", 
+            type: "circle", 
+            source: "dormit_points", 
+            paint: {
+                "circle-radius": [
+                    "step",
+                    ["to-number", ["get", "numb"]],
+                    4,        // Малые (< 200)
+                    200, 6,   // Средние (200 - 299)
+                    300, 8    // Крупные (300 и больше)
+                ],
+                "circle-color": "#FFB575",
+                "circle-stroke-color": "#FFFFFF",
+                "circle-stroke-width": 1.5,
+                "circle-opacity": 0.95
+            }
+        }
+      ]
+    }, 
+    center: [48.7445, 55.7518], 
+    zoom: 14.5
+  });
+  
+  mapInno.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  mapInno.addControl(new maplibregl.ScaleControl({ maxWidth: 150, unit: 'metric' }), 'bottom-left');
+  
+  new ResizeObserver(() => { mapInno.resize(); }).observe(mapInno.getContainer());
+
+  const popupInno = new maplibregl.Popup({ closeButton: false });
+  
+  mapInno.on('mousemove', 'build-fill', (e) => { 
+    mapInno.getCanvas().style.cursor = 'pointer'; 
+    const type = e.features[0].properties.b_type; 
+    popupInno.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Тип здания:</b><br>${bTypesInno[type] ? bTypesInno[type].name : type}</div>`).addTo(mapInno); 
+  });
+  mapInno.on('mouseleave', 'build-fill', () => { 
+    mapInno.getCanvas().style.cursor = ''; 
+    popupInno.remove(); 
+  });
+
+  mapInno.on('mousemove', 'dormit-beds-points', (e) => {
+    mapInno.getCanvas().style.cursor = 'pointer';
+    const beds = e.features[0].properties.numb;
+    const name = e.features[0].properties.name || "Общежитие"; 
+
+    popupInno.setLngLat(e.lngLat)
+         .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px; padding: 3px 5px;">
+                     <b>${name}</b><br>
+                     Количество койко-мест: <b style="font-size:13px">${beds}</b>
+                   </div>`)
+         .addTo(mapInno);
+  });
+  mapInno.on('mouseleave', 'dormit-beds-points', () => { 
+    mapInno.getCanvas().style.cursor = ''; 
+    popupInno.remove(); 
+  });
+
+  document.querySelectorAll('input[name="base-inno-1"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapInno.setLayoutProperty('base-light', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapInno.setLayoutProperty('base-sat', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  
+  document.getElementById('toggle-campus-inno').addEventListener('change', (e) => 
+    mapInno.setLayoutProperty('campus-line', 'visibility', e.target.checked ? 'visible' : 'none')
+  );
+});
+</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-19-2"><div class="card-body html-fill-item html-fill-container" data-title="Функциональные зоны">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-inno-zones" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-inno-2" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-inno-2" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-campus-inno-2" checked=""> Граница кампуса</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 230px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Функциональные зоны</div>
+    <div id="legend-zones-list-inno" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Цвета строго по твоему шаблону (hoz взял цвет от indust)
+  const zTypesInno = { 
+    "academ": { name: "Научно-образовательная", color: "#f23761" }, 
+    "dormits": { name: "Жилая", color: "#ff807a" }, 
+    "green": { name: "Ландшафтно-рекреационная", color: "#abeca3" }, 
+    "fz": { name: "Коммунального хозяйства", color: "#6863db" }, 
+    "parking": { name: "Парковочная", color: "#a82072" }, 
+    "sport": { name: "Спортивная", color: "#ffa860" }, 
+    "uslugi": { name: "Зона услуг", color: "#fff3a3" } 
+  };
+  
+  const legListInno = document.getElementById("legend-zones-list-inno");
+  for (let key in zTypesInno) {
+    legListInno.innerHTML += `<div style="display: flex; align-items: center; margin-bottom: 6px;"><div style="width: 14px; height: 14px; background: ${zTypesInno[key].color}; opacity: 0.7; margin-right: 8px; border: 1px solid #333;"></div><span>${zTypesInno[key].name}</span></div>`;
+  }
+
+  const mapInnoZones = new maplibregl.Map({
+    container: 'map-inno-zones',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "innopol_boundary.geojson" },
+        "zones": { type: "geojson", data: "innopol_FZ_3.geojson" } 
+      },
+      layers: [
+        { id: "base-light-2", type: "raster", source: "carto-light" },
+        { id: "base-sat-2", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        { 
+          id: "zone-fill", 
+          type: "fill", 
+          source: "zones", 
+          paint: { 
+            "fill-color": [ 
+              "match", 
+              ["get", "FZ"], 
+              "academ", zTypesInno["academ"].color, 
+              "dormits", zTypesInno["dormits"].color, 
+              "green", zTypesInno["green"].color, 
+              "fz", zTypesInno["fz"].color, 
+              "parking", zTypesInno["parking"].color, 
+              "sport", zTypesInno["sport"].color, 
+              "uslugi", zTypesInno["uslugi"].color, 
+              "transparent" 
+            ], 
+            "fill-opacity": 0.7 
+          } 
+        },
+        { id: "zone-line", type: "line", source: "zones", paint: { "line-color": "#333", "line-width": 0.5, "line-opacity": 0.5 } },
+        { id: "campus-line-2", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1.5 } }
+      ]
+    }, 
+    center: [48.7445, 55.7518], 
+    zoom: 14.5
+  });
+  
+  mapInnoZones.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  new ResizeObserver(() => { mapInnoZones.resize(); }).observe(mapInnoZones.getContainer());
+
+  const popupInnoZones = new maplibregl.Popup({ closeButton: false });
+  
+  mapInnoZones.on('mousemove', 'zone-fill', (e) => { 
+    mapInnoZones.getCanvas().style.cursor = 'pointer'; 
+    const type = e.features[0].properties.FZ; 
+    const name = zTypesInno[type] ? zTypesInno[type].name : type; 
+    if(name && type !== "null" && type !== "") {
+      popupInnoZones.setLngLat(e.lngLat).setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Функциональная зона:</b><br>${name}</div>`).addTo(mapInnoZones); 
+    }
+  });
+  
+  mapInnoZones.on('mouseleave', 'zone-fill', () => { 
+    mapInnoZones.getCanvas().style.cursor = ''; 
+    popupInnoZones.remove(); 
+  });
+  
+  document.querySelectorAll('input[name="base-inno-2"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapInnoZones.setLayoutProperty('base-light-2', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapInnoZones.setLayoutProperty('base-sat-2', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  
+  document.getElementById('toggle-campus-inno-2').addEventListener('change', (e) => {
+    mapInnoZones.setLayoutProperty('campus-line-2', 'visibility', e.target.checked ? 'visible' : 'none');
+  });
+});
+</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-19-3"><div class="card-body html-fill-item html-fill-container" data-title="Пешеходная доступность">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div style="position: relative; width: 201%; height: 80vh; min-height: 600px;" class="html-fill-item html-fill-container">
+  <div id="map-inno-walk" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;" class="html-fill-item html-fill-container"></div>
+  
+  <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 170px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Основа карты</div>
+    <label style="display: block; margin-bottom: 4px; cursor: pointer;"><input type="radio" name="base-inno-3" value="light" checked=""> Стандартная</label>
+    <label style="display: block; cursor: pointer;"><input type="radio" name="base-inno-3" value="sat"> Спутник</label>
+    <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;" class="html-fill-item html-fill-container">
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-campus-inno-3" checked=""> Граница кампуса</label>
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads-inno" checked=""> Пешеходные дороги</label>
+      <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-kpp-inno" checked=""> КПП</label>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 10; font-family: 'Noto Sans', sans-serif; font-size: 12px; width: 160px;" class="html-fill-item html-fill-container">
+    <div style="font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;" class="html-fill-item html-fill-container">Доступность (мин)</div>
+    <div id="legend-walk-list-inno" class="html-fill-item html-fill-container"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // ИСПРАВЛЕНО: добавил цвета для 5, 10, 15, 20 и 25
+  const walkColors = { 5: "#ffffb2", 10: "#fed976", 15: "#feb24c", 20: "#fd8d3c", 25: "#fc4e2a" };
+  const legListInno = document.getElementById("legend-walk-list-inno");
+  
+ 
+  const mins = [15, 10, 5];
+  
+  mins.forEach((min, index) => {
+    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
+    legListInno.innerHTML += `
+      <div style="display: flex; align-items: center;">
+        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
+        <span>${min}</span>
+      </div>`;
+  });
+
+  const mapInnoWalk = new maplibregl.Map({
+    container: 'map-inno-walk',
+    style: {
+      version: 8,
+      sources: {
+        "carto-light": { type: "raster", tiles: ["https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"], tileSize: 256 },
+        "esri-sat": { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256 },
+        "campus": { type: "geojson", data: "innopol_boundary.geojson" },
+        "start": { type: "geojson", data: "kpp.geojson" },
+        "roads": { type: "geojson", data: "Innopol_roads_mask_final.geojson" },
+        "walk": { type: "geojson", data: "in_roads.geojson" }
+      },
+      layers: [
+        { id: "base-light-3", type: "raster", source: "carto-light" },
+        { id: "base-sat-3", type: "raster", source: "esri-sat", layout: { visibility: "none" } },
+        
+        { id: "roads-line", type: "line", source: "roads", paint: { "line-color": "#888888", "line-width": 0.6, "line-opacity": 0.8 } },
+        
+        // ИСПРАВЛЕНО: обновлен шаг цветов в соответствии с новыми значениями
+        { 
+          id: "walk-fill", 
+          type: "fill", 
+          source: "walk", 
+          paint: { 
+            "fill-color": [ 
+              "match", 
+              ["to-number", ["get", "AA_MINS"]], 
+              5, walkColors[5], 
+              10, walkColors[10], 
+              15, walkColors[15], 
+              "transparent" 
+            ], 
+            "fill-opacity": 0.45 
+          } 
+        },
+        
+        { id: "walk-line", type: "line", source: "walk", paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
+        { id: "campus-line-3", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1.5 } },
+        { id: "start-point", type: "circle", source: "start", paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } }
+      ]
+    }, 
+    center: [48.7445, 55.7518], 
+    zoom: 14.5
+  });
+  
+  mapInnoWalk.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  new ResizeObserver(() => { mapInnoWalk.resize(); }).observe(mapInnoWalk.getContainer());
+
+  const popupInnoWalk = new maplibregl.Popup({ closeButton: false });
+  mapInnoWalk.on('mousemove', (e) => {
+    const features = mapInnoWalk.queryRenderedFeatures(e.point, {
+      layers: ['start-point', 'walk-fill'] 
+    });
+
+    if (features.length > 0) {
+      mapInnoWalk.getCanvas().style.cursor = 'pointer';
+      
+      const feature = features[0];
+
+      if (feature.layer.id === 'start-point') {
+        const kppName = feature.properties.name || "Иннополис";
+        popupInnoWalk.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Контрольно-пропускной пункт</b><br>${kppName}</div>`)
+             .addTo(mapInnoWalk);
+      } else if (feature.layer.id === 'walk-fill') {
+        popupInnoWalk.setLngLat(e.lngLat)
+             .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешеходная доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
+             .addTo(mapInnoWalk);
+      }
+    } else {
+      mapInnoWalk.getCanvas().style.cursor = '';
+      popupInnoWalk.remove();
+    }
+  });
+  
+  document.querySelectorAll('input[name="base-inno-3"]').forEach(r => r.addEventListener('change', (e) => { 
+    mapInnoWalk.setLayoutProperty('base-light-3', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
+    mapInnoWalk.setLayoutProperty('base-sat-3', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
+  }));
+  document.getElementById('toggle-campus-inno-3').addEventListener('change', (e) => mapInnoWalk.setLayoutProperty('campus-line-3', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-roads-inno').addEventListener('change', (e) => mapInnoWalk.setLayoutProperty('roads-line', 'visibility', e.target.checked ? 'visible' : 'none'));
+  document.getElementById('toggle-kpp-inno').addEventListener('change', (e) => mapInnoWalk.setLayoutProperty('start-point', 'visibility', e.target.checked ? 'visible' : 'none'));
+});
+</script>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 30fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="h4">
+<strong>Иннополис</strong>
+:
+
+<em>Город ИТ-инноваций и технологий будущего</em>
+</div>
+<p>Расположенный в Республике Татарстан, кампус Университета Иннополис — это ядро самого молодого и высокотехнологичного города России. Кампус спроектирован по принципу максимальной компактности и удобства, объединяя передовое образование, науку и комфортную среду для жизни ИТ-специалистов.</p>
+<p>Здесь готовят элиту российской ИТ-индустрии и робототехники. Инфраструктура кампуса включает современные учебные и исследовательские лаборатории, технопарки и комфортабельные общежития, соединенные продуманными пешеходными связями.</p>
+<p>Территориальная структура кампуса отличается высокой плотностью и сбалансированностью. Это создает идеальную экосистему для непрерывной учебы, работы и создания инноваций в шаговой доступности.</p>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
+
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-21"><li class="nav-item" role="presentation"><a href="#card-tabset-21-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Функциональные зоны" aria-selected="true" class="nav-link active">Функциональные зоны</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-21-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Направления путей" aria-selected="false" class="nav-link">Направления путей</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-21"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-21-1"><div class="card-body html-fill-item html-fill-container" data-title="Функциональные зоны">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Функциональные зоны" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Функциональные зоны
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="highchart html-widget html-fill-item html-fill-container" id="htmlwidget-63b9579beb6d031ea592" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-63b9579beb6d031ea592">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"pie"},"title":{"text":"Доли функциональных зон (%)","style":{"fontWeight":"bold","fontSize":"16px"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"pie":{"innerSize":"60%","allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":false}},"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<b>{point.name}<\/b> ({point.y:.2f}%)","backgroundColor":"rgba(255,255,255,0.95)","borderColor":"#ccc","style":{"fontSize":"13px"}},"series":[{"name":"Доля","data":[{"name":"Научно-образовательная","y":14.34,"color":"#f23761"},{"name":"Жилая","y":21.64,"color":"#ff807a"},{"name":"Ландшафтно-рекреационная","y":25.14,"color":"#abeca3"},{"name":null,"y":0.09,"color":null},{"name":"Парковочная","y":6.86,"color":"#a82072"},{"name":"Спортивная","y":20.17,"color":"#ffa860"},{"name":"Зона услуг","y":11.77,"color":"#fff3a3"}]}],"annotations":[{"labels":[{"point":{"x":0,"y":0,"xAxis":0,"yAxis":0},"text":"<span style='font-size:16px;font-weight:bold;'>0.26 км²<\/span>","useHTML":true,"x":0,"y":0}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-21-2"><div class="card-body html-fill-item html-fill-container" data-title="Направления путей">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div style="display: flex; flex-direction: column; align-items: center; padding: 15px; font-family: 'Noto Sans', sans-serif;" class="html-fill-item html-fill-container">
+<div style="font-weight: bold; font-size: 16px; text-align: center; margin-bottom: 19px;" class="html-fill-item html-fill-container">
+<pre><code>Диаграмма распределения направления путей в кампусе, м</code></pre>
+</div>
+<div style="font-style: italic; font-size: 14px; color: #475569; text-align: center; margin-bottom: 25px; background-color: #f1f5f9; padding: 6px 12px; border-radius: 4px;" class="html-fill-item html-fill-container">
+<pre><code>Линейно-осевая планировочная структура</code></pre>
+</div>
+<img src="rose_innop.png" alt="Диаграмма направлений путей Иннополис" style="max-width: 80%; height: auto; border-radius: 4px;">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
 
+</div>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1829,236 +2904,243 @@ grid-auto-rows: minmax(0, 1fr);">
 
 
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2066,185 +3148,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /container fluid -->
 
 <script type="application/javascript">

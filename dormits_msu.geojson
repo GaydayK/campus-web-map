@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "dormits_msu",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "full_id": null, "students": 2708.0, "name": "ДСЛ", "name_2": "Дом студента на Ломоносовском", "numb_stud": 2708 }, "geometry": { "type": "Point", "coordinates": [ 37.51361408879341, 55.69600052214976 ] } },
+{ "type": "Feature", "properties": { "full_id": null, "students": 3570.0, "name": "ДАС", "name_2": "Дом аспиранта и стажёра", "numb_stud": 3570 }, "geometry": { "type": "Point", "coordinates": [ 37.594989523639022, 55.689968477878324 ] } },
+{ "type": "Feature", "properties": { "full_id": null, "students": 1200.0, "name": "ДСК", "name_2": "Дом студента на улице Кравченко", "numb_stud": 1200 }, "geometry": { "type": "Point", "coordinates": [ 37.515793455560072, 55.677002387100892 ] } },
+{ "type": "Feature", "properties": { "full_id": null, "students": 1512.0, "name": "Дом студента н", "name_2": "Дом студента на проспекте Вернадского", "numb_stud": 1512 }, "geometry": { "type": "Point", "coordinates": [ 37.512231100000015, 55.678713599999959 ] } },
+{ "type": "Feature", "properties": { "full_id": null, "students": 720.0, "name": "Дом студента в", "name_2": "Дом студента в Ясенево", "numb_stud": 720 }, "geometry": { "type": "Point", "coordinates": [ 37.526853295147198, 55.610122871768517 ] } },
+{ "type": "Feature", "properties": { "full_id": null, "students": 6890.0, "name": "ДС МГУ", "name_2": "Общежития в Главном здании (ГЗ) МГУ", "numb_stud": 6890 }, "geometry": { "type": "Point", "coordinates": [ 37.530839492958727, 55.702882441807368 ] } },
+{ "type": "Feature", "properties": { "full_id": null, "students": 2300.0, "name": "ФДС", "name_2": "Филиал Дома студента", "numb_stud": 2300 }, "geometry": { "type": "Point", "coordinates": [ 37.509022192071711, 55.70640838189226 ] } }
+]
+}
