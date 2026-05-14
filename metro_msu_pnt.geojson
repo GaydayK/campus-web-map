@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "metro_msu_pnt",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Ломоносовский проспект" }, "geometry": { "type": "Point", "coordinates": [ 37.517652695952869, 55.707466347135735 ] } },
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Ломоносовский проспект" }, "geometry": { "type": "Point", "coordinates": [ 37.515224153632268, 55.706329049501811 ] } },
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Ломоносовский проспект" }, "geometry": { "type": "Point", "coordinates": [ 37.513580981688655, 55.705508839531944 ] } },
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Ломоносовский проспект" }, "geometry": { "type": "Point", "coordinates": [ 37.512518036780776, 55.705856113874034 ] } },
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Ломоносовский проспект" }, "geometry": { "type": "Point", "coordinates": [ 37.514568017494184, 55.706811313732508 ] } },
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Университет" }, "geometry": { "type": "Point", "coordinates": [ 37.534751723576534, 55.691817639226564 ] } },
+{ "type": "Feature", "properties": { "id": null, "metro_pnt": "Университет" }, "geometry": { "type": "Point", "coordinates": [ 37.534464895087488, 55.693329834066965 ] } }
+]
+}
