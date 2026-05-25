@@ -28,7 +28,6 @@ format:
             }
             .popup-stat { margin: 4px 0; font-size: 11.5px; line-height: 1.3; }
             
-            /* Жесткий запрет на анимацию движения маркеров */
             .maplibregl-marker {
               transition: none !important;
               animation: none !important;
@@ -132,7 +131,7 @@ format:
           </tr>
 <tr style="background: transparent;">
   <td colspan="2" style="padding: 10px 0 6px 0; border: none; font-weight: bold; font-size: 12px; color: #1e293b; line-height: 1.2;">
-    Пространственные паттерны ведомственных кампусов<br>
+    Пространственные особенности ведомственных кампусов<br>
     <span style="font-size: 10px; font-weight: normal; color: #64748b;"></span>
   </td>
 </tr>
@@ -622,8 +621,11 @@ format:
 
     map.on('load', () => { updateYearFilter(); updateLegend(); });
     
-    function updateLegend() {
+function updateLegend() {
       const currentZoom = map.getZoom();
+      
+      const scaleControl = document.querySelector('.maplibregl-ctrl-bottom-left'); 
+
       if (currentZoom < 4.0) {
         document.getElementById('legend-regions').style.display = 'block';
         document.getElementById('legend-campuses').style.display = 'none';
@@ -633,13 +635,22 @@ format:
         document.getElementById('legend-campuses').style.display = 'block';
         document.getElementById('theme-switcher').style.display = 'block';
       }
+      
+      if (scaleControl) {
+        if (currentZoom < 6.8) {
+            scaleControl.style.display = 'none'; // Прячем
+        } else {
+            scaleControl.style.display = 'block'; // Показываем
+        }
+      }
+
       updateMarkersVisibility(); 
-    }
+}
 
     map.on('zoom', updateLegend);
     
     let hoveredStateId = null;
-    let hoveredSource = null; // Дополнительная переменная для хранения текущего источника
+    let hoveredSource = null; 
     const regionLayers = ['r-fill-filtered', 'r-fill-target']; // Массив новых слоёв субъектов
 
     map.on('mousemove', regionLayers, (e) => {
@@ -647,7 +658,7 @@ format:
         map.getCanvas().style.cursor = 'pointer';
         popup.setLngLat(e.lngLat).setHTML(`<strong>${e.features[0].properties.region}</strong>`).addTo(map);
         
-        const currentSource = e.features[0].source; // Динамически получаем имя источника ('russia-filtered' или 'russia-target')
+        const currentSource = e.features[0].source; 
         
         if (hoveredStateId !== null && hoveredSource !== null) { 
           map.setFeatureState({ source: hoveredSource, id: hoveredStateId }, { hover: false }); 
@@ -925,7 +936,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <label style="display: block; cursor: pointer;"><input type="radio" name="base-dvfu-3" value="sat"> Спутник</label>
     <div style="margin-top: 10px; border-top: 1px solid #cbd5e1; padding-top: 6px;">
       <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-campus-3" checked> Граница кампуса</label>
-      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads" checked> Дорожки</label>
+      <label style="display: block; cursor: pointer; margin-bottom: 4px;"><input type="checkbox" id="toggle-roads" checked> Пешеходные дороги</label>
       <label style="display: block; cursor: pointer;"><input type="checkbox" id="toggle-kpp" checked> КПП</label>
     </div>
   </div>
@@ -941,15 +952,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const walkColors = { 5: "#ffffb2", 10: "#fed976", 15: "#feb24c", 20: "#fd8d3c", 25: "#fc4e2a", 30: "#e31a1c", 35: "#b10026" };
   const legList = document.getElementById("legend-walk-list");
   
-  const mins = [35, 30, 25, 20, 15, 10, 5];
-  mins.forEach((min, index) => {
-    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
-    legList.innerHTML += `
-      <div style="display: flex; align-items: center;">
-        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
-        <span>${min}</span>
-      </div>`;
+const mins = [35, 30, 25, 20, 15, 10, 5];
+  
+  // Создание сплошной вертикальой цветовой шкалы (высота 7 * 22px = 154px)
+  let colorBarHtml = '<div style="display: flex; flex-direction: column; border: 1px solid #333;">';
+  mins.forEach((min) => {
+    colorBarHtml += `<div style="width: 16px; height: 22px; background: ${walkColors[min]}; opacity: 0.5;"></div>`;
   });
+  colorBarHtml += '</div>';
+
+  // Создание блока подписей строго по стыкам плашек
+  let labelsHtml = `
+    <div style="display: flex; flex-direction: column; justify-content: space-between; height: 154px; margin-left: 10px; font-family: 'Noto Sans', sans-serif; font-size: 11px; color: #1e293b;">
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Более</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">30</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">25</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">20</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">15</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">10</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">5</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Менее</div>
+    </div>
+  `;
+
+  legList.innerHTML = `
+    <div style="display: flex; flex-direction: row; align-items: stretch; padding-top: 6px; padding-bottom: 6px;">
+      ${colorBarHtml}
+      ${labelsHtml}
+    </div>
+  `;
 
   const map = new maplibregl.Map({
     container: 'map-dvfu-walk',
@@ -1020,13 +1051,11 @@ document.addEventListener("DOMContentLoaded", () => {
 :::{.card}
 # **ДВФУ:** *Научный хаб на берегу Тихого океана*
     
-> *Дальневосточный университет – это форпост российского образования, это «вывеска в хорошем смысле этого слова»* (В. Путин)
+> *Дальневосточный университет – это форпост российского образования.* (В. Путин)
 
 Расположенный на *острове Русский* во *Владивостоке*, кампус университета представляет собой уникальную экосистему, где образование тесно переплетается с передовыми исследованиями.
-Уникальное географическое положение предопределяет научные приоритеты ДВФУ. Здесь активно развиваются направления, критически важные для будущего Дальнего Востока и всей планеты: **биомедицина, изучение Мирового океана, искусственный интеллект и ресурсы глубокого передела**.
+Уникальное географическое положение предопределяет научные приоритеты ДВФУ. Здесь активно развиваются направления, критически важные для будущего Дальнего Востока и всей планеты: **биомедицина, изучение Мирового океана и искусственный интеллект**.
 
-Ученые университета работают над созданием *новых лекарств* на основе морских организмов, разрабатывают *подводные роботы* и моделируют *климатические изменения*.
-Являясь площадкой для международного диалога, в частности, *Восточного экономического форума*, ДВФУ трансформирует знание в реальные технологии и компетенции. Это *динамично развивающийся центр*, который готовит кадры для науки и экономики не только региона, но и страны в условиях смещения глобальных фокусов на Восток.
 :::
 
 #### Row{height=70%} 
@@ -1237,14 +1266,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       ]
     }, 
-    // Координаты смещены на Пермь (студгородок ПНИГУ). Если требуется другой корпус, скорректируйте.
     center: [56.1898, 58.0077], 
     zoom: 15.3 
   });
   
   mapPniy.addControl(new maplibregl.NavigationControl(), 'bottom-right');
   
-  // Добавляем масштабную линейку (в метрической системе, слева внизу)
   mapPniy.addControl(new maplibregl.ScaleControl({ maxWidth: 150, unit: 'metric' }), 'bottom-left');
   
   new ResizeObserver(() => { mapPniy.resize(); }).observe(mapPniy.getContainer());
@@ -1355,7 +1382,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   mapPniyZones.addControl(new maplibregl.NavigationControl(), 'bottom-right');
 
-  // Надежный обсервер для Quarto Tabsets
   new ResizeObserver(() => { mapPniyZones.resize(); }).observe(mapPniyZones.getContainer());
 
   const popupPniyZones = new maplibregl.Popup({ closeButton: false });
@@ -1413,15 +1439,30 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const walkColors = { 2: "#ffffb2", 5: "#fecc5c", 7: "#fd8d3c", 10: "#e31a1c" };
   const legList = document.getElementById("legend-walk-list-pniy");
-  const mins = [10, 7, 5, 2];
-  mins.forEach((min, index) => {
-    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
-    legList.innerHTML += `
-      <div style="display: flex; align-items: center;">
-        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
-        <span>${min}</span>
-      </div>`;
+const mins = [10, 7, 5, 2];
+  
+  let colorBarHtml = '<div style="display: flex; flex-direction: column; border: 1px solid #333;">';
+  mins.forEach((min) => {
+    colorBarHtml += `<div style="width: 16px; height: 24px; background: ${walkColors[min]}; opacity: 0.5;"></div>`;
   });
+  colorBarHtml += '</div>';
+
+  let labelsHtml = `
+    <div style="display: flex; flex-direction: column; justify-content: space-between; height: 96px; margin-left: 10px; font-family: 'Noto Sans', sans-serif; font-size: 11px; color: #1e293b;">
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Более</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">7</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">5</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">2</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Менее</div>
+    </div>
+  `;
+
+  legList.innerHTML = `
+    <div style="display: flex; flex-direction: row; align-items: stretch; padding-top: 6px; padding-bottom: 6px;">
+      ${colorBarHtml}
+      ${labelsHtml}
+    </div>
+  `;
 
   const map = new maplibregl.Map({
     container: 'map-pniy-walk',
@@ -1651,7 +1692,6 @@ datatable(
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-// Цвета строго как в ДВФУ и ПГНИУ
   const bTypes = {
     "academ": { name: "Учебно-административные корпуса", color: "#66c2a5" },
     "cultural": { name: "Сооружения культурного назначения", color: "#fc8d62" },
@@ -1901,7 +1941,6 @@ document.addEventListener("DOMContentLoaded", () => {
 ```
 
 ##### Пешеходная доступность
-
 ```{=html}
 <div style="position: relative; width: 201%; height: 80vh; min-height: 600px;">
   <div id="map-msu-walk" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #cbd5e1; border-radius: 6px;"></div>
@@ -1934,14 +1973,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const legList = document.getElementById("legend-walk-list-msu");
   
   const mins = [35, 30, 25, 20, 15, 10, 5];
-  mins.forEach((min, index) => {
-    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
-    legList.innerHTML += `
-      <div style="display: flex; align-items: center;">
-        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
-        <span>${min}</span>
-      </div>`;
+
+  let colorBarHtml = '<div style="display: flex; flex-direction: column; border: 1px solid #333;">';
+  mins.forEach((min) => {
+    colorBarHtml += `<div style="width: 16px; height: 22px; background: ${walkColors[min]}; opacity: 0.5;"></div>`;
   });
+  colorBarHtml += '</div>';
+
+  let labelsHtml = `
+    <div style="display: flex; flex-direction: column; justify-content: space-between; height: 154px; margin-left: 10px; font-family: 'Noto Sans', sans-serif; font-size: 11px; color: #1e293b;">
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Более</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">30</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">25</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">20</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">15</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">10</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">5</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Менее</div>
+    </div>
+  `;
+
+  legList.innerHTML = `
+    <div style="display: flex; flex-direction: row; align-items: stretch; padding-top: 6px; padding-bottom: 6px;">
+      ${colorBarHtml}
+      ${labelsHtml}
+    </div>
+  `;
 
   const mapMsuWalk = new maplibregl.Map({
     container: 'map-msu-walk',
@@ -1953,11 +2010,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "campus": { type: "geojson", data: "msu_boundary.geojson" },
         "roads": { type: "geojson", data: "roads_msu.geojson" },
         
-        /* ИСТОЧНИКИ ДЛЯ МЕТРО (ВНЕШНЯЯ) */
         "start-ext": { type: "geojson", data: "metro_msu_pnt.geojson" },
         "walk-ext": { type: "geojson", data: "metro_isohrones_msu_rings.geojson" }, 
         
-        /* ИСТОЧНИКИ ДЛЯ КПП (ВНУТРЕННЯЯ) - Твой новый файл с КПП добавлен сюда */
         "start-int": { type: "geojson", data: "msu_kpp.geojson" },
         "walk-int": { type: "geojson", data: "msu_vnutr_isohronez.geojson" }  
       },
@@ -1967,27 +2022,17 @@ document.addEventListener("DOMContentLoaded", () => {
         
         { id: "roads-line", type: "line", source: "roads", paint: { "line-color": "#888888", "line-width": 0.6, "line-opacity": 0.8 } },
         
-        /* СЛОИ ВНЕШНЕЙ ДОСТУПНОСТИ (ПО УМОЛЧАНИЮ ВКЛЮЧЕНЫ) */
         { id: "walk-fill-ext", type: "fill", source: "walk-ext", layout: { visibility: "visible" }, paint: { "fill-color": [ "match", ["get", "AA_MINS"], 5, walkColors[5], 10, walkColors[10], 15, walkColors[15], 20, walkColors[20], 25, walkColors[25], 30, walkColors[30], 35, walkColors[35], "transparent" ], "fill-opacity": 0.45 } },
         { id: "walk-line-ext", type: "line", source: "walk-ext", layout: { visibility: "visible" }, paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
         { id: "start-point-ext", type: "circle", source: "start-ext", layout: { visibility: "visible" }, paint: { "circle-radius": 6, "circle-color": "blue", "circle-stroke-color": "white", "circle-stroke-width": 2 } },
 
-        /* СЛОИ ВНУТРЕННЕЙ ДОСТУПНОСТИ (ПО УМОЛЧАНИЮ ВЫКЛЮЧЕНЫ) */
         { id: "walk-fill-int", type: "fill", source: "walk-int", layout: { visibility: "none" }, paint: { "fill-color": [ "match", ["get", "AA_MINS"], 5, walkColors[5], 10, walkColors[10], 15, walkColors[15], 20, walkColors[20], 25, walkColors[25], 30, walkColors[30], 35, walkColors[35], "transparent" ], "fill-opacity": 0.45 } },
         { id: "walk-line-int", type: "line", source: "walk-int", layout: { visibility: "none" }, paint: { "line-color": "#444", "line-width": 0.5, "line-opacity": 0.5 } },
         { id: "start-point-int", type: "circle", source: "start-int", layout: { visibility: "none" }, paint: { "circle-radius": 6, "circle-color": "darkorange", "circle-stroke-color": "white", "circle-stroke-width": 2 } },
 
         { id: "campus-line-3", type: "line", source: "campus", paint: { "line-color": "darkred", "line-width": 1 } }
       ]
-    }, 
-    center: [37.5274, 55.7028], 
-    zoom: 13.5,
-    minZoom: 12.5,
-    maxZoom: 18,
-    maxBounds: [
-      [37.4600, 55.6800], 
-      [37.5800, 55.7300]  
-    ]
+    }, center: [37.5274, 55.7028], zoom: 13.5, minZoom: 12.5, maxZoom: 18, maxBounds: [ [37.4600, 55.6800], [37.5800, 55.7300] ]
   });
   
   mapMsuWalk.addControl(new maplibregl.NavigationControl(), 'bottom-right');
@@ -1995,7 +2040,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const popupMsuWalk = new maplibregl.Popup({ closeButton: false });
   mapMsuWalk.on('mousemove', (e) => {
-    // Всплывающие окна ищутся на всех слоях изохрон и обеих группах точек (Метро и КПП)
     const features = mapMsuWalk.queryRenderedFeatures(e.point, {
       layers: ['start-point-ext', 'start-point-int', 'walk-fill-ext', 'walk-fill-int'] 
     });
@@ -2004,21 +2048,16 @@ document.addEventListener("DOMContentLoaded", () => {
       mapMsuWalk.getCanvas().style.cursor = 'pointer';
       const feature = features[0];
 
-      // Окно для метро
       if (feature.layer.id === 'start-point-ext') {
         const metroName = feature.properties.metro_pnt || "Станция";
         popupMsuWalk.setLngLat(e.lngLat)
              .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Метро:</b><br>${metroName}</div>`)
              .addTo(mapMsuWalk);
-             
-      // Окно для КПП (берет данные из колонки name)
       } else if (feature.layer.id === 'start-point-int') {
         const kppName = feature.properties.name || "КПП";
         popupMsuWalk.setLngLat(e.lngLat)
              .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>КПП:</b><br>${kppName}</div>`)
              .addTo(mapMsuWalk);
-             
-      // Окно для изохрон (любых)
       } else if (feature.layer.id === 'walk-fill-ext' || feature.layer.id === 'walk-fill-int') {
         popupMsuWalk.setLngLat(e.lngLat)
              .setHTML(`<div style="font-family: 'Noto Sans', sans-serif; font-size: 12px;"><b>Пешая доступность:</b><br>${feature.properties.AA_MINS} минут</div>`)
@@ -2030,34 +2069,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
-  /* ПЕРЕКЛЮЧАТЕЛИ */
-  // 1. Основа карты
   document.querySelectorAll('input[name="base-msu-3"]').forEach(r => r.addEventListener('change', (e) => { 
     mapMsuWalk.setLayoutProperty('base-light-3', 'visibility', e.target.value === 'light' ? 'visible' : 'none'); 
     mapMsuWalk.setLayoutProperty('base-sat-3', 'visibility', e.target.value === 'sat' ? 'visible' : 'none'); 
   }));
 
-  // 2. Тип доступности (Внешняя/Внутренняя)
   document.querySelectorAll('input[name="iso-type-msu"]').forEach(r => r.addEventListener('change', (e) => { 
     const isExt = e.target.value === 'external';
-    const showPoints = document.getElementById('toggle-kpp-msu').checked; // Проверяем, не скрыл ли юзер точки
+    const showPoints = document.getElementById('toggle-kpp-msu').checked; 
     
-    // Включаем/отключаем изохроны
     mapMsuWalk.setLayoutProperty('walk-fill-ext', 'visibility', isExt ? 'visible' : 'none');
     mapMsuWalk.setLayoutProperty('walk-line-ext', 'visibility', isExt ? 'visible' : 'none');
     mapMsuWalk.setLayoutProperty('walk-fill-int', 'visibility', !isExt ? 'visible' : 'none');
     mapMsuWalk.setLayoutProperty('walk-line-int', 'visibility', !isExt ? 'visible' : 'none');
     
-    // Включаем/отключаем точки старта (Метро или КПП)
     mapMsuWalk.setLayoutProperty('start-point-ext', 'visibility', (isExt && showPoints) ? 'visible' : 'none');
     mapMsuWalk.setLayoutProperty('start-point-int', 'visibility', (!isExt && showPoints) ? 'visible' : 'none');
   }));
 
-  // 3. Остальные слои
   document.getElementById('toggle-campus-msu-3').addEventListener('change', (e) => mapMsuWalk.setLayoutProperty('campus-line-3', 'visibility', e.target.checked ? 'visible' : 'none'));
   document.getElementById('toggle-roads-msu').addEventListener('change', (e) => mapMsuWalk.setLayoutProperty('roads-line', 'visibility', e.target.checked ? 'visible' : 'none'));
   
-  // 4. Кнопка скрытия точек (прячет те точки, которые сейчас активны)
   document.getElementById('toggle-kpp-msu').addEventListener('change', (e) => {
     const isExt = document.querySelector('input[name="iso-type-msu"]:checked').value === 'external';
     mapMsuWalk.setLayoutProperty('start-point-ext', 'visibility', (isExt && e.target.checked) ? 'visible' : 'none');
@@ -2131,6 +2163,41 @@ highchart() %>%
   <img src="file-001.png" alt="Диаграмма направлений путей МГУ" style="max-width: 80%; height: auto; border-radius: 4px;">
 
 </div>
+
+
+###### Данные
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Исходные данные"
+#| padding: 0px
+
+library(DT)
+library(formattable)
+
+# Данные на основе атрибутивной таблицы слоя МГУ
+data <- data.frame(
+  FZ = c("academ", "cultural", "dormit", "green", "indust", "parking", "sport", "tech", "uslugi"),
+  area_m2 = c(881606, 78220, 62700, 919894, 19060, 10943, 125483, 87766, 17679),
+  share = c(40.01, 3.55, 2.85, 41.75, 0.86, 0.50, 5.69, 3.98, 0.81)
+)
+
+color_map <- c("academ"="#f23761", "cultural"="#f952e2", "dormit"="#ff807a", "green"="#abeca3", "indust"="#6863db", "parking"="#a82072", "sport"="#ffa860", "tech"="#8daf93", "uslugi"="#fff3a3")
+labels <- c("Научно-образовательная", "Культурно-образовательная", "Жилая", "Ландшафтно-рекреационная", "Зона строительства", "Парковочная", "Спортивная", "Коммунального хозяйства", "Зона услуг")
+
+data$Label <- labels[match(data$FZ, names(color_map))]
+data$Color <- color_map[data$FZ]
+
+datatable(
+  data[, c("Label", "area_m2", "share")],
+  colnames = c("Функциональная зона", "Площадь (м²)", "Доля (%)"),
+  options = list(pageLength = 9, dom = 't', ordering = FALSE, scrollX = TRUE),
+  rownames = FALSE
+) %>% 
+  formatRound(columns = "area_m2", digits = 0) %>% 
+  formatRound(columns = "share", digits = 2)
+```
 
 # Иннополис
 
@@ -2432,21 +2499,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // ИСПРАВЛЕНО: добавил цвета для 5, 10, 15, 20 и 25
+
   const walkColors = { 5: "#ffffb2", 10: "#fed976", 15: "#feb24c", 20: "#fd8d3c", 25: "#fc4e2a" };
   const legListInno = document.getElementById("legend-walk-list-inno");
   
  
-  const mins = [15, 10, 5];
+const mins = [15, 10, 5];
   
-  mins.forEach((min, index) => {
-    const borderStyle = index === mins.length - 1 ? "border: 1px solid #333;" : "border: 1px solid #333; border-bottom: none;";
-    legListInno.innerHTML += `
-      <div style="display: flex; align-items: center;">
-        <div style="width: 16px; height: 20px; background: ${walkColors[min]}; opacity: 0.5; margin-right: 8px; ${borderStyle}"></div>
-        <span>${min}</span>
-      </div>`;
+  let colorBarHtml = '<div style="display: flex; flex-direction: column; border: 1px solid #333;">';
+  mins.forEach((min) => {
+    colorBarHtml += `<div style="width: 16px; height: 24px; background: ${walkColors[min]}; opacity: 0.5;"></div>`;
   });
+  colorBarHtml += '</div>';
+
+  let labelsHtml = `
+    <div style="display: flex; flex-direction: column; justify-content: space-between; height: 72px; margin-left: 10px; font-family: 'Noto Sans', sans-serif; font-size: 11px; color: #1e293b;">
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Более</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">10</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">5</div>
+      <div style="height: 0; display: flex; align-items: center; white-space: nowrap;">Менее</div>
+    </div>
+  `;
+  
+  legListInno.innerHTML = `
+    <div style="display: flex; flex-direction: row; align-items: stretch; padding-top: 6px; padding-bottom: 6px;">
+      ${colorBarHtml}
+      ${labelsHtml}
+    </div>
+  `;
 
   const mapInnoWalk = new maplibregl.Map({
     container: 'map-inno-walk',
@@ -2466,7 +2546,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         { id: "roads-line", type: "line", source: "roads", paint: { "line-color": "#888888", "line-width": 0.6, "line-opacity": 0.8 } },
         
-        // ИСПРАВЛЕНО: обновлен шаг цветов в соответствии с новыми значениями
         { 
           id: "walk-fill", 
           type: "fill", 
@@ -2597,3 +2676,39 @@ highchart() %>%
   <img src="rose_innop.png" alt="Диаграмма направлений путей Иннополис" style="max-width: 80%; height: auto; border-radius: 4px;">
 
 </div>
+
+
+###### Данные
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| title: "Исходные данные"
+#| padding: 0px
+
+library(DT)
+library(formattable)
+
+# Данные по Иннополису (площадь в м2 и доли в %)
+data <- data.frame(
+  FZ = c("academ", "dormits", "green", "hoz", "parking", "sport", "uslugi"),
+  area_m2 = c(36732, 63129, 64387, 232, 17565, 43979, 30139),
+  share = c(14.34, 21.64, 25.14, 0.09, 6.86, 20.17, 11.77)
+)
+
+
+color_map <- c("academ"="#f23761", "dormits"="#ff807a", "green"="#abeca3", "hoz"="#6863db", "parking"="#a82072", "sport"="#ffa860", "uslugi"="#fff3a3")
+labels <- c("academ"="Научно-образовательная", "dormits"="Жилая", "green"="Ландшафтно-рекреационная", "hoz"="Хозяйственная", "parking"="Парковочная", "sport"="Спортивная", "uslugi"="Зона услуг")
+
+data$Label <- labels[data$FZ]
+data$Color <- color_map[data$FZ]
+
+datatable(
+  data[, c("Label", "area_m2", "share")],
+  colnames = c("Функциональная зона", "Площадь (м²)", "Доля (%)"),
+  options = list(pageLength = 7, dom = 't', ordering = FALSE, scrollX = TRUE),
+  rownames = FALSE
+) %>% 
+  formatRound(columns = "area_m2", digits = 0) %>% 
+  formatRound(columns = "share", digits = 2)
+```
